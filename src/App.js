@@ -1,16 +1,24 @@
-import './App.css';
-import Navbar from './components/Navbar';
-import Register from './components/Register';
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Navbar from "./components/Navbar";
+import Register from "./components/Register";
+import Login from "./components/Login";
 
 function App() {
   return (
     <>
-      <Navbar />
-    <div className="container">
-   <h1>TASK MANAGER APP</h1>
-    <Register />
-    </div>
+      <BrowserRouter>
+        <Navbar />
+        <div className="container">
+          <Routes>
+            <Route path="register" element={<Register />} />
+            <Route path="login" element={<Login />} />
+          </Routes>
 
+          <h1>TASK MANAGER APP</h1>
+        </div>
+      </BrowserRouter>
     </>
   );
 }

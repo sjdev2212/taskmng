@@ -1,4 +1,8 @@
 import React from 'react'
+import {Link } from "react-router-dom";
+import Login from './Login';
+import Register from './Register';
+
 
 const Navbar = () => {
   return (
@@ -7,10 +11,11 @@ const Navbar = () => {
             <div className="container">
                 <p className="brand" >Task Manager</p>
             </div>
+
             <ul className='ul-btns'>
-                <li>Login</li>
-                <li>Register</li>
-                
+             <li> <Link to="/register" component={Register} >Register</Link></li>
+             <li> <Link to="/login" component={Login} >Login</Link></li>
+       
             </ul>
         </nav>
     </>
