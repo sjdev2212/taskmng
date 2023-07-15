@@ -4,18 +4,18 @@ import Login from './Login';
 import Register from './Register';
 
 
-const Navbar = () => {
+const Navbar = ({isLogged}) => {
   return (
     <>
         <nav className='navbar'>
             <div className="container">
-                <p className="brand" >Task Manager</p>
+                <p className="brand" >Task Manager {isLogged?  'true' : 'false'}</p>
             </div>
 
             <ul className='ul-btns'>
-             <li> <Link to="/register" component={Register} >Register</Link></li>
-             <li> <Link to="/login" component={Login} >Login</Link></li>
-       
+            {isLogged ? <li> <Link to="/login" component={Login} >Logout</Link></li> : null
+            }
+           
             </ul>
         </nav>
     </>

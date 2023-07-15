@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-const Login = () => {
+const Login = ({isLogged, setIsLogged}) => {
     const [email, setEmail] = useState("");
     const [password, setpassword] = useState("");
     const navigate = useNavigate();
@@ -39,6 +39,7 @@ const Login = () => {
                   console.log(res.status);
                
                   if (res.status === 200) {
+                    setIsLogged(true);
                    logged();
                     navigate("/");
                   }
