@@ -5,7 +5,11 @@ import Navbar from "./components/Navbar";
 import Register from "./components/Register";
 import Login from "./components/Login";
 
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
+  
   return (
     <>
       <BrowserRouter>
@@ -18,6 +22,8 @@ function App() {
 
           <h1>TASK MANAGER APP</h1>
         </div>
+      
+        <ToastContainer />
       </BrowserRouter>
     </>
   );
