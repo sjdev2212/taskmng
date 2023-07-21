@@ -1,25 +1,62 @@
-import React from 'react'
-import {Link } from "react-router-dom";
-import Login from './Login';
-import Register from './Register';
+import React from "react";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
+const Navbar = ({ isLogged , isAuthenticated , handleLoginOut }) => {
+  const navigate = useNavigate();
 
-const Navbar = ({isLogged}) => {
+  const loggedOut = () => toast.success('You are logged out!', {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      }); 
+  
+  const handleLogout = () => {
+      localStorage.removeItem("token");
+      handleLoginOut();
+      loggedOut();
+      navigate("/"); 
+  };
   return (
     <>
-        <nav className='navbar'>
-            <div className="container">
-                <p className="brand" >Task Manager {isLogged?  'true' : 'false'}</p>
-            </div>
+      <nav className="navbar">
+        <div className="container">
+          <p className="brand">Task Manager {isLogged ? "true" : "false"}{isAuthenticated() ?  "si" : "no"}</p>
+        </div>
 
-            <ul className='ul-btns'>
-            {isLogged ? <li> <Link to="/login" component={Login} >Logout</Link></li> : null
-            }
-           
-            </ul>
-        </nav>
+        <ul className="ul-btns">
+          { isAuthenticated() ? (
+            <>
+              <li className="li-btns">
+                <button onClick={handleLogout} className="btns">
+                 Log out
+                </button>
+              </li>
+            </>
+          ) : (
+            <>
+              <li className="li-btns">
+                <Link to="/login" className="btns">
+                  Login
+                </Link>
+              </li>
+              <li className="li-btns">
+                <Link to="/register" className="btns">
+                  Register
+                </Link>
+              </li>
+            </>
+          )}
+        </ul>
+      </nav>
     </>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

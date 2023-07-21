@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-const Login = ({isLogged, setIsLogged}) => {
+const Login = ({ setIsLogged, onLogin}) => {
     const [email, setEmail] = useState("");
     const [password, setpassword] = useState("");
     const navigate = useNavigate();
@@ -27,25 +27,25 @@ const Login = ({isLogged, setIsLogged}) => {
             setpassword(event.target.value);
             };
 
-    const handleSubmit = (event) => {
-                event.preventDefault();
-            
-                const data = {
-                  email: email,
-                  password: password,
-                };
-            
-                axios.post("https://todo-danielamoroso31.b4a.run/login", data).then((res) => {
-                  console.log(res.status);
-               
-                  if (res.status === 200) {
-                    setIsLogged(true);
-                   logged();
-                    navigate("/");
-                  }
-                });
-                
-              };
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        try {
+            const response = await axios.post("https://todo-danielamoroso31.b4a.run/login", {
+                email,
+                password,
+            });
+            const { token } = response.data;
+            localStorage.setItem("token", token);
+            setIsLogged(true);
+            onLogin(token);
+            logged();
+            navigate("/");
+        } catch (error) {
+
+            console.error(error);
+        }
+    };
+
             
                 
 
