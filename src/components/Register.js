@@ -26,16 +26,21 @@ function Register({isLogged}) {
       password: password,
     };
 
-    axios.post("https://todo-danielamoroso31.b4a.run/register", data).then((res) => {
-      console.log(res.status);
-   
-      if (res.status === 201) {
-       
-        navigate("/");
-      }
-    });
-    
+    axios
+      .post("https://todo-danielamoroso31.b4a.run/register", data)
+      .then((response) => {
+        if (response.status === 200) {
+          navigate("/");
+        }
+      })
+      .catch((error) => {
+        console.log(error + "error");
+        alert("Error");
+      });
   };
+
+
+
 
   return (
     <>

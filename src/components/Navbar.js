@@ -2,6 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import "../styles/Navbar.css";
+
+
+
+
 
 const Navbar = ({ isLogged , isAuthenticated , handleLoginOut }) => {
   const navigate = useNavigate();
@@ -21,12 +26,14 @@ const Navbar = ({ isLogged , isAuthenticated , handleLoginOut }) => {
       localStorage.removeItem("token");
       handleLoginOut();
       loggedOut();
-      navigate("/"); 
+      navigate("/login"); 
   };
+
+
   return (
     <>
       <nav className="navbar">
-        <div className="container">
+        <div className="nav-container">
           <p className="brand">Task Manager {isLogged ? "true" : "false"}{isAuthenticated() ?  "si" : "no"}</p>
         </div>
 
@@ -42,9 +49,10 @@ const Navbar = ({ isLogged , isAuthenticated , handleLoginOut }) => {
           ) : (
             <>
               <li className="li-btns">
-                <Link to="/login" className="btns">
+                <Link to="/login" className="btns"> 
                   Login
                 </Link>
+              
               </li>
               <li className="li-btns">
                 <Link to="/register" className="btns">
