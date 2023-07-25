@@ -5,9 +5,9 @@ import Navbar from "./components/Navbar";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import Home from "./components/Home";
+import { Toaster } from "react-hot-toast";
 import { useState, useEffect } from "react";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
 
 function App() {
   const [isLogged, setIsLogged] = useState(false);
@@ -72,7 +72,7 @@ function App() {
             }
           />
         </Routes>
-       <ToastContainer />
+  <Toaster />
       </BrowserRouter>
     </>
   );

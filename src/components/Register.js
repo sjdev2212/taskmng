@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import  {useNavigate} from "react-router-dom";
 import axios from "axios";
+import '../styles/Register.css'
 
 function Register({isLogged}) {
 
@@ -43,8 +44,8 @@ function Register({isLogged}) {
 
 
   return (
-    <>
-      <div>
+    <main className="main-register">
+      <section className="container-register" >
         <h1>Register</h1>
         <form onSubmit={handleSubmit}>
           <div>
@@ -67,8 +68,8 @@ function Register({isLogged}) {
           </div>
           <button type="submit">Register</button>
         </form>
-      </div>
-    </>
+      </section>
+    </main>
   );
 }
 

@@ -1,5 +1,4 @@
-
-.main-login {
+.main-register {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -7,7 +6,7 @@
     height:80vh;
   
 }
-.container-login {
+.container-register {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -18,21 +17,9 @@
     border-radius: 15px;    
     background-color: #3450A1;
 }
-.container-login h1 {
+.container-register h1 {
     color: white;
     font-size: 1.8rem;
     font-weight: bold;
     
 }
-
-
-.toast-login {
-    background: #3450A1;
-    color: #DA43F0;
-    height: 8vw;
-    width: 30vw;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border-radius: 15px;
-
-  }

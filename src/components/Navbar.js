@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import toast from 'react-hot-toast';
 import "../styles/Navbar.css";
 
 
@@ -11,16 +11,35 @@ import "../styles/Navbar.css";
 const Navbar = ({ isLogged , isAuthenticated , handleLoginOut }) => {
   const navigate = useNavigate();
 
-  const loggedOut = () => toast.success('You are logged out!', {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "colored",
-      }); 
+  const loggedOut = () => toast('Until next time', {
+    duration: 4000,
+    position: 'top-center',
+  
+    // Styling
+   
+    className: 'toast-logout',
+  
+    // Custom Icon
+    icon: '👏',
+  
+    // Change colors of success/error/loading icon
+    iconTheme: {
+      primary: '#000',
+      secondary: '#fff',
+    },
+  
+  /*   // Aria
+    ariaProps: {
+      role: 'status',
+      'aria-live': 'polite',
+    }, */
+  });
+
+    
+    
+      
+      
+
   
   const handleLogout = () => {
       localStorage.removeItem("token");

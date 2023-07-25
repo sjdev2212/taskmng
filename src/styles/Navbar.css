@@ -10,7 +10,7 @@
 .brand{
     font-size: 1.3rem;
     font-weight: bold;
-    color: #000;
+    color: #d34cc8;
     text-decoration: none;
 }
 .ul-btns {
@@ -24,3 +24,14 @@
     color: #000;
 }
 
+
+  .toast-logout {
+    background: #3450A1;
+    color: #DA43F0;
+    height: 8vw;
+    width: 30vw;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 15px;
+
+  }

@@ -1,8 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import toast from 'react-hot-toast';
 import axios from "axios";
-import { toast } from "react-toastify";
+
 import '../styles/Login.css'
 
 const Login = ({ setIsLogged, onLogin }) => {
@@ -11,17 +12,29 @@ const Login = ({ setIsLogged, onLogin }) => {
 
   const navigate = useNavigate();
 
-  const logged = () =>
-    toast.success("Welcome you are logged in!", {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "colored",
-    });
+  const logged = () => toast('You are logged in', {
+    duration: 4000,
+    position: 'top-center',
+  
+    // Styling
+   
+    className: 'toast-login',
+  
+ /*    // Custom Icon
+    icon: '👏', */
+  
+    // Change colors of success/error/loading icon
+    iconTheme: {
+      primary: '#000',
+      secondary: '#fff',
+    },
+  
+  /*   // Aria
+    ariaProps: {
+      role: 'status',
+      'aria-live': 'polite',
+    }, */
+  });
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -45,15 +58,16 @@ const Login = ({ setIsLogged, onLogin }) => {
       localStorage.setItem("token", token);
 
       onLogin(token);
-      logged();
+      logged(); 
       navigate("/");
     } catch (error) {
       console.error(error);
     }
   };
   return (
-  
-    <section className="container" >
+  <main className="main-login">
+    <section className="container-login" >
+      <h1 className="title-login">Login</h1>
       <form className="form">
         <div>
           <label htmlFor="email">Email</label>
@@ -78,6 +92,7 @@ const Login = ({ setIsLogged, onLogin }) => {
         </button>
       </form>
       </section>
+      </main>
     
   );
 };
