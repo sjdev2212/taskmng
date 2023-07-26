@@ -12,7 +12,7 @@ const Navbar = ({ isLogged , isAuthenticated , handleLoginOut }) => {
   const navigate = useNavigate();
 
   const loggedOut = () => toast('Until next time', {
-    duration: 4000,
+    duration: 3000,
     position: 'top-center',
   
     // Styling
@@ -22,17 +22,9 @@ const Navbar = ({ isLogged , isAuthenticated , handleLoginOut }) => {
     // Custom Icon
     icon: '👏',
   
-    // Change colors of success/error/loading icon
-    iconTheme: {
-      primary: '#000',
-      secondary: '#fff',
-    },
+
   
-  /*   // Aria
-    ariaProps: {
-      role: 'status',
-      'aria-live': 'polite',
-    }, */
+ 
   });
 
     

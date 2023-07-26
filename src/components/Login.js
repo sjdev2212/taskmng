@@ -13,7 +13,7 @@ const Login = ({ setIsLogged, onLogin }) => {
   const navigate = useNavigate();
 
   const logged = () => toast('You are logged in', {
-    duration: 4000,
+    duration: 3000,
     position: 'top-center',
   
     // Styling
@@ -23,17 +23,7 @@ const Login = ({ setIsLogged, onLogin }) => {
  /*    // Custom Icon
     icon: '👏', */
   
-    // Change colors of success/error/loading icon
-    iconTheme: {
-      primary: '#000',
-      secondary: '#fff',
-    },
-  
-  /*   // Aria
-    ariaProps: {
-      role: 'status',
-      'aria-live': 'polite',
-    }, */
+
   });
 
   const handleEmailChange = (event) => {
