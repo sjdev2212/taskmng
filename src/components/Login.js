@@ -19,6 +19,7 @@ const Login = ({ setIsLogged, onLogin }) => {
     // Styling
    
     className: 'toast-login',
+    
   
  /*    // Custom Icon
     icon: '👏', */
