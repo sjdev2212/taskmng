@@ -15,11 +15,15 @@ const Login = ({ setIsLogged, onLogin }) => {
   const logged = () => toast('You are logged in', {
     duration: 3000,
     position: 'top-center',
+    style: {
+      background: 'orange',
+      color: '#fff',
+    },
   
     // Styling
    
-    className: 'toast-login',
-    
+   
+
   
  /*    // Custom Icon
     icon: '👏', */
