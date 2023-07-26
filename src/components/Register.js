@@ -46,9 +46,9 @@ function Register({isLogged}) {
   return (
     <main className="main-register">
       <section className="container-register" >
-        <h1>Register</h1>
-        <form onSubmit={handleSubmit}>
-          <div>
+        <h1 className="register-title">Register</h1>
+        <form className="form-register" onSubmit={handleSubmit}>
+          <div className="register-groups">
             <label htmlFor="email">Email</label>
             <input
               type="email"
@@ -57,7 +57,7 @@ function Register({isLogged}) {
               onChange={handleEmailChange}
             />
           </div>
-          <div>
+          <div className="register-groups">
             <label htmlFor="password">Password</label>
             <input
               type="password"
@@ -66,7 +66,7 @@ function Register({isLogged}) {
               onChange={handlePasswordChange}
             />
           </div>
-          <button type="submit">Register</button>
+          <button className="register-btn" type="submit">Register</button>
         </form>
       </section>
     </main>

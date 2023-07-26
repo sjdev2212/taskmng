@@ -58,8 +58,8 @@ const Login = ({ setIsLogged, onLogin }) => {
   <main className="main-login">
     <section className="container-login" >
       <h1 className="title-login">Login</h1>
-      <form className="form">
-        <div>
+      <form className="form-login">
+        <div className="login-groups">
           <label htmlFor="email">Email</label>
           <input
             type="email"
@@ -68,7 +68,7 @@ const Login = ({ setIsLogged, onLogin }) => {
             placeholder="Enter email"
           />
         </div>
-        <div>
+        <div className="login-groups">
           <label htmlFor="password">Password</label>
           <input
             type="password"
@@ -77,7 +77,7 @@ const Login = ({ setIsLogged, onLogin }) => {
             placeholder="Enter password"
           />
         </div>
-        <button type="submit" onClick={handleSubmit} className="">
+        <button type="submit" onClick={handleSubmit} className="login-btn">
           Login
         </button>
       </form>

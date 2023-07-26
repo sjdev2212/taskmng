@@ -45,7 +45,7 @@ const Navbar = ({ isLogged , isAuthenticated , handleLoginOut }) => {
     <>
       <nav className="navbar">
         <div className="nav-container">
-          <p className="brand">Task Manager {isLogged ? "true" : "false"}{isAuthenticated() ?  "si" : "no"}</p>
+          <p className="brand">Task Manager </p>
         </div>
 
         <ul className="ul-btns">

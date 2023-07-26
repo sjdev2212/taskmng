@@ -3,23 +3,74 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height:80vh;
-  
+    height: 80vh;
+
 }
+
 .container-register {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  width: 60%;
-  height:54vh;
+    width: 60%;
+    height: 54vh;
     border: 1px solid rgb(15, 15, 15);
-    border-radius: 15px;    
+    border-radius: 15px;
     background-color: #3450A1;
 }
-.container-register h1 {
+.register-title {
     color: white;
-    font-size: 1.8rem;
+    font-size: 2.7rem;
     font-weight: bold;
+    position: relative;
+    bottom: 1rem;
     
+}
+.form-register {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    bottom: 2.5rem;
+}
+.form-register input {
+    width: 30rem;
+    height: 3rem;
+    border-radius: 15px;
+    border: 1px solid rgb(15, 15, 15);
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+}
+.register-groups {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.register-groups label {
+    color:#DA43F0;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.register-btn{
+    width: 8rem;
+    height: 2.8rem;
+    border-radius: 15px;
+    border: 1px solid rgb(15, 15, 15);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    background-color: #DA43F0;
+    color: white;
+    cursor: pointer;
+}
+
+.register-btn:hover {
+    background-color: #3450A1;
+    color: #DA43F0;
+    transition: 0.6s;
 }
