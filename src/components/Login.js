@@ -16,8 +16,13 @@ const Login = ({ setIsLogged, onLogin }) => {
     duration: 3000,
     position: 'top-center',
     style: {
-      background: 'orange',
-      color: '#fff',
+      background: "#3450A1",
+      color: "#DA43F0",
+      height: "10vh",
+      width: "35vh",
+      fontSize: "1.2rem",
+      fontWeight: "bold",
+      borderRadius: "15px",
     },
   
     // Styling

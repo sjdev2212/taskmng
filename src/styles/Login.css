@@ -19,16 +19,6 @@
     background-color: #3450A1;
 }
 
-.toast-login {
-    background: #3450A1;
-    color: #DA43F0;
-    height: 40vh;
-    width: 35vh;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border-radius: 15px;
-
-}
 .title-login {
     color: white;
     font-size: 2.7rem;
