@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import "../styles/Navbar.css";
 import { AiOutlineMenu } from "react-icons/ai";
 import {AiOutlineClose} from "react-icons/ai";
+import { IconContext } from "react-icons";
 
 
 const Navbar = ({ isLogged, isAuthenticated, handleLoginOut }) => {
@@ -42,12 +43,15 @@ const Navbar = ({ isLogged, isAuthenticated, handleLoginOut }) => {
   return (
     <>
       <nav className="navbar-mobile">
+        <IconContext.Provider value={{ size: 40, style: { color: '#DA43F0' } }} >
       <div >
-          <span className={showMenu ? "hide-hamb" : "show-hamb"} onClick={handleMenu}> 
+          <span className={showMenu ? "hide-hamb" : "show-hamb"} onClick={handleMenu} size={30} style={{ fill: 'black' }} > 
             <AiOutlineMenu />
           </span>
         
         </div>
+        </IconContext.Provider>
+
         <section className={showMenu ? "menu-section" : "menu-section-hide"}>
         <ul className="ul-btns">
           {isAuthenticated() ? (

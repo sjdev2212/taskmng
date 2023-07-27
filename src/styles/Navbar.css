@@ -58,6 +58,9 @@
     }
     .show-hamb {
         display: block;
+        width: 4vw;
+        padding: 10px;
+       font-size: larger;
     }
     .hide-hamb {
         display: none;
