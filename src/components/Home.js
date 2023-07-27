@@ -1,11 +1,12 @@
 import React from "react";
+import '../styles/Home.css'
 
 const Home = () => {
     return (
-        <div>
-        <h1>Home</h1>
-        <h1>TASK MANAGER APP</h1>
-        </div>
+        <main className="home-container">
+     
+        <h1>Welcome to your app!</h1>
+        </main>
     );
     }
 

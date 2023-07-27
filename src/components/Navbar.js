@@ -57,7 +57,7 @@ const Navbar = ({ isLogged, isAuthenticated, handleLoginOut }) => {
           {isAuthenticated() ? (
             <>
               <li className="li-btns">
-                <button onClick={handleLogout} className="btns">
+                <button onClick={handleLogout} className="logout-btn">
                   Log out
                 </button>
               </li>
