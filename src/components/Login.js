@@ -10,6 +10,7 @@ const Login = ({ setIsLogged, onLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setpassword] = useState("");
 
+
   const navigate = useNavigate();
 
   const logged = () => toast('You are logged in', {
@@ -24,17 +25,10 @@ const Login = ({ setIsLogged, onLogin }) => {
       fontWeight: "bold",
       borderRadius: "15px",
     },
-  
-    // Styling
-   
-   
+  icon: '👏',
+});
 
-  
- /*    // Custom Icon
-    icon: '👏', */
-  
 
-  });
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -92,6 +86,7 @@ const Login = ({ setIsLogged, onLogin }) => {
         </button>
       </form>
       </section>
+
       </main>
     
   );
