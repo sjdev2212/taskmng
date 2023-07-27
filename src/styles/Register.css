@@ -76,7 +76,29 @@
 }
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 700px) {
+    .register-title {
+        font-size: 5vw;
+        position: relative;
+        bottom: 8vw;
+
+        
+    }
+    .form-register input  {
+        width: 48vw;
+        height: 6vw;
+        font-size: 2vw;
+    }
+    .register-groups label {
+        font-size: 3vw;
+      
+    }
+    .register-btn{
+        width: 15vw;
+        height: 6vw;
+        font-size: 2vw;
+    }
+
 
 }
     
