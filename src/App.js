@@ -72,6 +72,7 @@ function App() {
             <Register 
              isLogged={isLogged} 
              setIsLogged={setIsLogged} />}
+             language={language}
             />
 
           <Route
@@ -81,6 +82,7 @@ function App() {
                 isLogged={isLogged}
                 onLogin={handleLogin}
                 setIsLogged={setIsLogged}
+                language={language}
               />
             }
           />

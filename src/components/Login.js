@@ -6,14 +6,14 @@ import axios from "axios";
 
 import '../styles/Login.css'
 
-const Login = ({ setIsLogged, onLogin }) => {
+const Login = ({ setIsLogged, onLogin, language }) => {
   const [email, setEmail] = useState("");
   const [password, setpassword] = useState("");
 
 
   const navigate = useNavigate();
 
-  const logged = () => toast('You are logged in', {
+  const logged = () => toast(  'You are logged in', {
     duration: 3000,
     position: 'top-center',
     style: {
@@ -27,6 +27,21 @@ const Login = ({ setIsLogged, onLogin }) => {
     },
   icon: '👏',
 });
+const logueado = () => toast(  'Estas logueado', {
+  duration: 3000,
+  position: 'top-center',
+  style: {
+    background: "#3450A1",
+    color: "#DA43F0",
+    height: "10vh",
+    width: "35vh",
+    fontSize: "1.2rem",
+    fontWeight: "bold",
+    borderRadius: "15px",
+  },
+icon: '👏',
+});
+
 
 
 
@@ -52,7 +67,7 @@ const Login = ({ setIsLogged, onLogin }) => {
       localStorage.setItem("token", token);
 
       onLogin(token);
-      logged(); 
+      language === 'english' ? logged() : logueado()
       navigate("/");
     } catch (error) {
       console.error(error);
@@ -61,10 +76,11 @@ const Login = ({ setIsLogged, onLogin }) => {
   return (
   <main className="main-login">
     <section className="container-login" >
-      <h1 className="title-login">Login</h1>
+      {language === 'english' ? <h1 className="title-login"> Login</h1> : <h1 className="title-es">Iniciar Sesion </h1>}
+ 
       <form className="form-login">
         <div className="login-groups">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email"> {language ==="spanish" ?  "Correo" : "Email"  }</label>
           <input
             type="email"
             onChange={handleEmailChange}
@@ -73,7 +89,7 @@ const Login = ({ setIsLogged, onLogin }) => {
           />
         </div>
         <div className="login-groups">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">{language ==="spanish" ?  "Contraseña" : "Password"  }</label>
           <input
             type="password"
             onChange={handlePasswordChange}
@@ -82,7 +98,7 @@ const Login = ({ setIsLogged, onLogin }) => {
           />
         </div>
         <button type="submit" onClick={handleSubmit} className="login-btn">
-          Login
+          {language ==="spanish" ?  "Iniciar Sesion" : "Login"  }
         </button>
       </form>
       </section>

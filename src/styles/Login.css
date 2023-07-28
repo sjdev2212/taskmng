@@ -30,6 +30,14 @@
     bottom: 0.8rem;
     
 }
+.title-es {
+    color: white;
+    font-size: 2.2rem;
+    font-weight: bold;
+    position: relative;
+    bottom: 0.8rem;
+    
+}
 .form-login {
     display: flex;
     flex-direction: column;
@@ -101,7 +109,14 @@
         height: 6vw;
         font-size: 2vw;
     }
-
+    .title-es {
+        color: white;
+        font-size: 5vw;
+        font-weight: bold;
+        position: relative;
+        bottom: 7vw;
+        
+    }
 
 }
     

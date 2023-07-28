@@ -4,7 +4,7 @@ import '../styles/Home.css'
 const Home = ({language}) => {
     return (
         <main className="home-container">
-            {console.log(language)}
+          
      {language === 'english' ? <h1> Welcome!</h1> : <h1>Bienvenido!</h1>}
         
         </main>
