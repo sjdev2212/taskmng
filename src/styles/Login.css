@@ -93,24 +93,24 @@
         width: 90vw;
     }
     .title-login {
-        font-size: 5vw;
+        font-size: 7vw;
         position: relative;
         bottom: 8vw;
 
         
     }
     .form-login input {
-        width: 48vw;
-        height: 6vw;
-        font-size: 2vw;
+        width: 65vw;
+        height: 8vw;
+        font-size: 3vw;
     }
     .login-groups label {
-        font-size: 3vw;
+        font-size: 4vw;
       
     }
     .login-btn{
-        width: 15vw;
-        height: 6vw;
+        width: 25vw;
+        height: 8vw;
         font-size: 2vw;
     }
     .title-es {
