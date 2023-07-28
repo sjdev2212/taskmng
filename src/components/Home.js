@@ -1,11 +1,12 @@
 import React from "react";
 import '../styles/Home.css'
 
-const Home = () => {
+const Home = ({language}) => {
     return (
         <main className="home-container">
-     
-        <h1>Welcome to your app!</h1>
+            {console.log(language)}
+     {language === 'english' ? <h1> Welcome!</h1> : <h1>Bienvenido!</h1>}
+        
         </main>
     );
     }

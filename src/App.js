@@ -12,10 +12,19 @@ import { useState, useEffect } from "react";
 function App() {
   const [isLogged, setIsLogged] = useState(false);
   const [token, setToken] = useState(null);
+  const [language, setLanguage] = useState('english')
 
   const handleLogin = (token) => {
     setToken(token); // Save the token in the state when the user logs in.
   };
+  const handleLanguage = (e) => {
+    console.log(language)
+    if (e.target.value === 'english') {
+      setLanguage('english')
+    }
+   else
+    setLanguage('spanish')
+  }
 
   const handleLoginOut = () => {
     setToken(null);
@@ -49,10 +58,14 @@ function App() {
           isLogged={isLogged}
           isAuthenticated={isAuthenticated}
           handleLoginOut={handleLoginOut}
+          handleLanguage={handleLanguage}
+          language={language}
         />
 
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home  
+          language={language}
+          />} />
           <Route
             path="register"
             element={

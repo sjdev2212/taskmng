@@ -7,9 +7,8 @@ import "../styles/Navbar.css";
 import { AiOutlineMenu } from "react-icons/ai";
 import {AiOutlineClose} from "react-icons/ai";
 import { IconContext } from "react-icons";
-
-
-const Navbar = ({ isLogged, isAuthenticated, handleLoginOut }) => {
+import ReactCountryFlag from "react-country-flag"
+const Navbar = ({ isLogged, isAuthenticated, handleLoginOut ,handleLanguage, language }) => {
   const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
 
@@ -48,7 +47,18 @@ const Navbar = ({ isLogged, isAuthenticated, handleLoginOut }) => {
           <span className={showMenu ? "hide-hamb" : "show-hamb"} onClick={handleMenu} size={30} style={{ fill: 'black' }} > 
             <AiOutlineMenu />
           </span>
-        
+        <div>
+          <select className="select" onChange={handleLanguage}>
+            <option value="spanish">      
+            
+            <ReactCountryFlag countryCode="ES" 
+      />
+            </option>
+            <option value="english">
+            <ReactCountryFlag countryCode="GB" />
+            </option>
+            </select>
+        </div>
         </div>
         </IconContext.Provider>
 
@@ -58,7 +68,7 @@ const Navbar = ({ isLogged, isAuthenticated, handleLoginOut }) => {
             <>
               <li className="li-btns">
                 <button onClick={handleLogout} className="logout-btn">
-                  Log out
+          {language === 'english' ? <p> Log out </p> : <p> Cerrar sesión </p>}
                 </button>
               </li>
             </>
@@ -66,12 +76,12 @@ const Navbar = ({ isLogged, isAuthenticated, handleLoginOut }) => {
             <>
               <li className="li-btns">
                 <Link to="/login" className="btns">
-                  Login
+                 {language === 'english' ? <p> Login </p> : <p> Iniciar sesión </p>}
                 </Link>
               </li>
               <li className="li-btns">
                 <Link to="/register" className="btns">
-                  Register
+                  {language === 'english' ? <p> Register </p> : <p> Registrarse </p>}
                 </Link>
               </li>
             </>
@@ -88,7 +98,9 @@ const Navbar = ({ isLogged, isAuthenticated, handleLoginOut }) => {
       <nav className="navbar">
       
       <div className="nav-container">
-          <p className="brand"> Task Manager </p>
+          <p className="brand"> 
+          {language === 'english' ? <p> Task Manager </p> : <p> Administrador </p>}
+          </p>
         </div>
 
         <ul className="ul-btns">
@@ -96,7 +108,7 @@ const Navbar = ({ isLogged, isAuthenticated, handleLoginOut }) => {
             <>
               <li className="li-btns">
                 <button onClick={handleLogout} className="btns">
-                  Log out
+                  {language === 'english' ? <p> Log out </p> : <p> Cerrar sesión </p>}
                 </button>
               </li>
             </>
@@ -104,17 +116,28 @@ const Navbar = ({ isLogged, isAuthenticated, handleLoginOut }) => {
             <>
               <li className="li-btns">
                 <Link to="/login" className="btns">
-                  Login
+               {language === 'english' ? <p> Login </p> : <p> Iniciar sesión </p>}
                 </Link>
               </li>
               <li className="li-btns">
                 <Link to="/register" className="btns">
-                  Register
+                  {language === 'english' ? <p> Register </p> : <p> Registrarse </p>}
                 </Link>
               </li>
             </>
           )}
         </ul> 
+        <div>
+          <select className="select" onChange={handleLanguage}>
+            <option value="spanish">
+            <ReactCountryFlag countryCode="ES" 
+      />
+            </option>
+            <option value="english">
+            <ReactCountryFlag countryCode="GB" />
+            </option>
+            </select>
+        </div>
 
       </nav>
     </>
