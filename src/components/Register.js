@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import  {useNavigate} from "react-router-dom";
+import toast from 'react-hot-toast';
 import axios from "axios";
 import '../styles/Register.css'
 
@@ -10,6 +11,34 @@ function Register({language}) {
   const [password, setpassword] = useState("");
 
   const navigate = useNavigate();
+  const registered = () => toast(  'You are now registered', {
+    duration: 3000,
+    position: 'top-center',
+    style: {
+      background: "#3450A1",
+      color: "#DA43F0",
+      height: "10vh",
+      width: "35vh",
+      fontSize: "1.2rem",
+      fontWeight: "bold",
+      borderRadius: "15px",
+    },
+  icon: '👏',
+});
+const userExists = () => toast(  'There is a user already registered with that email. please enter a different one or login', {
+  duration: 3000,
+  position: 'top-center',
+  style: {
+    background: "#3450A1",
+    color: "#DA43F0",
+    height: "10vh",
+    width: "50vh",
+    fontSize: "1.2rem",
+    fontWeight: "bold",
+    borderRadius: "15px",
+  },
+icon: '👏',
+});
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -31,11 +60,12 @@ function Register({language}) {
       .post("https://todo-danielamoroso31.b4a.run/register", data)
       .then((response) => {
         if (response.status === 200) {
-          alert("You are registered");
+          registered();
           navigate("/home");
         } 
         if (response.status === 409) {
-          alert("User already exists");
+          navigate("/register");
+          userExists();
         }
       })
       .catch((error) => {
@@ -69,6 +99,7 @@ function Register({language}) {
               id="email"
               value={email}
               onChange={handleEmailChange}
+              required
             />
           </div>
           <div className="register-groups">
@@ -80,6 +111,9 @@ function Register({language}) {
               id="password"
               value={password}
               onChange={handlePasswordChange}
+              required
+              pattern=".{6,}" 
+              title="Password must be at least 6 characters long."
             />
           </div>
           <button className="register-btn" type="submit">
