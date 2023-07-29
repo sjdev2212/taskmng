@@ -11,7 +11,7 @@ function Register({language}) {
   const [password, setpassword] = useState("");
 
   const navigate = useNavigate();
-  const registered = () => toast(  'You are now registered', {
+  const registered = () => toast(  'You are now registered. Please Log in', {
     duration: 3000,
     position: 'top-center',
     style: {
@@ -23,22 +23,53 @@ function Register({language}) {
       fontWeight: "bold",
       borderRadius: "15px",
     },
-  icon: '👏',
+    icon: '✔️',
 });
-const userExists = () => toast(  'There is a user already registered with that email. please enter a different one or login', {
+const registrado = () => toast(  'Ahora estas registrado. Por favor inicia sesion', {
   duration: 3000,
   position: 'top-center',
   style: {
     background: "#3450A1",
     color: "#DA43F0",
     height: "10vh",
+    width: "35vh",
+    fontSize: "1.2rem",
+    fontWeight: "bold",
+
+    borderRadius: "15px",
+  },
+icon: '✔️',
+});
+
+const userExists = () => toast(  'There is a user already registered with that email. please enter a different one or login', {
+  duration: 3000,
+  position: 'top-center',
+  style: {
+    background: "#A1051D",
+    color: "white",
+    height: "10vh",
     width: "50vh",
     fontSize: "1.2rem",
     fontWeight: "bold",
     borderRadius: "15px",
   },
-icon: '👏',
+icon: '⚠️',
 });
+const existeUsuario = () => toast(  'Ya hay una cuenta registrada con ese correo, por favor usa uno diferente o inicia sesion', {
+  duration: 3000,
+  position: 'top-center',
+  style: {
+    background: "#A1051D",
+    color: "white",
+    height: "10vh",
+    width: "50vh",
+    fontSize: "1.1rem",
+    fontWeight: "bold",
+    borderRadius: "15px",
+  },
+  icon: '⚠️',
+});
+
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -60,12 +91,13 @@ icon: '👏',
       .post("https://todo-danielamoroso31.b4a.run/register", data)
       .then((response) => {
         if (response.status === 200) {
-          registered();
-          navigate("/home");
+          language === 'english' ? registered() : registrado();
+          navigate("/login");
         } 
-        if (response.status === 409) {
+        if (response.status === 201) {
           navigate("/register");
-          userExists();
+          language === 'english' ? userExists() : existeUsuario();
+         
         }
       })
       .catch((error) => {
