@@ -4,7 +4,7 @@ import  {useNavigate} from "react-router-dom";
 import axios from "axios";
 import '../styles/Register.css'
 
-function Register({isLogged}) {
+function Register({language}) {
 
   const [email, setEmail] = useState("");
   const [password, setpassword] = useState("");
@@ -31,14 +31,23 @@ function Register({isLogged}) {
       .post("https://todo-danielamoroso31.b4a.run/register", data)
       .then((response) => {
         if (response.status === 200) {
-          navigate("/");
+          alert("You are registered");
+          navigate("/home");
+        } 
+        if (response.status === 409) {
+          alert("User already exists");
         }
       })
       .catch((error) => {
-        console.log(error + "error");
-        alert("Error");
+        console.log(error);
       });
   };
+
+
+      
+
+      
+
 
 
 
@@ -46,10 +55,15 @@ function Register({isLogged}) {
   return (
     <main className="main-register">
       <section className="container-register" >
-        <h1 className="register-title">Register</h1>
+        <h1 className="register-title"> 
+        {language === 'english' ? 'Register' : 'Registrarse'}
+        </h1>
+     
         <form className="form-register" onSubmit={handleSubmit}>
           <div className="register-groups">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">
+              {language === 'english' ? 'Email' : 'Correo electrónico'}
+            </label>
             <input
               type="email"
               id="email"
@@ -58,7 +72,9 @@ function Register({isLogged}) {
             />
           </div>
           <div className="register-groups">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">
+              {language === 'english' ? 'Password' : 'Contraseña'}
+            </label>
             <input
               type="password"
               id="password"
@@ -66,7 +82,9 @@ function Register({isLogged}) {
               onChange={handlePasswordChange}
             />
           </div>
-          <button className="register-btn" type="submit">Register</button>
+          <button className="register-btn" type="submit">
+            {language === 'english' ? 'Register' : 'Registrarse'}
+          </button>
         </form>
       </section>
     </main>

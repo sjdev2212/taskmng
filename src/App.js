@@ -12,8 +12,7 @@ import { useState, useEffect } from "react";
 function App() {
   const [isLogged, setIsLogged] = useState(false);
   const [token, setToken] = useState(null);
-  const [language, setLanguage] = useState('english')
-
+  const [language, setLanguage] = useState('')
   const handleLogin = (token) => {
     setToken(token); // Save the token in the state when the user logs in.
   };
@@ -48,8 +47,16 @@ function App() {
 
     if (storedToken) {
       setToken(storedToken);
+      
+
+      
+
     }
-  }, []);
+  }, [language]);
+
+
+
+
 
   return (
     <>
@@ -62,6 +69,7 @@ function App() {
           language={language}
         />
 
+
         <Routes>
           <Route path="/" element={<Home  
           language={language}
@@ -71,8 +79,11 @@ function App() {
             element={
             <Register 
              isLogged={isLogged} 
-             setIsLogged={setIsLogged} />}
+             setIsLogged={setIsLogged}
              language={language}
+              />}
+             
+           
             />
 
           <Route

@@ -80,7 +80,7 @@ icon: '👏',
  
       <form className="form-login">
         <div className="login-groups">
-          <label htmlFor="email"> {language ==="spanish" ?  "Correo" : "Email"  }</label>
+          <label htmlFor="email"> {language ==="spanish" ?  "Correo electronico" : "Email"  }</label>
           <input
             type="email"
             onChange={handleEmailChange}

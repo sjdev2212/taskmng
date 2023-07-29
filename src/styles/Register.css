@@ -77,26 +77,30 @@
 
 
 @media screen and (max-width: 700px) {
+    .container-register {
+        width: 90vw;
+        height: 160vw;
+    }
     .register-title {
-        font-size: 5vw;
+        font-size: 7vw;
         position: relative;
         bottom: 8vw;
 
         
     }
     .form-register input  {
-        width: 48vw;
-        height: 6vw;
-        font-size: 2vw;
+        width: 65vw;
+        height: 8vw;
+        font-size: 3vw;
     }
     .register-groups label {
-        font-size: 3vw;
+        font-size: 4vw;
       
     }
     .register-btn{
-        width: 15vw;
-        height: 6vw;
-        font-size: 2vw;
+        width: 45vw;
+        height: 14vw;
+        font-size: 3.5vw;
     }
 
 

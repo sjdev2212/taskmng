@@ -112,6 +112,8 @@
         width: 45vw;
         height: 14vw;
         font-size: 3.5vw;
+        border : 1px solid #DA43F0;
+        color: black;
     }
     .title-es {
         color: white;

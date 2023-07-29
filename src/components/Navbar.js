@@ -106,20 +106,20 @@ const Navbar = ({ isLogged, isAuthenticated, handleLoginOut ,handleLanguage, lan
         <ul className="ul-btns">
           {isAuthenticated() ? (
             <>
-              <li className="li-btns">
-                <button onClick={handleLogout} className="btns">
-                  {language === 'english' ? <p> Log out </p> : <p> Cerrar sesión </p>}
+              <li >
+                <button onClick={handleLogout} className="btn-logout">
+                  {language === 'english' ? " Log out " : " Cerrar sesión "}
                 </button>
               </li>
             </>
           ) : (
             <>
-              <li className="li-btns">
+              <li >
                 <Link to="/login" className="btns">
                {language === 'english' ? <p> Login </p> : <p> Iniciar sesión </p>}
                 </Link>
               </li>
-              <li className="li-btns">
+              <li >
                 <Link to="/register" className="btns">
                   {language === 'english' ? <p> Register </p> : <p> Registrarse </p>}
                 </Link>
