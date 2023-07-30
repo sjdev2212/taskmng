@@ -86,6 +86,8 @@ icon: '👏',
             onChange={handleEmailChange}
             id="email"
             placeholder="Enter email"
+            required
+            title="Please enter a valid email address"
           />
         </div>
         <div className="login-groups">
@@ -95,6 +97,8 @@ icon: '👏',
             onChange={handlePasswordChange}
             id="password"
             placeholder="Enter password"
+            required
+            title="Please enter a valid password"
           />
         </div>
         <button type="submit" onClick={handleSubmit} className="login-btn">
