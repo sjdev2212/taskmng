@@ -9,6 +9,7 @@ function Register({language}) {
 
   const [email, setEmail] = useState("");
   const [password, setpassword] = useState("");
+  const [userName, setUserName] = useState("");
 
   const navigate = useNavigate();
   const registered = () => toast(  'You are now registered. Please Log in', {
@@ -70,7 +71,9 @@ const existeUsuario = () => toast(  'Ya hay una cuenta registrada con ese correo
   icon: '⚠️',
 });
 
-
+const handleUserNameChange = (event) => {
+  setUserName(event.target.value);
+};
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   };
@@ -83,6 +86,7 @@ const existeUsuario = () => toast(  'Ya hay una cuenta registrada con ese correo
     event.preventDefault();
 
     const data = {
+      username: userName,
       email: email,
       password: password,
     };
@@ -122,6 +126,18 @@ const existeUsuario = () => toast(  'Ya hay una cuenta registrada con ese correo
         </h1>
      
         <form className="form-register" onSubmit={handleSubmit}>
+        <div className="register-groups">
+            <label htmlFor="username">
+              {language === 'english' ? 'Username' : 'Nombre de usuario'}
+            </label>
+            <input
+              type="text"
+              id="username"
+              value={userName}
+              onChange={handleUserNameChange}
+              required
+            />
+          </div>
           <div className="register-groups">
             <label htmlFor="email">
               {language === 'english' ? 'Email' : 'Correo electrónico'}
