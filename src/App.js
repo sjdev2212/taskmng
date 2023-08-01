@@ -1,23 +1,28 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {  Routes, Route } from "react-router-dom";
 import axios from "axios";
 import Navbar from "./components/Navbar";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import Home from "./components/Home";
-import { Toaster } from "react-hot-toast";
+import { Toaster, toast } from "react-hot-toast";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 function App() {
   const [isLogged, setIsLogged] = useState(false);
   const [token, setToken] = useState(null);
   const [language, setLanguage] = useState('')
+  const [email, setEmail] = useState("");
+const [password, setpassword] = useState("");
+const [userName, setUserName] = useState("");
+
+ const navigate = useNavigate();
   const handleLogin = (token) => {
     setToken(token); // Save the token in the state when the user logs in.
   };
   const handleLanguage = (e) => {
-    console.log(language)
     if (e.target.value === 'english') {
       setLanguage('english')
     }
@@ -25,9 +30,76 @@ function App() {
     setLanguage('spanish')
   }
 
+
+
+  const logged = () => toast(  'You are logged in', {
+    duration: 3000,
+    position: 'top-center',
+    style: {
+      background: "#3450A1",
+      color: "#DA43F0",
+      height: "10vh",
+      width: "35vh",
+      fontSize: "1.2rem",
+      fontWeight: "bold",
+      borderRadius: "15px",
+    },
+  icon: '👏',
+});
+const logueado = () => toast(  'Estas logueado', {
+  duration: 3000,
+  position: 'top-center',
+  style: {
+    background: "#3450A1",
+    color: "#DA43F0",
+    height: "10vh",
+    width: "35vh",
+    fontSize: "1.2rem",
+    fontWeight: "bold",
+    borderRadius: "15px",
+  },
+icon: '👏',
+});
+
+
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  try {
+    const response = await axios.post(
+      "https://todo-danielamoroso31.b4a.run/login",
+      {
+        email,
+        password,
+      }
+    );
+    if (response.status === 200) {
+      const username = response.data.user
+      const { token } = response.data;
+      localStorage.setItem("token", token);
+      handleLogin(token);
+      setIsLogged(true);
+      language === 'english' ? logged() : logueado()
+      navigate("/home");
+      setUserName(username)
+    
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+
+
+
+
+
+
+
+
   const handleLoginOut = () => {
     setToken(null);
     setIsLogged(false); // Clear the token from the state when the user logs out.
+ 
   };
   // Function to check if the user is authenticated using the token.
   const isAuthenticated = () => {
@@ -44,13 +116,10 @@ function App() {
   useEffect(() => {
     // Check if a token is stored in browser storage or cookies
     const storedToken = localStorage.getItem("token"); // Or document.cookie for HttpOnly cookies
+  
 
     if (storedToken) {
       setToken(storedToken);
-      
-
-      
-
     }
   }, [language]);
 
@@ -60,7 +129,7 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
+     
         <Navbar
           isLogged={isLogged}
           isAuthenticated={isAuthenticated}
@@ -71,15 +140,15 @@ function App() {
 
 
         <Routes>
-          <Route path="/" element={<Home  
+          <Route path="/home" element={<Home  
           language={language}
+          user={userName}
+          logged={isLogged}
           />} />
           <Route
             path="register"
             element={
             <Register 
-             isLogged={isLogged} 
-             setIsLogged={setIsLogged}
              language={language}
               />}
              
@@ -95,6 +164,10 @@ function App() {
                 onLogin={handleLogin}
                 setIsLogged={setIsLogged}
                 language={language}
+                handleSubmit={handleSubmit}
+                setEmail={setEmail}
+                setpassword={setpassword}
+
               />
             }
           />
@@ -102,7 +175,7 @@ function App() {
        
   <Toaster />
 
-      </BrowserRouter>
+    
     </>
   );
 }
