@@ -31,7 +31,7 @@ const Navbar = ({ isLogged, isAuthenticated, handleLoginOut ,handleLanguage, lan
     localStorage.removeItem("token");
     handleLoginOut();
     loggedOut();
-    navigate("/login");
+    navigate("/home");
   };
   const handleMenu = () => {
     setShowMenu(!showMenu);
