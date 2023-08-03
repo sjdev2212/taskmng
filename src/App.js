@@ -21,6 +21,7 @@ const [userName, setUserName] = useState("");
  const navigate = useNavigate();
   const handleLogin = (token) => {
     setToken(token); // Save the token in the state when the user logs in.
+
   };
   const handleLanguage = (e) => {
     if (e.target.value === 'english') {
@@ -88,15 +89,7 @@ const handleSubmit = async (event) => {
   }
 };
 
-
-
-
-
-
-
-
-
-  const handleLoginOut = () => {
+const handleLoginOut = () => {
     setToken(null);
     setIsLogged(false); // Clear the token from the state when the user logs out.
  
@@ -104,6 +97,7 @@ const handleSubmit = async (event) => {
   // Function to check if the user is authenticated using the token.
   const isAuthenticated = () => {
     return !!token;
+
   };
   // Axios interceptor to attach the token to every request if the user is authenticated.
   axios.interceptors.request.use((config) => {
@@ -120,6 +114,7 @@ const handleSubmit = async (event) => {
 
     if (storedToken) {
       setToken(storedToken);
+      setIsLogged(true);
     }
   }, [language]);
 
