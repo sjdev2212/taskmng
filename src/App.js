@@ -61,6 +61,33 @@ const logueado = () => toast(  'Estas logueado', {
   },
 icon: '👏',
 });
+const noUsuario = () => toast(  'No existe usuario con ese email', {
+  duration: 3000,
+  position: 'top-center',
+  style: {
+    background: "#3450A1",
+    color: "#DA43F0",
+    height: "10vh",
+    width: "35vh",
+    fontSize: "1.2rem",
+    fontWeight: "bold",
+    borderRadius: "15px",
+  },
+
+});
+const noUser = () => toast(  'No user with the email provided', {
+  duration: 3000,
+  position: 'top-center',
+  style: {
+    background: "#3450A1",
+    color: "#DA43F0",
+    height: "10vh",
+    width: "35vh",
+    fontSize: "1.2rem",
+    fontWeight: "bold",
+    borderRadius: "15px",
+  }
+});
 
 
 const handleSubmit = async (event) => {
@@ -85,7 +112,9 @@ const handleSubmit = async (event) => {
     
     }
   } catch (error) {
+
     console.error(error);
+    language === 'english' ? noUser() : noUsuario()
   }
 };
 
