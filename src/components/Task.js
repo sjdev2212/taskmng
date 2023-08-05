@@ -4,13 +4,19 @@ import axios from 'axios'
 
 
 
+
 const Task = ({language, userId}) => {
     const [tasks, setTasks] = useState([])
    
-const getUserTasks = async () => {
+
+useEffect(  ()  => {
+    async function fetchData() {
     const response = await axios.get(`https://todo-danielamoroso31.b4a.run/${userId}/tasks`)
-    if (response.data.message === 'No tasks found') {
+
+    console.log(response.status)
+    if (response.data.status === 201 ) {
         setTasks([])
+        console.log(response)
     }
     else {
 
@@ -18,15 +24,12 @@ const getUserTasks = async () => {
        
         console.log(response.data.result)
     }
+    }
+    fetchData()
 
+  
+}, [])
 
-}
-useEffect(() => {
-    getUserTasks()
-}, [
-    tasks
-
-])
 
 
   return (
@@ -35,7 +38,7 @@ useEffect(() => {
         {language === 'english' ? 'Add a task' : 'Agregar una tarea'}
         </h2>
         <div>
-{tasks === undefined ? <p>{language === 'english' ? 'No tasks yet' : 'No hay tareas'}</p> : tasks.map((task) => {   
+{!tasks ? <p>{language === 'english' ? 'No tasks yet' : 'No hay tareas'}</p> : tasks.map((task) => {   
     return (
         <div key={task._id}>
             <p>{task.title}</p>
