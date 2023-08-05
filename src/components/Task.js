@@ -28,7 +28,7 @@ useEffect(  ()  => {
     fetchData()
 
   
-}, [])
+}, [userId])
 
 
 
