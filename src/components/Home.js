@@ -1,10 +1,11 @@
 import React from "react";
 import Sidebar from "./Sidebar";
+import Task from "./Task";
 import '../styles/Home.css'
 import background from '../img/background.jpeg'
 
 
-const Home = ({language ,user ,logged }) => {
+const Home = ({language ,user ,logged, userId }) => {
     const backgroundStyle = {
         backgroundImage: `url(${background})`,
         backgroundSize: 'cover',
@@ -36,10 +37,18 @@ const Home = ({language ,user ,logged }) => {
     return (
         <main className="home-container">
 {console.log('logged',logged)}
-{logged ?    <section ><h1> {
+{logged ?   <> <section className="homepage" ><h1> {
      language === 'english' ? `Welcome ${user}!` : `Bienvenido ${user}!`}</h1>
-     <Sidebar language={language} />
+        <Task
+         language={language}
+         userId={userId}
+         />
+    
      </section>
+     <div className="sidebar-container">
+      <Sidebar language={language} />
+        </div>
+        </>
      :
      <section style={backgroundStyle}>
 

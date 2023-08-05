@@ -17,6 +17,7 @@ function App() {
   const [email, setEmail] = useState("");
 const [password, setpassword] = useState("");
 const [userName, setUserName] = useState("");
+const [userId , setUserId] = useState('')
 
  const navigate = useNavigate();
   const handleLogin = (token) => {
@@ -101,7 +102,9 @@ const handleSubmit = async (event) => {
       }
     );
     if (response.status === 200) {
+     
       const username = response.data.user
+      const id = response.data.id
       const { token } = response.data;
       localStorage.setItem("token", token);
       handleLogin(token);
@@ -109,6 +112,9 @@ const handleSubmit = async (event) => {
       language === 'english' ? logged() : logueado()
       navigate("/home");
       setUserName(username)
+      setUserId(id)
+      console.log(userId )
+
     
     }
   } catch (error) {
@@ -168,6 +174,7 @@ const handleLoginOut = () => {
           language={language}
           user={userName}
           logged={isLogged}
+          userId={userId}
           />} />
           <Route
             path="register"
