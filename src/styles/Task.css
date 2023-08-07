@@ -4,3 +4,28 @@ color: rgb(224, 51, 224);
 .btn-modal:hover {
 color: #3450A1;
 }
+
+/* Style the table */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Merge adjacent borders */
+    border: 1px solid #ccc;
+  }
+  
+  /* Style table headers */
+  th {
+    background-color: #912c2c;
+    padding: 10px;
+  }
+  
+  /* Style table data cells */
+  td {
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  /* Alternating row colors */
+  tr:nth-child(even) {
+    background-color: #be9b9b;
+  }
+  
