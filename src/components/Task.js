@@ -4,53 +4,66 @@ import { Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import AddTask from "./AddTask";
-import '../styles/Task.css'
+import "../styles/Task.css";
 import { useState } from "react";
+import Icon from '@mdi/react';
+import { mdiCloseThick } from '@mdi/js';
 
 
-const Task = ({ language, userId,logged,tasks , loading}) => {
+
+const Task = ({ language, userId, logged, tasks, loading }) => {
   const [modal, setModal] = useState(false);
 
-const showModal = {
-  display: 'flex',
-  position: 'fixed',
-  zIndex: '1',
-  left: '0',
-  top: '0',
-  width: '100%',
-  height: '100%',
-  overflow: 'auto',
-  backgroundColor: 'rgba(0,0,0,0.4)',
-  padding: '10vw',
-  textAlign: 'center',
-  color: '#DA43F0',
-  fontSize: '2.3vw',
-  fontWeight: 'bold',
-  fontFamily: 'Roboto',
-  borderRadius: '15px',
-  border: 'solid 2px #DA43F0',
-  boxShadow: '0 0 10px #DA43F0',
-  margin: '2vw',
-  opacity: '0.9',
-
-
-}
-const hideModal = { 
-  display: 'none'
-}
-
-
   const navigate = useNavigate();
+  //styles  
+  const showModal = {
+    display: "flex",
+    position: "fixed",
+    zIndex: "1",
+    top: "3.5vw",
+    left: "30vw",
+    width: "28vw",
+    height: "19vw",
+    overflow: "auto",
+    backgroundColor: "gray",
+    padding: "10vw",
+    textAlign: "center",
+    color: "#DA43F0",
+    fontSize: "2.3vw",
+    fontWeight: "bold",
+    fontFamily: "Roboto",
+    borderRadius: "15px",
+    border: "solid 2px #DA43F0",
+    boxShadow: "0 0 10px #DA43F0",
+    margin: "2vw",
+    opacity: "0.9",
+  };
+  const hideModal = {
+    display: "none",
+  };
+
+  const closeModalButton = {
+position: "absolute",
+top: "0.5vw",
+right: "0.5vw",
+ backgroundColor: 'rgba(0, 0, 0, 0.0)',
+    cursor: "pointer",
+    border: "none",
+    outline: "none",
+   
+    
+
+  };
+
+
+
 
   const openModal = () => {
-setModal(true)
-
-};
-const closeModal = () => {
-setModal(false)
-};
-
-
+    setModal(true);
+  };
+  const closeModal = () => {
+    setModal(false);
+  };
 
   const handleDelete = (id) => {
     console.log("clocked");
@@ -64,19 +77,15 @@ setModal(false)
           if (language === "english") {
             taskDeleted();
             navigate("/home");
-          
-        
           } else {
             tareaEliminada();
             navigate("/home");
-    
           }
         }
       })
       .catch((error) => {
         console.log(error);
       });
-
   };
   const taskDeleted = () =>
     toast("Task deleted", {
@@ -114,13 +123,11 @@ setModal(false)
     <main>
       <h2>{language === "english" ? "Add a task" : "Agregar una tarea"}</h2>
       <section>
-        {
-        ( loading ? (
-            <div>
-                <h1>Loading...</h1>
-            </div>
-        ) :
-        
+        {loading ? (
+          <div>
+            <h1>Loading...</h1>
+          </div>
+        ) : (
           tasks.map((task) => {
             return (
               <table>
@@ -135,7 +142,7 @@ setModal(false)
                 <tbody>
                   <tr>
                     <div key={task.idForTask}>
-                      <td>{task.title}</td>
+                      <td>{task.title} </td>
                       <td>{task.description}</td>
                     </div>
                   </tr>
@@ -161,15 +168,14 @@ setModal(false)
       </section>
       <div>
         <button onClick={openModal}>
-         
-            {language === "english" ? "Add a task" : "Agregar una tarea"}
-
-       
+          {language === "english" ? "Add a task" : "Agregar una tarea"}
         </button>
       </div>
-      <div style={ modal ?  showModal : hideModal}>
-      <AddTask/>
-      <button onClick={closeModal}>Close</button>
+      <div style={modal ? showModal : hideModal}>
+        <AddTask />
+        <button className="btn-modal" style={closeModalButton} onClick={closeModal}>
+          <Icon path={mdiCloseThick} size={2} />
+        </button>
       </div>
     </main>
   );
