@@ -2,10 +2,38 @@ import React from "react";
 import Sidebar from "./Sidebar";
 import Task from "./Task";
 import '../styles/Home.css'
+import { useEffect, useState } from "react";
+import axios from "axios";
 import background from '../img/background.jpeg'
 
 
 const Home = ({language ,user ,logged, userId }) => {
+    const [tasks, setTasks] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+
+    const getTasks = async () => {
+        try {
+          const response = await axios.get(
+            `https://todo-danielamoroso31.b4a.run/${userId}/tasks`
+          );
+          setTasks(response.data.result);
+            setLoading(false);
+        } catch (error) {
+          // Handle errors (e.g., log them or display a message to the user)
+          console.error("Error fetching tasks:", error);
+          loading(false);
+          setTasks([]);
+
+        }
+      };
+      
+      useEffect(() => {
+
+        getTasks();
+
+      });
+
     const backgroundStyle = {
         backgroundImage: `url(${background})`,
         backgroundSize: 'cover',
@@ -36,13 +64,18 @@ const Home = ({language ,user ,logged, userId }) => {
 
     return (
         <main className="home-container">
-{console.log('logged',logged)}
+
 {logged ?   <> <section className="homepage" ><h1> {
      language === 'english' ? `Welcome ${user}!` : `Bienvenido ${user}!`}</h1>
+    
         <Task
          language={language}
          userId={userId}
+         logged={logged}
+            tasks={tasks}
+            loading={loading}
          />
+       
     
      </section>
      <div className="sidebar-container">
