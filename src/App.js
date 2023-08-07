@@ -4,6 +4,7 @@ import axios from "axios";
 import Navbar from "./components/Navbar";
 import Register from "./components/Register";
 import Login from "./components/Login";
+import AddTask from "./components/AddTask";
 import Home from "./components/Home";
 import { Toaster, toast } from "react-hot-toast";
 import { useState, useEffect } from "react";
@@ -113,7 +114,7 @@ const handleSubmit = async (event) => {
       navigate("/home");
       setUserName(username)
       setUserId(id)
-      console.log(userId )
+      
 
     
     }
@@ -202,6 +203,10 @@ const handleLoginOut = () => {
               />
             }
           />
+          <Route path="/addtask" element={<AddTask
+          userId={userId}
+          language={language}
+          />} />
         </Routes>
        
   <Toaster />
