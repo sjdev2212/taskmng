@@ -1,27 +1,32 @@
 .btn-modal {
-color: rgb(224, 51, 224);
+color: black
 }
 .btn-modal:hover {
-color: #3450A1;
+color: rgb(224, 51, 224);
 }
 
 /* Style the table */
 table {
     width: 100%;
     border-collapse: collapse; /* Merge adjacent borders */
-    border: 1px solid #ccc;
+    border: 1px solid #aa0f76;
   }
   
   /* Style table headers */
   th {
-    background-color: #912c2c;
+    background-color: #3450A1;
     padding: 10px;
   }
   
   /* Style table data cells */
   td {
     padding: 8px;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #aa20a3;
+  }
+  tr{
+    background-color: #041955;
+    color: white;
+   
   }
   
   /* Alternating row colors */

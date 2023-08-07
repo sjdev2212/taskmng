@@ -25,7 +25,7 @@ const Task = ({ language, userId, logged, tasks, loading }) => {
     width: "28vw",
     height: "19vw",
     overflow: "auto",
-    backgroundColor: "gray",
+    backgroundColor: "#3450A1",
     padding: "10vw",
     textAlign: "center",
     color: "#DA43F0",
@@ -36,7 +36,7 @@ const Task = ({ language, userId, logged, tasks, loading }) => {
     border: "solid 2px #DA43F0",
     boxShadow: "0 0 10px #DA43F0",
     margin: "2vw",
-    opacity: "0.9",
+    opacity: "1",
   };
   const hideModal = {
     display: "none",
