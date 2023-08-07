@@ -5,22 +5,49 @@ import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import AddTask from "./AddTask";
 import '../styles/Task.css'
+import { useState } from "react";
 
 
 const Task = ({ language, userId,logged,tasks , loading}) => {
+  const [modal, setModal] = useState(false);
 
- 
+const showModal = {
+  display: 'flex',
+  position: 'fixed',
+  zIndex: '1',
+  left: '0',
+  top: '0',
+  width: '100%',
+  height: '100%',
+  overflow: 'auto',
+  backgroundColor: 'rgba(0,0,0,0.4)',
+  padding: '10vw',
+  textAlign: 'center',
+  color: '#DA43F0',
+  fontSize: '2.3vw',
+  fontWeight: 'bold',
+  fontFamily: 'Roboto',
+  borderRadius: '15px',
+  border: 'solid 2px #DA43F0',
+  boxShadow: '0 0 10px #DA43F0',
+  margin: '2vw',
+  opacity: '0.9',
+
+
+}
+const hideModal = { 
+  display: 'none'
+}
+
 
   const navigate = useNavigate();
 
   const openModal = () => {
-  let modal = document.getElementById("modal");
-  modal.style.display = "block";
+setModal(true)
 
 };
 const closeModal = () => {
-  let modal = document.getElementById("modal");
-  modal.style.display = "none";
+setModal(false)
 };
 
 
@@ -140,7 +167,7 @@ const closeModal = () => {
        
         </button>
       </div>
-      <div id="modal">
+      <div style={ modal ?  showModal : hideModal}>
       <AddTask/>
       <button onClick={closeModal}>Close</button>
       </div>
