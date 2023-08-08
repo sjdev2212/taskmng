@@ -174,8 +174,11 @@ const handleLoginOut = () => {
           <Route path="/home" element={<Home  
           language={language}
           user={userName}
-          logged={isLogged}
+          isLogged={isLogged}
           userId={userId}
+          token={token}
+          setIsLogged={setIsLogged}
+          setToken={setToken}
           />} />
           <Route
             path="register"
