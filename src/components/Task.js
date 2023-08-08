@@ -123,11 +123,10 @@ right: "0.5vw",
     <main>
       <h2>{language === "english" ? "Add a task" : "Agregar una tarea"}</h2>
       <section>
-        {loading ? (
-          <div>
-            <h1>Loading...</h1>
-          </div>
-        ) : (
+        {tasks === undefined || tasks.length === 0 ? (<div>
+          {language === "english" ? "You don't have any tasks yet" : "Aun no tienes tareas"}
+        </div>)
+         : (
           tasks.map((task) => {
             return (
               <table>
