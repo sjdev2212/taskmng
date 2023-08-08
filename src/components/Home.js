@@ -7,9 +7,10 @@ import axios from "axios";
 import background from '../img/background.jpeg'
 
 
-const Home = ({language ,user ,logged, userId }) => {
+const Home = ({language ,user ,isLogged, userId , token , setIsLogged , setToken}) => {
     const [tasks, setTasks] = useState([]);
     const [loading, setLoading] = useState(true);
+  
 
 
     const getTasks = async () => {
@@ -19,20 +20,29 @@ const Home = ({language ,user ,logged, userId }) => {
           );
           setTasks(response.data.result);
             setLoading(false);
+            
         } catch (error) {
           // Handle errors (e.g., log them or display a message to the user)
           console.error("Error fetching tasks:", error);
           loading(false);
-          setTasks([]);
+        
 
         }
       };
       
       useEffect(() => {
+        const storedToken = localStorage.getItem("token"); // Or document.cookie for HttpOnly cookies
+  
+           console.log(token)
+        if (storedToken) {
+          setToken(storedToken);
+          setIsLogged(true);
+          getTasks();
+        }
 
-        getTasks();
-
-      });
+       
+      
+      } , []);
 
     const backgroundStyle = {
         backgroundImage: `url(${background})`,
@@ -65,13 +75,13 @@ const Home = ({language ,user ,logged, userId }) => {
     return (
         <main className="home-container">
 
-{logged ?   <> <section className="homepage" ><h1> {
+{isLogged ?   <> <section className="homepage" ><h1> {
      language === 'english' ? `Welcome ${user}!` : `Bienvenido ${user}!`}</h1>
     
         <Task
          language={language}
          userId={userId}
-         logged={logged}
+         logged={isLogged}
             tasks={tasks}
             loading={loading}
          />
