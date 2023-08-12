@@ -2,47 +2,42 @@ import React from "react";
 import Sidebar from "./Sidebar";
 import Task from "./Task";
 import '../styles/Home.css'
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import background from '../img/background.jpeg'
 
 
-const Home = ({language ,user ,isLogged, userId , token , setIsLogged , setToken}) => {
-    const [tasks, setTasks] = useState([]);
-    const [loading, setLoading] = useState(true);
+const Home = ({language ,user ,tasks, isLogged, userId, loading, setTasks, setLoading}) => {
   
-
-
+  
     const getTasks = async () => {
         try {
           const response = await axios.get(
             `https://todo-danielamoroso31.b4a.run/${userId}/tasks`
           );
-          setTasks(response.data.result);
+          if (response.status === 200) {
+            console.log (userId)
+            console.log(response.data)
+            setTasks(response.data.result);
+            console.log(tasks)
             setLoading(false);
-            
+          }
         } catch (error) {
-          // Handle errors (e.g., log them or display a message to the user)
-          console.error("Error fetching tasks:", error);
-          loading(false);
+          console.log(error);
+    
         
-
+    
         }
+    
       };
-      
-      useEffect(() => {
-        const storedToken = localStorage.getItem("token"); // Or document.cookie for HttpOnly cookies
-  
-           console.log(token)
-        if (storedToken) {
-          setToken(storedToken);
-          setIsLogged(true);
-          getTasks();
-        }
 
-       
+    useEffect(() => {
+        getTasks();
+        }, [userId]);
+
+
+ 
       
-      } , []);
 
     const backgroundStyle = {
         backgroundImage: `url(${background})`,
@@ -84,6 +79,7 @@ const Home = ({language ,user ,isLogged, userId , token , setIsLogged , setToken
          logged={isLogged}
             tasks={tasks}
             loading={loading}
+          
          />
        
     
