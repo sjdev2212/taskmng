@@ -13,7 +13,7 @@
     justify-content: center;
     align-items: center;
     width: 60%;
-    height: 54vh;
+    height: 65vh;
     border: 2px solid #DA43F0;
     border-radius: 15px;
     background-color: #3450A1;
@@ -23,7 +23,7 @@
     font-size:3vw;
     font-weight: bold;
     position: relative;
-    bottom: 2.5vw;
+    bottom: 1vw;
     
 }
 .form-register {
