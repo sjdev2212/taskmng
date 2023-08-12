@@ -145,11 +145,12 @@ font-size: 1.5vw;
     border-radius: 8px;
     color: #d34cc8;
     font-size: 5vw;
-    height: 8vw;
-    margin-right: 1vw;
-    position: relative;
-    left : 80vw;
-    bottom: 10.5vw;
+    height: 6.4vw;
+    position: fixed;
+    top: 2.4%;
+    right : 4%;
+
+   
 }
 
 
