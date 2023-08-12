@@ -120,13 +120,23 @@ right: "0.5vw",
     });
 
   return (
-    <main>
+   <main>
       <h2>{language === "english" ? "Add a task" : "Agregar una tarea"}</h2>
+
+    
+        {loading ? (
+          <div>
+
+            {language === "english" ? "Loading..." : "Cargando..."}
+          </div>
+        ) : (
       <section>
-        {tasks === undefined || tasks.length === 0 ? (<div>
+    
+       { tasks === undefined || tasks.length === 0 ? (<div>
           {language === "english" ? "You don't have any tasks yet" : "Aun no tienes tareas"}
         </div>)
          : (
+
           tasks.map((task) => {
             return (
               <table>
@@ -165,6 +175,7 @@ right: "0.5vw",
           })
         )}
       </section>
+        )}
       <div>
         <button onClick={openModal}>
           {language === "english" ? "Add a task" : "Agregar una tarea"}
@@ -176,8 +187,15 @@ right: "0.5vw",
           <Icon path={mdiCloseThick} size={2} />
         </button>
       </div>
-    </main>
+    </main> 
+
+
+
+
   );
 };
+
+
+
 
 export default Task;
