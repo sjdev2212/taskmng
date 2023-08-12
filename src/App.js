@@ -38,7 +38,7 @@ const [loading, setLoading] = useState(true);
     setUserName(storedUserName);
     setUserId(storedId);
     setIsLogged(true);
-      
+
   }
 }, [language]);
 
@@ -140,7 +140,7 @@ const handleSubmit = async (event) => {
       handleLogin(token);
       setIsLogged(true);
       language === 'english' ? logged() : logueado()
-      navigate("/home");
+      navigate("/");
       setUserName(username)
       setUserId(id)
       
@@ -196,7 +196,7 @@ const handleLoginOut = () => {
 
 
         <Routes>
-          <Route path="/home" element={<Home  
+          <Route path="/" element={<Home  
           language={language}
           user={userName}
           isLogged={isLogged}
