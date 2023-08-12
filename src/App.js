@@ -19,12 +19,39 @@ function App() {
 const [password, setpassword] = useState("");
 const [userName, setUserName] = useState("");
 const [userId , setUserId] = useState('')
+const [tasks, setTasks] = useState([]);
+const [loading, setLoading] = useState(true);
 
  const navigate = useNavigate();
+
+ useEffect(() => {
+  // Check if a token is stored in browser storage or cookies
+  const storedToken = localStorage.getItem("token");
+  const storedUserName = localStorage.getItem("username");
+  const storedId = localStorage.getItem("id");
+  
+
+
+
+  if (storedToken) {
+    setToken(storedToken);
+    setUserName(storedUserName);
+    setUserId(storedId);
+    setIsLogged(true);
+      
+  }
+}, [language]);
+
+
+
+
   const handleLogin = (token) => {
     setToken(token); // Save the token in the state when the user logs in.
 
   };
+
+
+
   const handleLanguage = (e) => {
     if (e.target.value === 'english') {
       setLanguage('english')
@@ -108,6 +135,8 @@ const handleSubmit = async (event) => {
       const id = response.data.id
       const { token } = response.data;
       localStorage.setItem("token", token);
+      localStorage.setItem("username", username);
+      localStorage.setItem("id", id);
       handleLogin(token);
       setIsLogged(true);
       language === 'english' ? logged() : logueado()
@@ -120,40 +149,36 @@ const handleSubmit = async (event) => {
     }
   } catch (error) {
 
-    console.error(error);
+    console.error(error.message);
     language === 'english' ? noUser() : noUsuario()
   }
 };
 
 const handleLoginOut = () => {
     setToken(null);
-    setIsLogged(false); // Clear the token from the state when the user logs out.
+    setIsLogged(false)
+    localStorage.removeItem("token");
+    localStorage.removeItem("username");
+    localStorage.removeItem("id")
+
+    ; // Clear the token from the state when the user logs out.
  
   };
   // Function to check if the user is authenticated using the token.
   const isAuthenticated = () => {
     return !!token;
 
+
   };
   // Axios interceptor to attach the token to every request if the user is authenticated.
   axios.interceptors.request.use((config) => {
     if (isAuthenticated()) {
       config.headers["Authorization"] = `Bearer ${token}`;
+
     }
     return config;
   });
-
-  useEffect(() => {
-    // Check if a token is stored in browser storage or cookies
-    const storedToken = localStorage.getItem("token"); // Or document.cookie for HttpOnly cookies
-  
-
-    if (storedToken) {
-      setToken(storedToken);
-      setIsLogged(true);
-    }
-  }, [language]);
-
+   
 
 
 
@@ -175,10 +200,13 @@ const handleLoginOut = () => {
           language={language}
           user={userName}
           isLogged={isLogged}
+          tasks={tasks}
+          loading={loading}
+          setTasks={setTasks}
           userId={userId}
-          token={token}
-          setIsLogged={setIsLogged}
-          setToken={setToken}
+          setUserId={setUserId}
+          setLoading={setLoading}
+        
           />} />
           <Route
             path="register"
