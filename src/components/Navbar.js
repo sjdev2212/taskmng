@@ -47,7 +47,7 @@ const Navbar = ({ isLogged, isAuthenticated, handleLoginOut ,handleLanguage, lan
           <span className={showMenu ? "hide-hamb" : "show-hamb"} onClick={handleMenu} size={30} style={{ fill: 'black' }} > 
             <AiOutlineMenu />
           </span>
-        <div>
+        <div className="select-lang">
           <select className="select" onChange={handleLanguage}>
             <option value="spanish">      
             
