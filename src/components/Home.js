@@ -41,6 +41,7 @@ const Home = ({language ,user ,tasks, isLogged, userId, loading, setTasks, setLo
       
 
     const backgroundStyle = {
+
         backgroundImage: `url(${background})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -64,7 +65,17 @@ const Home = ({language ,user ,tasks, isLogged, userId, loading, setTasks, setLo
         textAlign: 'center',
         padding: '2vw',
         marginTop: '2vw',
+
+        '@media (max-width: 650px)': {
+            height: '50vw',
+            width: '91vw',
+            fontSize: '5vw',
+            border : 'none'
+            
+        }
     }
+
+
 
 
 
@@ -90,7 +101,7 @@ const Home = ({language ,user ,tasks, isLogged, userId, loading, setTasks, setLo
         </div>
         </>
      :
-     <section style={backgroundStyle}>
+     <section className="home-mobile"  >
 
         <h1>
         {language === 'english' ? 'Task Manager' : 'Organizador'}

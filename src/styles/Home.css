@@ -27,21 +27,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @media screen and (max-width: 650px) {
 .home-container {
     display: flex;
@@ -55,9 +40,33 @@
     font-size: 1.5rem;
     font-weight: bold;
     padding: 10px;
-    border: 2px solid #DA43F0;
+    border: none;
+
+    
     
 
+}
+
+.home-mobile{
+height: 120vw;
+width: 90vw;
+    background-color: #8aff1d;
+    background-image: url("https://images.pexels.com/photos/301673/pexels-photo-301673.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=850&w=940");
+    background-size: cover;
+
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    margin: 10px;
+    position: relative;
+    top: 3.7vw;
 }
 }
 
