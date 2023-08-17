@@ -4,7 +4,7 @@ import Task from "./Task";
 import '../styles/Home.css'
 import { useEffect } from "react";
 import axios from "axios";
-import background from '../img/background.jpeg'
+
 
 
 const Home = ({language ,user ,tasks, isLogged, userId, loading, setTasks, setLoading}) => {
@@ -40,40 +40,6 @@ const Home = ({language ,user ,tasks, isLogged, userId, loading, setTasks, setLo
  
       
 
-    const backgroundStyle = {
-
-        backgroundImage: `url(${background})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        height: '34vw',
-        width: '91vw',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: 'column',
-        border: '2px solid #DA43F0',
-        borderRadius: '15px',
-        color: '#DA43F0',
-        fontSize: '2.3vw',
-        fontWeight: 'bold',
-        textShadow: '2px 2px 4px #000000',
-        boxShadow: '2px 2px 4px #000000',
-        margin: '2vw',
-        opacity: '0.9',
-        fontFamily: 'Arial, Helvetica, sans-serif',
-        textAlign: 'center',
-        padding: '2vw',
-        marginTop: '2vw',
-
-        '@media (max-width: 650px)': {
-            height: '50vw',
-            width: '91vw',
-            fontSize: '5vw',
-            border : 'none'
-            
-        }
-    }
 
 
 
