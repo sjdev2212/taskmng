@@ -102,16 +102,21 @@ const Home = ({language ,user ,tasks, isLogged, userId, loading, setTasks, setLo
         </>
      :
      <section className="home-mobile"  >
-
+<div className="mob-card">
         <h1>
         {language === 'english' ? 'Task Manager' : 'Organizador'}
         </h1>
+        </div>
+<div className="mob-card">
         <p>
         {language === 'english' ? 'Organize your tasks and activities' : 'Organiza tus tareas y actividades'}
         </p>
+        </div>
+        <div className="mob-card">
         <p>
         {language === 'english' ? 'Register or Log in and start organizing' : 'Registrate  o inicia sesion y comienza a organizar'}
         </p>
+        </div>
 
 
      </section>
