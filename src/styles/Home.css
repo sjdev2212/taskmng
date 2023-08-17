@@ -1,15 +1,9 @@
-
-
-
-
-
 .homepage {
     border : 2px solid #3450A1;
     border-radius: 10px;
     padding: 10px;
     margin: 10px;
     background-color: #DA43F0;
-   
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,37 +15,13 @@
     text-align: center;
     position: relative;
     top: 3.7vw;
-   left: 19.7vw;
+    left: 19.7vw;
    
 }
-
-
-
-@media screen and (max-width: 650px) {
-.home-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 80vh;
-    background-color: #3450A1;
-    color: white;
-    font-size: 1.5rem;
-    font-weight: bold;
-    padding: 10px;
-    border: none;
-
-    
-    
-
-}
-
 .home-mobile{
-height: 120vw;
-width: 90vw;
-    background-color: #8aff1d;
-    background-image: url("https://images.pexels.com/photos/301673/pexels-photo-301673.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=850&w=940");
+    height:40vw;
+    width: 96.5vw;       
+    background-image: url("../img/background.jpeg");
     background-size: cover;
 
     display: flex;
@@ -65,8 +35,70 @@ width: 90vw;
     border: none;
     border-radius: 10px;
     margin: 10px;
-    position: relative;
-    top: 3.7vw;
+  
+  
+    
 }
+
+
+
+@media screen and (max-width: 650px) {
+.home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 80vh;
+    background-color: #041955;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px;
+    border: none;
+
+    
+    
+
+}
+
+.home-mobile{
+height:120vw;
+width: 85vw;
+    background-image: url("../img/back-mobile.jpg");
+    background-size: cover;
+    
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    margin: 10px;
+ 
+  
+}
+.mob-card {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: whitesmoke;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 2px solid #DA43F0;
+    border-radius: 10px;
+    
+}
+
 }
 
