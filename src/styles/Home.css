@@ -1,5 +1,5 @@
 .homepage {
-    border : 2px solid #3450A1;
+    border: 2px solid #3450A1;
     border-radius: 10px;
     padding: 10px;
     margin: 10px;
@@ -16,16 +16,17 @@
     position: relative;
     top: 3.7vw;
     left: 19.7vw;
-   
+
 }
-.home-mobile{
-    height:40vw;
-    width: 96.5vw;       
+
+.home-mobile {
+    height: 40vw;
+    width: 96.5vw;
     background-image: url("../img/background.jpeg");
     background-size: cover;
 
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     color: black;
@@ -35,67 +36,65 @@
     border: none;
     border-radius: 10px;
     margin: 10px;
-  
-  
-    
+
+
+
 }
 
 
 
 @media screen and (max-width: 450px) {
-.home-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 80vh;
-    background-color: #041955;
-    color: white;
-    font-size: 1.5rem;
-    font-weight: bold;
-    padding: 10px;
-    border: none;
-    border-radius: 10px;
-  
+    .home-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 80vh;
+        background-color: #041955;
+        color: white;
+        font-size: 1.5rem;
+        font-weight: bold;
+        padding: 10px;
+        border: none;
+        border-radius: 10px;
 
-    
-    
+
+
+
+
+    }
+
+    .home-mobile {
+        height: 120vw;
+        width: 85vw;
+        background-image: url("../img/back-mobile.jpg");
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        border: none;
+        border-radius: 10px;
+        margin-top: -25vw;
+
+    }
+
+    .mob-card {
+        font-size: 6vw;
+        font-weight: bold;
+        color: whitesmoke;
+        text-align: center;
+        margin: 10px;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        border: 2px solid #DA43F0;
+        border-radius: 10px;
+        height: 40vw;
+
+    }
 
 }
-
-.home-mobile{
-height:130vw;
-width: 85vw;
-    background-image: url("../img/back-mobile.jpg");
-    background-size: cover;
-    
-    display: flex;
-    flex-direction: column; 
-    justify-content: center;
-    align-items: center;
-
-    padding: 10px;
-    border: none;
-    border-radius: 10px;
-    margin-top : -38vw;
-  
-}
-.mob-card {
-    font-size: 6vw;
-    font-weight: bold;
-    color: whitesmoke;
-    text-align: center;
-    margin: 10px;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    border: 2px solid #DA43F0;
-    border-radius: 10px;
-    height: 40vw;
-    
-}
-
-}
-
