@@ -105,7 +105,10 @@ font-size: 1.5vw;
        font-size: larger;
     }
     .hide-hamb {
-        display: none;
+        display: block;
+        margin-bottom: 16vw;
+        position: relative;
+        left: 600vw
     }
     
 .ul-btns {
