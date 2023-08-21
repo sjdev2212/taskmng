@@ -41,7 +41,7 @@ const Home = ({language ,user ,tasks, isLogged, userId, loading, setTasks, setLo
       return (
         <main className={theme === 'light' ?  "home-container-light" : "home-container-dark"}>
 
-{isLogged ?   <> <section className={theme === 'light' ? "homepage-light" : "homepage-dark"} ><h1> {
+{isLogged ?   <> <section  ><h1> {
      language === 'english' ? `Welcome ${user}!` : `Bienvenido ${user}!`}</h1>
     
         <Task
