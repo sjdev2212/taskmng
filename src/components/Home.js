@@ -7,7 +7,7 @@ import axios from "axios";
 
 
 
-const Home = ({language ,user ,tasks, isLogged, userId, loading, setTasks, setLoading}) => {
+const Home = ({language ,user ,tasks, isLogged, userId, loading, setTasks, setLoading, theme}) => {
   
   
     const getTasks = async () => {
@@ -38,17 +38,10 @@ const Home = ({language ,user ,tasks, isLogged, userId, loading, setTasks, setLo
 
 
  
-      
+      return (
+        <main className={theme === 'light' ?  "home-container-light" : "home-container-dark"}>
 
-
-
-
-
-
-    return (
-        <main className="home-container">
-
-{isLogged ?   <> <section className="homepage" ><h1> {
+{isLogged ?   <> <section className={theme === 'light' ? "homepage-light" : "homepage-dark"} ><h1> {
      language === 'english' ? `Welcome ${user}!` : `Bienvenido ${user}!`}</h1>
     
         <Task
