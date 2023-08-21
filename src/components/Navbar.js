@@ -8,9 +8,17 @@ import { AiOutlineMenu } from "react-icons/ai";
 import {AiOutlineClose} from "react-icons/ai";
 import { IconContext } from "react-icons";
 import ReactCountryFlag from "react-country-flag"
-const Navbar = ({ isLogged, isAuthenticated, handleLoginOut ,handleLanguage, language }) => {
+import { FaMoon } from "react-icons/fa";
+import { FaSun } from "react-icons/fa";
+
+
+
+
+
+const Navbar = ({ isLogged, isAuthenticated, handleLoginOut ,handleLanguage, language, handleColor, theme }) => {
   const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
+
 
   const loggedOut = () =>
     toast("Until next time", {
@@ -39,7 +47,8 @@ const Navbar = ({ isLogged, isAuthenticated, handleLoginOut ,handleLanguage, lan
   };
 
 
-  return (
+
+return (
     <>
       <nav className="navbar-mobile">
         <IconContext.Provider value={{ size: 40, style: { color: '#DA43F0' } }} >
@@ -59,9 +68,10 @@ const Navbar = ({ isLogged, isAuthenticated, handleLoginOut ,handleLanguage, lan
             </option>
             </select>
         </div>
+        
+
         </div>
         </IconContext.Provider>
-
         <section className={showMenu ? "menu-section" : "menu-section-hide"}>
         <ul className="ul-btns">
           {isAuthenticated() ? (
@@ -95,19 +105,23 @@ const Navbar = ({ isLogged, isAuthenticated, handleLoginOut ,handleLanguage, lan
 
             </section>
       </nav>
-      <nav className="navbar">
+      <nav className={theme === 'light' ? "navbar-light" : "navbar-dark"}
+    >
       
       <div className="nav-container">
           <p className="brand"> 
           {language === 'english' ? <p> Task Manager </p> : <p> Administrador </p>}
           </p>
+        
         </div>
 
         <ul className="ul-btns">
           {isAuthenticated() ? (
             <>
               <li >
-                <button onClick={handleLogout} className="btn-logout">
+                <button onClick={handleLogout} className={theme === 'light' ? 
+                "btn-logout-light" : "btn-logout-dark"
+                }>
                   {language === 'english' ? " Log out " : " Cerrar sesión "}
                 </button>
               </li>
@@ -138,10 +152,20 @@ const Navbar = ({ isLogged, isAuthenticated, handleLoginOut ,handleLanguage, lan
             </option>
             </select>
         </div>
+      
+        <div>
+        <button className="btn-theme" onClick={handleColor}>
+           { theme === "light" ? <FaMoon /> : <FaSun />}
+        </button>
+       
+        </div>
+
+     
 
       </nav>
     </>
   );
+ 
 };
 
 export default Navbar;
