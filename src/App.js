@@ -21,6 +21,7 @@ const [userName, setUserName] = useState("");
 const [userId , setUserId] = useState('')
 const [tasks, setTasks] = useState([]);
 const [loading, setLoading] = useState(true);
+const [theme, setTheme] = useState("light");
 
  const navigate = useNavigate();
 
@@ -59,6 +60,21 @@ const [loading, setLoading] = useState(true);
    else
     setLanguage('spanish')
   }
+
+  const handleColor = (e) => {
+    console.log(e.target.value)
+     if (theme === "light") {
+       setTheme("dark");
+       document.body.style.backgroundColor = "#333333";
+ 
+     } else {
+       setTheme("light");
+        document.body.style.backgroundColor = "#E0E0E0";
+    
+     }
+ 
+ 
+   };
 
 
 
@@ -192,6 +208,8 @@ const handleLoginOut = () => {
           handleLoginOut={handleLoginOut}
           handleLanguage={handleLanguage}
           language={language}
+          handleColor={handleColor}
+          theme={theme}
         />
 
 
@@ -206,6 +224,7 @@ const handleLoginOut = () => {
           userId={userId}
           setUserId={setUserId}
           setLoading={setLoading}
+          theme={theme}
         
           />} />
           <Route
