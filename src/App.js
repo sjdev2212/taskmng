@@ -30,18 +30,13 @@ const [theme, setTheme] = useState("light");
   const storedToken = localStorage.getItem("token");
   const storedUserName = localStorage.getItem("username");
   const storedId = localStorage.getItem("id");
-  
-
-
-
   if (storedToken) {
     setToken(storedToken);
     setUserName(storedUserName);
     setUserId(storedId);
     setIsLogged(true);
-
   }
-}, [language]);
+}, [language,theme]);
 
 
 
