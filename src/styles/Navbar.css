@@ -1,8 +1,8 @@
 .navbar-light{
-    border: 2px solid #DA43F0;
-    border-radius: 15px;
+    border: 2px solid gray;
+    border-radius: 8px;
     background-color: #dddfe4;
-    color: graysmoke;
+    color: gray;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -12,9 +12,9 @@
  
 }
 .navbar-dark{
-    border: 2px solid #007BFF;
+    border: 2px solid #c9ced4;
     border-radius: 15px;
-    color: #CCCCCC;
+    color: #2b2929;
     background-color: #333333;
     display: flex;
     justify-content: space-between;
@@ -41,39 +41,41 @@ justify-content: space-around;
 .btn-logout-light{
     text-decoration: none ;
     color: #ccb1ca;
-    font-size: 1.1rem;
+    font-size: 1.2vw;
     font-weight: bold;
-    background-color: #02091d;
+    background-color: #505358;
     cursor: pointer;
-    border: 1px solid #DA43F0;
-    height: 3.5vw;
+    border: 1px solid #0f0111;
+    height: 3.1vw;
     border-radius: 15px;
     padding: 0.5vw;
+    width: 9.5vw;
 
  
 }
 .btn-logout-light:hover{
-    background-color: #DA43F0;
-    color:  #041955;
+    background-color: whitesmoke;
+    color:  gray;
     transition: 0.6s;
 }
 .btn-logout-dark{
     text-decoration: none ;
-    color: #CCCCCC;
-    font-size: 1.1rem;
+    color: #423838;
+    font-size: 1.2vw;
     font-weight: bold;
-    background-color: #02091d;
+    background-color: #c9d3ee;
     cursor: pointer;
-    border: 1px solid #DA43F0;
-    height: 3.5vw;
+    border: 1px solid #211e22;
+    height: 3.1vw;
     border-radius: 15px;
     padding: 0.5vw;
+    width: 9.5vw;
 
  
 }
 .btn-logout-dark:hover{
-    background-color: #DA43F0;
-    color:  #041955;
+    background-color: #2b262c;
+    color:  #bcc5dd;
     transition: 0.6s;
 }
 .menu-section {
@@ -95,35 +97,75 @@ justify-content: space-around;
 .navbar-mobile {
     display: none;
 }
-.select{ 
-    background-color: #3450A1;
-border: #d34cc8;
+
+
+.select-light  { 
+background-color: #ced4c8;
+border: #383438;
 border-radius: 8px;
-color: #d34cc8;
+color: #4b464b;
 font-size: 1.1vw;
 height: 2vw;
 margin-right: 1vw; ;
 }
-.btns{
+.select-dark  { 
+    background-color: #4f5057;
+    border: #f3e5f2;
+    border-radius: 8px;
+    color: #f7d0f3;
+
+    font-size: 1.1vw;
+    height: 2vw;
+    margin-right: 1vw; ;
+    }
+
+    
+
+.btns-light {
     text-decoration: none ;
 padding: 0 10vw;
-color: #DA43F0;
+color: #2a272b;
 font-size: 1.5vw;
  
 }
-.btn-theme{
+.btns-dark{
     text-decoration: none ;
-    color: #bfd34c;
-    font-size: 1.1rem;
-    font-weight: bold;
-    background-color: #041955;
-    cursor: pointer;
-    border: 1px solid #DA43F0;
-    height: 3.5vw;
-    border-radius: 15px;
-    padding: 0.5vw;
-    margin-right: 1vw;
+padding: 0 10vw;
+color: whitesmoke;
+font-size: 1.5vw;
  
+}
+.btn-theme-light{
+    color: #67695c;
+   background-color: #d4d9e9;
+    font-size: 1.5vw;
+    cursor: pointer;
+    height: 2.3vw;
+    width: 2.5vw;
+    border-radius: 15px;
+    border: 1px solid #0f0111;
+    margin-right: 1vw;
+    }
+    .btn-theme-light:hover{
+        background-color: #0c0d0f;
+        color:  #e5ff00;
+        transition: 0.6s;
+    }
+.btn-theme-dark{
+    color: #d2f318;
+    background-color: #3c3f47;
+    font-size: 1.5vw;
+     cursor: pointer;
+     height: 2.3vw;
+     width: 2.5vw;
+     border-radius: 15px;
+     border: 1px solid #0f0111;
+     margin-right: 1vw;
+}
+.btn-theme-dark:hover{
+    background-color: #b6c0d4;
+    color:  #1c1f02;
+    transition: 0.6s;
 }
 
 

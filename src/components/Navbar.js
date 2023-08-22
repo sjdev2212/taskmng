@@ -47,6 +47,9 @@ const Navbar = ({ isLogged, isAuthenticated, handleLoginOut ,handleLanguage, lan
   };
 
 
+  const btnTheme = theme === "light" ? "btns-light" : "btns-dark";
+
+
 
 return (
     <>
@@ -56,8 +59,8 @@ return (
           <span className={showMenu ? "hide-hamb" : "show-hamb"} onClick={handleMenu} size={30} style={{ fill: 'black' }} > 
             <AiOutlineMenu />
           </span>
-        <div className="select-lang">
-          <select className="select" onChange={handleLanguage}>
+        <div className={theme === 'light' ? "select-light" : "select-dark"}  >
+          <select onChange={handleLanguage}>
             <option value="spanish">      
             
             <ReactCountryFlag countryCode="ES" 
@@ -85,12 +88,13 @@ return (
           ) : (
             <>
               <li className="li-btns">
-                <Link to="/login" className="btns">
+                <Link to="/login" className="btns-light">
+                  {console.log(btnTheme)}
                  {language === 'english' ? <p> Login </p> : <p> Iniciar sesión </p>}
                 </Link>
               </li>
               <li className="li-btns">
-                <Link to="/register" className="btns">
+                <Link to="/register" className={btnTheme}>
                   {language === 'english' ? <p> Register </p> : <p> Registrarse </p>}
                 </Link>
               </li>
@@ -129,12 +133,12 @@ return (
           ) : (
             <>
               <li >
-                <Link to="/login" className="btns">
+                <Link to="/login" className={btnTheme}>
                {language === 'english' ? <p> Login </p> : <p> Iniciar sesión </p>}
                 </Link>
               </li>
               <li >
-                <Link to="/register" className="btns">
+                <Link to="/register" className={btnTheme}>
                   {language === 'english' ? <p> Register </p> : <p> Registrarse </p>}
                 </Link>
               </li>
@@ -142,7 +146,7 @@ return (
           )}
         </ul> 
         <div>
-          <select className="select" onChange={handleLanguage}>
+          <select  className={theme === 'light' ? "select-light" : "select-dark"} onChange={handleLanguage} >
             <option value="spanish">
             <ReactCountryFlag countryCode="ES" 
       />
@@ -154,7 +158,7 @@ return (
         </div>
       
         <div>
-        <button className="btn-theme" onClick={handleColor}>
+        <button className={theme === 'light' ? "btn-theme-light" : "btn-theme-dark"} onClick={handleColor}>
            { theme === "light" ? <FaMoon /> : <FaSun />}
         </button>
        
