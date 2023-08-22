@@ -41,7 +41,7 @@ const Home = ({language ,user ,tasks, isLogged, userId, loading, setTasks, setLo
       return (
         <main className={theme === 'light' ?  "home-container-light" : "home-container-dark"}>
 
-{isLogged ?   <> <section  ><h1> {
+{isLogged ?   <> <section   ><h1> {
      language === 'english' ? `Welcome ${user}!` : `Bienvenido ${user}!`}</h1>
     
         <Task
@@ -60,8 +60,9 @@ const Home = ({language ,user ,tasks, isLogged, userId, loading, setTasks, setLo
         </div>
         </>
      :
-     <section className="home-mobile"  >
+     <section className={theme === 'light' ? "home-mobile-light" : "home-mobile-dark"}  >
 <div className="mob-card">
+  <div className="home-group">
         <h1>
         {language === 'english' ? 'Task Manager' : 'Organizador'}
         </h1>
@@ -75,6 +76,7 @@ const Home = ({language ,user ,tasks, isLogged, userId, loading, setTasks, setLo
         <p>
         {language === 'english' ? 'Register or Log in and start organizing' : 'Registrate  o inicia sesion y comienza a organizar'}
         </p>
+        </div>
         </div>
 
 
