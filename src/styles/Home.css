@@ -70,12 +70,29 @@
 }
 
 
-.home-mobile {
+.home-mobile-light {
     height: 30vw;
     width: 68vw;
     background-image: url("../img/home.avif");
     background-size: cover;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color:black;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 10px;
+    position: relative;
+    top: 3vw;
+    box-shadow: rgb(51, 49, 45);
+    opacity: 0.8;
+    }
+.home-mobile-dark {
+    height: 30vw;
+    width: 68vw;
+    background-image: url("../img/home.avif");
+    background-size: cover;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -88,12 +105,12 @@
     top: 3.7vw;
     left: 9vw;
     box-shadow: blanchedalmond;
-  
     opacity: 0.7;
-
-
-
 }
+.home-group{
+    margin-bottom: 4vw;
+}
+
 
 
 
