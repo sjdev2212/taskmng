@@ -7,19 +7,38 @@
 
 }
 
-.container-register {
+.container-register-light {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 60%;
     height: 65vh;
-    border: 2px solid #DA43F0;
+    border: 2px solid #7c7b7c;
     border-radius: 15px;
-    background-color: #3450A1;
+    background-color: #b0b1b4;
 }
-.register-title {
-    color: white;
+.container-register-dark {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 65vh;
+    border: 2px solid #9d969e;
+    border-radius: 15px;
+    background-color: #353536;
+}
+.register-title-light {
+    color: rgb(104, 101, 101);
+    font-size:3vw;
+    font-weight: bold;
+    position: relative;
+    bottom: 1vw;
+    
+}
+.register-title-dark {
+    color: rgb(241, 219, 219);
     font-size:3vw;
     font-weight: bold;
     position: relative;
@@ -50,13 +69,18 @@
     justify-content: center;
     align-items: center;
 }
-.register-groups label {
-    color:#DA43F0;
+.register-labels-light {
+    color:#737274;
+    font-size: 1.2vw;
+    font-weight: bold;
+}
+.register-labels-dark {
+    color:#f1ecf1;
     font-size: 1.2vw;
     font-weight: bold;
 }
 
-.register-btn{
+.register-btn-light {
     width: 8rem;
     height: 2.8rem;
     border-radius: 15px;
@@ -64,16 +88,35 @@
     margin-bottom: 1rem;
     font-size: 1.1rem;
     font-weight: bold;
-    background-color: #DA43F0;
+    background-color: #d7d4d8;
+    color: rgb(44, 42, 42);
+    cursor: pointer;
+}
+
+.register-btn-light:hover {
+    background-color: #3b3c3f;
+    color: #ede4ee;
+    transition: 0.6s;
+}
+.register-btn-dark{
+    width: 8rem;
+    height: 2.8rem;
+    border-radius: 15px;
+    border: 1px solid rgb(187, 177, 177);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    background-color: #242324;
     color: white;
     cursor: pointer;
 }
 
-.register-btn:hover {
-    background-color: #3450A1;
-    color: #DA43F0;
+.register-btn-dark:hover {
+    background-color: #c1c6d6;
+    color: #2a2a2b;
     transition: 0.6s;
 }
+
 
 
 @media screen and (max-width: 700px) {

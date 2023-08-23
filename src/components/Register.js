@@ -5,19 +5,27 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import "../styles/Register.css";
 
-function Register({ language }) {
+function Register({ language, theme }) {
   const [email, setEmail] = useState("");
   const [password, setpassword] = useState("");
   const [userName, setUserName] = useState("");
 
   const navigate = useNavigate();
+  const toastTheme = theme === 'light' ? 'whitesmoke' : 'gray'
+const toastColor = theme === 'light' ? 'black' : 'whitesmoke'
+const registerTheme = theme === 'light' ? 'container-register-light' : 'container-register-dark'
+const registerTitle = theme === 'light' ? 'register-title-light' : 'register-title-dark'
+const registerLabels = theme === 'light' ? 'register-labels-light' : 'register-labels-dark'
+const registerBtn = theme === 'light' ? 'register-btn-light' : 'register-btn-dark'
+
+
   const registered = () =>
     toast("You are now registered. Please Log in", {
       duration: 3000,
       position: "top-center",
       style: {
-        background: "#3450A1",
-        color: "#DA43F0",
+        background: toastTheme,
+        color: toastColor,
         height: "10vh",
         width: "35vh",
         fontSize: "1.2rem",
@@ -31,8 +39,8 @@ function Register({ language }) {
       duration: 3000,
       position: "top-center",
       style: {
-        background: "#3450A1",
-        color: "#DA43F0",
+        background: toastTheme,
+        color: toastColor,
         height: "10vh",
         width: "35vh",
         fontSize: "1.2rem",
@@ -50,8 +58,8 @@ function Register({ language }) {
         duration: 3000,
         position: "top-center",
         style: {
-          background: "#A1051D",
-          color: "white",
+          background: toastTheme,
+          color: toastColor,
           height: "10vh",
           width: "50vh",
           fontSize: "1.2rem",
@@ -68,8 +76,8 @@ function Register({ language }) {
         duration: 3000,
         position: "top-center",
         style: {
-          background: "#A1051D",
-          color: "white",
+          background: toastTheme,
+          color: toastColor,
           height: "10vh",
           width: "50vh",
           fontSize: "1.1rem",
@@ -119,14 +127,14 @@ function Register({ language }) {
 
   return (
     <main className="main-register">
-      <section className="container-register">
-        <h1 className="register-title">
+      <section className={registerTheme}>
+        <h1 className={registerTitle}>
           {language === "english" ? "Register" : "Registrarse"}
         </h1>
 
         <form className="form-register" onSubmit={handleSubmit}>
           <div className="register-groups">
-            <label htmlFor="username">
+            <label htmlFor="username" className={registerLabels}>
               {language === "english" ? "Username" : "Nombre de usuario"}
             </label>
             <input
@@ -138,7 +146,7 @@ function Register({ language }) {
             />
           </div>
           <div className="register-groups">
-            <label htmlFor="email">
+            <label htmlFor="email"  className={registerLabels}>
               {language === "english" ? "Email" : "Correo electrónico"}
             </label>
             <input
@@ -150,7 +158,7 @@ function Register({ language }) {
             />
           </div>
           <div className="register-groups">
-            <label htmlFor="password">
+            <label htmlFor="password"  className={registerLabels}>
               {language === "english" ? "Password" : "Contraseña"}
             </label>
             <input
@@ -163,7 +171,7 @@ function Register({ language }) {
               title="Password must be at least 6 characters long."
             />
           </div>
-          <button className="register-btn" type="submit">
+          <button className={registerBtn} type="submit">
             {language === "english" ? "Register" : "Registrarse"}
           </button>
         </form>
