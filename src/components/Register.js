@@ -88,6 +88,43 @@ const registerBtn = theme === 'light' ? 'register-btn-light' : 'register-btn-dar
       }
     );
 
+    const Ierror = () =>
+    toast(
+      "There was an error, please try again",
+      {
+        duration: 3000,
+        position: "top-center",
+        style: {
+          background: toastTheme,
+          color: toastColor,
+          height: "10vh",
+          width: "50vh",
+          fontSize: "1.1rem",
+          fontWeight: "bold",
+          borderRadius: "15px",
+        },
+        icon: "⚠️",
+      }
+    );
+    const esError = () =>
+    toast(
+      "Hubo un error, por favor intenta de nuevo",
+      {
+        duration: 3000,
+        position: "top-center",
+        style: {
+          background: toastTheme,
+          color: toastColor,
+          height: "10vh",
+          width: "50vh",
+          fontSize: "1.1rem",
+          fontWeight: "bold",
+          borderRadius: "15px",
+        },
+        icon: "⚠️",
+      }
+    );
+
   const handleUserNameChange = (event) => {
     setUserName(event.target.value);
   };
@@ -122,6 +159,8 @@ const registerBtn = theme === 'light' ? 'register-btn-light' : 'register-btn-dar
       })
       .catch((error) => {
         console.log(error);
+        language === "english" ? Ierror() : esError();
+
       });
   };
 

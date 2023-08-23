@@ -17,9 +17,10 @@ const Home = ({language ,user ,tasks, isLogged, userId, loading, setTasks, setLo
           );
           if (response.status === 200) {
             console.log (userId)
-            console.log(response.data)
+            console.log(response.data.result)
+            
             setTasks(response.data.result);
-            console.log(tasks)
+         
             setLoading(false);
           }
         } catch (error) {
@@ -40,6 +41,7 @@ const Home = ({language ,user ,tasks, isLogged, userId, loading, setTasks, setLo
  
       return (
         <main className={theme === 'light' ?  "home-container-light" : "home-container-dark"}>
+          {console.log(userId)}
 
 {isLogged ?   <> <section   ><h1> {
      language === 'english' ? `Welcome ${user}!` : `Bienvenido ${user}!`}</h1>
