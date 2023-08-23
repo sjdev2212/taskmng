@@ -153,6 +153,7 @@ function App() {
   const handleLoginOut = () => {
     setToken(null);
     setIsLogged(false);
+    setUserId("");
     localStorage.removeItem("token");
     localStorage.removeItem("username");
     localStorage.removeItem("id"); // Clear the token from the state when the user logs out.

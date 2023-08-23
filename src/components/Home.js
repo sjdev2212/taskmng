@@ -2,15 +2,35 @@ import React from "react";
 import Sidebar from "./Sidebar";
 import Task from "./Task";
 import '../styles/Home.css'
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import axios from "axios";
 
 
 
 const Home = ({language ,user ,tasks, isLogged, userId, loading, setTasks, setLoading, theme}) => {
   
-  
-    const getTasks = async () => {
+  const getTasks = useCallback(async () => {
+    try {
+      const response = await axios.get(
+        `https://todo-danielamoroso31.b4a.run/${userId}/tasks`
+      );
+      if (response.status === 200) {
+        console.log (userId)
+        console.log(response.data.result)
+
+        setTasks(response.data.result);
+
+        setLoading(false);
+      }
+    } catch (error) {
+      console.log(error);
+
+
+    }
+
+  }, [setTasks, setLoading, userId]);
+
+/*     const getTasks = async () => {
         try {
           const response = await axios.get(
             `https://todo-danielamoroso31.b4a.run/${userId}/tasks`
@@ -30,13 +50,13 @@ const Home = ({language ,user ,tasks, isLogged, userId, loading, setTasks, setLo
     
         }
     
-      };
+      }; */
 
     useEffect(() => {
         getTasks();
         // eslint-disable-next-line
-        }, [userId]);
-
+        }, [getTasks]);
+ 
 
  
       return (
