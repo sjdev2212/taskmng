@@ -19,14 +19,31 @@ const Navbar = ({ isLogged, isAuthenticated, handleLoginOut ,handleLanguage, lan
   const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
 
+const toastTheme = theme === 'light' ? 'whitesmoke' : 'gray'
+const toastColor = theme === 'light' ? 'black' : 'whitesmoke'
 
   const loggedOut = () =>
     toast("Until next time", {
       duration: 3000,
       position: "top-center",
       style: {
-        background: "#3450A1",
-        color: "#DA43F0",
+        background: toastTheme,
+        color: toastColor,
+        height: "10vh",
+        width: "35vh",
+        fontSize: "1.2rem",
+        fontWeight: "bold",
+        borderRadius: "15px",
+      },
+      icon: "👏",
+    });
+    const deslogueado = () =>
+    toast("Popoxima", {
+      duration: 3000,
+      position: "top-center",
+      style: {
+        background: toastTheme,
+        color: toastColor,
         height: "10vh",
         width: "35vh",
         fontSize: "1.2rem",
@@ -38,7 +55,7 @@ const Navbar = ({ isLogged, isAuthenticated, handleLoginOut ,handleLanguage, lan
   const handleLogout = () => {
     localStorage.removeItem("token");
     handleLoginOut();
-    loggedOut();
+    language === 'english' ? loggedOut() : deslogueado()
     navigate("/");
   };
   const handleMenu = () => {
