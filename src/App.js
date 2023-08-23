@@ -38,7 +38,7 @@ const [theme, setTheme] = useState("light");
   }
 }, [language,theme]);
 
-
+const toastColor = theme === "light" ? 'whitesmoke' : "gray ";
 
 
   const handleLogin = (token) => {
@@ -77,7 +77,7 @@ const [theme, setTheme] = useState("light");
     duration: 3000,
     position: 'top-center',
     style: {
-      background: "#3450A1",
+      background: toastColor,
       color: "#DA43F0",
       height: "10vh",
       width: "35vh",
@@ -91,7 +91,7 @@ const logueado = () => toast(  'Estas logueado', {
   duration: 3000,
   position: 'top-center',
   style: {
-    background: "#3450A1",
+    background: toastColor,
     color: "#DA43F0",
     height: "10vh",
     width: "35vh",
@@ -105,7 +105,7 @@ const noUsuario = () => toast(  'No existe usuario con ese email', {
   duration: 3000,
   position: 'top-center',
   style: {
-    background: "#3450A1",
+    background: toastColor,
     color: "#DA43F0",
     height: "10vh",
     width: "35vh",
@@ -119,7 +119,7 @@ const noUser = () => toast(  'No user with the email provided', {
   duration: 3000,
   position: 'top-center',
   style: {
-    background: "#3450A1",
+    background: toastColor,
     color: "#DA43F0",
     height: "10vh",
     width: "35vh",
@@ -227,6 +227,7 @@ const handleLoginOut = () => {
             element={
             <Register 
              language={language}
+             theme={theme}
               />}
              
            
@@ -244,6 +245,7 @@ const handleLoginOut = () => {
                 handleSubmit={handleSubmit}
                 setEmail={setEmail}
                 setpassword={setpassword}
+                theme={theme}
 
               />
             }
