@@ -2,66 +2,43 @@ import React from "react";
 import Sidebar from "./Sidebar";
 import Task from "./Task";
 import '../styles/Home.css'
-import { useEffect, useCallback } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 
 
 
 const Home = ({language ,user ,tasks, isLogged, userId, loading, setTasks, setLoading, theme}) => {
   
-  const getTasks = useCallback(async () => {
-    try {
-      const response = await axios.get(
-        `https://todo-danielamoroso31.b4a.run/${userId}/tasks`
-      );
-      if (response.status === 200) {
-        console.log (userId)
-        console.log(response.data.result)
-
-        setTasks(response.data.result);
-
-        setLoading(false);
-      }
-    } catch (error) {
-      console.log(error);
+  const getTasks = async () => {
+    const result = await axios.get(
+      `https://todo-danielamoroso31.b4a.run/${userId}/tasks`
+    );
+    console.log(userId)
+    console.log(result.data.result)
+    if (result.data.result === undefined) {
+      setTasks([]);
+      setLoading(false);
+    }
+    else{
 
 
+      setTasks(result.data.result);
+      setLoading(false);
     }
 
-  }, [setTasks, setLoading, userId]);
+      
+  };
 
-/*     const getTasks = async () => {
-        try {
-          const response = await axios.get(
-            `https://todo-danielamoroso31.b4a.run/${userId}/tasks`
-          );
-          if (response.status === 200) {
-            console.log (userId)
-            console.log(response.data.result)
-            
-            setTasks(response.data.result);
-         
-            setLoading(false);
-          }
-        } catch (error) {
-          console.log(error);
-    
-        
-    
-        }
-    
-      }; */
-
-    useEffect(() => {
-        getTasks();
-        // eslint-disable-next-line
-        }, [getTasks]);
- 
+useEffect(() => {
+  
+  getTasks();
+   // eslint-disable-next-line 
+}, [userId]);
 
  
       return (
         <main className={theme === 'light' ?  "home-container-light" : "home-container-dark"}>
-          {console.log(userId)}
+        
 
 {isLogged ?   <> <section   ><h1> {
      language === 'english' ? `Welcome ${user}!` : `Bienvenido ${user}!`}</h1>
@@ -72,6 +49,8 @@ const Home = ({language ,user ,tasks, isLogged, userId, loading, setTasks, setLo
          logged={isLogged}
             tasks={tasks}
             loading={loading}
+         getTasks={getTasks}
+           
           
          />
        

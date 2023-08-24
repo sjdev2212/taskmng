@@ -21,6 +21,9 @@ function App() {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [theme, setTheme] = useState("light");
+  
+
+
 
   const navigate = useNavigate();
 
@@ -51,7 +54,6 @@ function App() {
   };
 
   const handleColor = (e) => {
-    console.log(e.target.value);
     if (theme === "light") {
       setTheme("dark");
       document.body.style.backgroundColor = "#333333";
@@ -145,7 +147,7 @@ function App() {
         setUserId(id);
       }
     } catch (error) {
-      console.error(error.message);
+   
       language === "english" ? noUser() : noUsuario();
     }
   };
@@ -170,6 +172,7 @@ function App() {
     return config;
   });
 
+
   return (
     <>
       <Navbar
@@ -180,6 +183,7 @@ function App() {
         language={language}
         handleColor={handleColor}
         theme={theme}
+     
       />
 
       <Routes>
@@ -222,7 +226,12 @@ function App() {
         />
         <Route
           path="/addtask"
-          element={<AddTask userId={userId} language={language} />}
+          element={<AddTask 
+            userId={userId}  
+            language={language}
+         
+         
+             />}
         />
       </Routes>
 
