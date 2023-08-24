@@ -9,6 +9,8 @@ import Home from "./components/Home";
 import { Toaster, toast } from "react-hot-toast";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useIdleTimer } from "react-idle-timer";
+
 
 function App() {
   const [isLogged, setIsLogged] = useState(false);
@@ -21,11 +23,32 @@ function App() {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [theme, setTheme] = useState("light");
+  const [isIdle, setIsIdle] = useState(false);
   
 
 
 
   const navigate = useNavigate();
+
+  const handleOnIdle = () => {
+    setIsIdle(true);
+    handleLoginOut();
+    navigate("/login");
+    console.log(" is idle")
+  };
+
+  const handleOnActive = () => {
+    setIsIdle(false);
+    console.log(" is active")
+  };
+ // eslint-disable-next-line 
+const controlIdle =  useIdleTimer({
+    timeout: 1000 * 60 * 5,
+    onIdle: handleOnIdle,
+    onActive: handleOnActive,
+    debounce: 500
+  })
+
 
   useEffect(() => {
     // Check if a token is stored in browser storage or cookies
@@ -37,8 +60,9 @@ function App() {
       setUserName(storedUserName);
       setUserId(storedId);
       setIsLogged(true);
+     
     }
-  }, [language, theme]);
+  }, [language, theme,isIdle]);
 
   const toastTheme = theme === "light" ? "whitesmoke" : "gray ";
   const toastColor = theme === 'light' ? 'black' : 'whitesmoke'
@@ -175,6 +199,7 @@ function App() {
 
   return (
     <>
+  
       <Navbar
         isLogged={isLogged}
         isAuthenticated={isAuthenticated}
