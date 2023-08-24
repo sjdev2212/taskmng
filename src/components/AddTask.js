@@ -4,72 +4,91 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
-const AddTask = ({ userId, language }) => {
+
+
+const AddTask = ({ userId, language, closeModal, getTasks }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
   const navigate = useNavigate();
 
-  const taskAdded = () =>
-    toast("Task added", {
-      duration: 3000,
-      position: "top-center",
-      style: {
-        background: "#3450A1",
-        color: "#DA43F0",
-        height: "10vh",
-        width: "35vh",
-        fontSize: "1.2rem",
-        fontWeight: "bold",
-        borderRadius: "15px",
-      },
-      icon: "✔️",
-    });
-  const tareaAgregada = () =>
-    toast("Tarea agregada", {
-      duration: 3000,
-      position: "top-center",
-      style: {
-        background: "#3450A1",
-        color: "#DA43F0",
-        height: "10vh",
-        width: "35vh",
-        fontSize: "1.2rem",
-        fontWeight: "bold",
-        borderRadius: "15px",
-      },
-      icon: "✔️",
-    });
 
-  const handleSubmit = (e) => {
+  const taskAdded = () =>
+  toast("Task added", {
+    duration: 3000,
+    position: "top-center",
+    style: {
+      background: "#3450A1",
+      color: "#DA43F0",
+      height: "10vh",
+      width: "35vh",
+      fontSize: "1.2rem",
+      fontWeight: "bold",
+      borderRadius: "15px",
+    },
+    icon: "✔️",
+  });
+const tareaAgregada = () =>
+  toast("Tarea agregada", {
+    duration: 3000,
+    position: "top-center",
+    style: {
+      background: "#3450A1",
+      color: "#DA43F0",
+      height: "10vh",
+      width: "35vh",
+      fontSize: "1.2rem",
+      fontWeight: "bold",
+      borderRadius: "15px",
+    },
+    icon: "✔️",
+  });
+  const handleAddTask  = async (e) => {
     e.preventDefault();
     const data = {
       title: title,
       description: description,
     };
 
-    axios
-      .post(`https://todo-danielamoroso31.b4a.run/${userId}/create-task`, data)
-      .then((response) => {
-        if (response.status === 200) {
-          if (language === "english") {
-            taskAdded();
-            navigate("/home");
-          } else {
-            tareaAgregada();
-            navigate("/home");
-          }
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    try {
+      const response = await axios.post(
+        `https://todo-danielamoroso31.b4a.run/${userId}/create-task`,
+        data
+      );
+      if (response.status === 200) {
+
+        language === "english" ? taskAdded() : tareaAgregada();
+        navigate("/");
+        closeModal();
+        getTasks();
+       
+      }
+      if (response.status === 500) {
+        
+      }
+
+
+    } catch (error) {
+      console.log(error);
+    }
+
+  
+
+
   };
+
+
+
+
+
 
   return (
     <section>
+      <h1>
+        {userId} {language}
+      </h1>
       {language === "english" ? "Add a task" : "Agregar una tarea"}
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleAddTask}>
         <div>
           <label htmlFor="title">
             {language === "english" ? "Title" : "Titulo"}

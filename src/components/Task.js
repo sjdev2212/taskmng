@@ -9,9 +9,7 @@ import { useState } from "react";
 import Icon from '@mdi/react';
 import { mdiCloseThick } from '@mdi/js';
 
-
-
-const Task = ({ language, userId, logged, tasks, loading }) => {
+const Task = ({ language, userId, logged, tasks, loading ,getTasks}) => {
   const [modal, setModal] = useState(false);
 
   const navigate = useNavigate();
@@ -50,15 +48,8 @@ right: "0.5vw",
     cursor: "pointer",
     border: "none",
     outline: "none",
-   
-    
-
-  };
-
-
-
-
-  const openModal = () => {
+   };
+const openModal = () => {
     setModal(true);
   };
   const closeModal = () => {
@@ -66,25 +57,22 @@ right: "0.5vw",
   };
 
   const handleDelete = (id) => {
-    console.log("clocked");
-    console.log(id);
+ 
     axios
       .delete(
         `https://todo-danielamoroso31.b4a.run/${userId}/delete-task/${id}`
       )
       .then((response) => {
         if (response.status === 200) {
-          if (language === "english") {
-            taskDeleted();
-            navigate("/home");
-          } else {
-            tareaEliminada();
-            navigate("/home");
-          }
+    language === "english" ? taskDeleted() : tareaEliminada();
+    
+    navigate("/");
+   getTasks();
+        
         }
       })
       .catch((error) => {
-        console.log(error);
+       
       });
   };
   const taskDeleted = () =>
@@ -132,7 +120,7 @@ right: "0.5vw",
         ) : (
       <section>
     
-       { tasks === undefined || tasks.length === 0 ? (<div>
+       {  tasks.length === 0 ? (<div>
           {language === "english" ? "You don't have any tasks yet" : "Aun no tienes tareas"}
         </div>)
          : (
@@ -182,7 +170,11 @@ right: "0.5vw",
         </button>
       </div>
       <div style={modal ? showModal : hideModal}>
-        <AddTask />
+        <AddTask  userId={userId} 
+        language={language}
+        closeModal={closeModal}
+        getTasks={getTasks}
+         />
         <button className="btn-modal" style={closeModalButton} onClick={closeModal}>
           <Icon path={mdiCloseThick} size={2} />
         </button>
