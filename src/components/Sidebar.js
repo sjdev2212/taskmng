@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import '../styles/Sidebar.css'
 
 const Sidebar = ({language, theme}) => {
@@ -8,7 +9,12 @@ const Sidebar = ({language, theme}) => {
         <div className={sidebarTheme}>
             <ul>
                 <li>Home</li>
-                <li>Tasks</li>
+                <li>
+                  <Link to="/tasks" >
+                  Tasks
+                  </Link>
+                  </li>
+
                 <li>Activities</li>
                 <li>Calendar</li>
                 <li>Settings</li>
