@@ -17,14 +17,17 @@ const Task = ({ language, userId, logged, tasks, loading,setTasks,setLoading,the
   const navigate = useNavigate();
   const toastTheme = theme === "light" ? "whitesmoke" : "gray ";
   const toastColor = theme === 'light' ? 'black' : 'whitesmoke'
+  const themeModal = theme === "light" ? "whitesmoke" : "black";
+  const modalColor = theme === "light" ? "gray" : "whitesmoke";
+  const modalBorder = theme === "light" ? "solid 2px black" : "solid 2px whitesmoke";
+  const modalShadow = theme === "light" ? "0 0 10px black" : "0 0 10px whitesmoke";
 
 
   const getTasks = async () => {
     const result = await axios.get(
       `https://todo-danielamoroso31.b4a.run/${userId}/tasks`
     );
-    console.log(userId)
-    console.log(result.data.result)
+
     if (result.data.result === undefined) {
       setTasks([]);
       setLoading(false);
@@ -50,20 +53,20 @@ useEffect(() => {
     position: "fixed",
     zIndex: "1",
     top: "3.5vw",
-    left: "30vw",
+    left: "25vw",
     width: "28vw",
     height: "19vw",
     overflow: "auto",
-    backgroundColor: "#3450A1",
+    backgroundColor: themeModal,
+    color: modalColor,
     padding: "10vw",
     textAlign: "center",
-    color: "#DA43F0",
     fontSize: "2.3vw",
     fontWeight: "bold",
     fontFamily: "Roboto",
     borderRadius: "15px",
-    border: "solid 2px #DA43F0",
-    boxShadow: "0 0 10px #DA43F0",
+    border: modalBorder,
+    boxShadow: modalShadow,
     margin: "2vw",
     opacity: "1",
   };
@@ -117,6 +120,7 @@ const openModal = () => {
         width: "35vh",
         fontSize: "1.2rem",
         fontWeight: "bold",
+        border: "solid 2px black ",
         borderRadius: "15px",
       },
       icon: "✔️",
@@ -130,6 +134,7 @@ const openModal = () => {
         color: {toastColor},
         height: "15vh",
         width: "35vh",
+        border: "solid 2px black",
         fontSize: "1.2rem",
         fontWeight: "bold",
 
@@ -205,6 +210,7 @@ const openModal = () => {
         language={language}
         closeModal={closeModal}
         getTasks={getTasks}
+        theme={theme}
          />
         <button className="btn-modal" style={closeModalButton} onClick={closeModal}>
           <Icon path={mdiCloseThick} size={2} />
