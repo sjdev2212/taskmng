@@ -65,6 +65,7 @@ const toastColor = theme === 'light' ? 'black' : 'whitesmoke'
 
 
   const btnTheme = theme === "light" ? "btns-light" : "btns-dark";
+  const brandTheme = theme === "light" ? "brand-light" : "brand-dark";
 
 
 
@@ -130,9 +131,9 @@ return (
     >
       
       <div className="nav-container">
-          <p className="brand"> 
+          <Link to="/" className={brandTheme}> 
           {language === 'english' ? <p> Task Manager </p> : <p> Administrador </p>}
-          </p>
+          </Link>
         
         </div>
 
