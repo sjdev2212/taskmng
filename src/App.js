@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import AddTask from "./components/AddTask";
+import Task from "./components/Task";
 import Home from "./components/Home";
 import { Toaster, toast } from "react-hot-toast";
 import { useState, useEffect } from "react";
@@ -254,9 +255,25 @@ const controlIdle =  useIdleTimer({
           element={<AddTask 
             userId={userId}  
             language={language}
+            theme={theme}
          
          
              />}
+        />
+        <Route 
+        path="/tasks"
+        element={<Task
+          language={language}
+          userId={userId}
+          logged={isLogged}
+              tasks={tasks}
+              loading={loading}
+              setTasks={setTasks}
+              setLoading={setLoading}
+              theme={theme}
+        
+        />
+        }
         />
       </Routes>
 
