@@ -107,10 +107,56 @@
     box-shadow: blanchedalmond;
     opacity: 0.7;
 }
-.home-group{
-    margin-bottom: 4vw;
+.welcomeText-light{
+    margin-top: 2vw;
+    border: 2px solid #222122;
+ background-image: url("../img/hometext.jpg");
+background-size: cover; 
+height: 40.8vw;
+opacity: 0.78;
+background-color: aliceblue;
+font-size: large;
+width: 80vw;
+border-radius: 15px;
+
+
+
+
+}
+.text-top-light{
+  
+    border-bottom: 2px solid #1f1d1f;
+    height: 10vw;
+    border-radius: 15px;
+}
+.upper-section-light{
+    height: 3vw;
+    border-bottom: 2px solid #222122;
+    background-color: #222122;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+   
+}
+    
+.welcomeText-light ul {
+    list-style: none;
 }
 
+
+
+   
+
+
+
+.welcomeText-dark{
+    margin-top: 2vw;
+
+    border: 2px solid #222122;
+    background-image: url("../img/hometext.jpg");
+    background-size: cover;
+    height: 40.5vw;
+    
+}
 
 
 

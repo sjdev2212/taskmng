@@ -1,10 +1,11 @@
 import React from 'react'
 import '../styles/Sidebar.css'
 
-const Sidebar = () => {
+const Sidebar = ({language, theme}) => {
+  const sidebarTheme = theme === 'light' ? 'sidebar-container-light' : 'sidebar-container-dark'
   return (
     <>
-        <div className="sidebar">
+        <div className={sidebarTheme}>
             <ul>
                 <li>Home</li>
                 <li>Tasks</li>
