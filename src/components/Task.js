@@ -8,11 +8,42 @@ import "../styles/Task.css";
 import { useState } from "react";
 import Icon from '@mdi/react';
 import { mdiCloseThick } from '@mdi/js';
+import { useEffect } from "react";
 
-const Task = ({ language, userId, logged, tasks, loading ,getTasks}) => {
+
+const Task = ({ language, userId, logged, tasks, loading,setTasks,setLoading,theme }) => {
   const [modal, setModal] = useState(false);
 
   const navigate = useNavigate();
+  const toastTheme = theme === "light" ? "whitesmoke" : "gray ";
+  const toastColor = theme === 'light' ? 'black' : 'whitesmoke'
+
+
+  const getTasks = async () => {
+    const result = await axios.get(
+      `https://todo-danielamoroso31.b4a.run/${userId}/tasks`
+    );
+    console.log(userId)
+    console.log(result.data.result)
+    if (result.data.result === undefined) {
+      setTasks([]);
+      setLoading(false);
+    }
+    else{
+
+
+      setTasks(result.data.result);
+      setLoading(false);
+    }
+
+      
+  };
+
+useEffect(() => {
+  
+  getTasks();
+   // eslint-disable-next-line 
+}, [userId]);
   //styles  
   const showModal = {
     display: "flex",
@@ -66,7 +97,7 @@ const openModal = () => {
         if (response.status === 200) {
     language === "english" ? taskDeleted() : tareaEliminada();
     
-    navigate("/");
+    navigate("/tasks");
    getTasks();
         
         }
@@ -78,11 +109,11 @@ const openModal = () => {
   const taskDeleted = () =>
     toast("Task deleted", {
       duration: 3000,
-      position: "top-center",
+      position: "middle-center",
       style: {
-        background: "#3450A1",
-        color: "#DA43F0",
-        height: "10vh",
+        background: {toastTheme},
+        color: {toastColor},
+        height: "15vh",
         width: "35vh",
         fontSize: "1.2rem",
         fontWeight: "bold",
@@ -93,11 +124,11 @@ const openModal = () => {
   const tareaEliminada = () =>
     toast("Tarea eliminada", {
       duration: 3000,
-      position: "top-center",
+      position: "middle-center",
       style: {
-        background: "#3450A1",
-        color: "#DA43F0",
-        height: "10vh",
+        background: {toastTheme},
+        color: {toastColor},
+        height: "15vh",
         width: "35vh",
         fontSize: "1.2rem",
         fontWeight: "bold",
