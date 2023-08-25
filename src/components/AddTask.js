@@ -6,21 +6,24 @@ import { useNavigate } from "react-router-dom";
 
 
 
-const AddTask = ({ userId, language, closeModal, getTasks }) => {
+const AddTask = ({ userId, language, closeModal, getTasks,theme }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
   const navigate = useNavigate();
 
+  const toastTheme = theme === "light" ? "whitesmoke" : "gray ";
+  const toastColor = theme === 'light' ? 'black' : 'whitesmoke'
+
 
   const taskAdded = () =>
   toast("Task added", {
     duration: 3000,
-    position: "top-center",
+    position: "middle-center",
     style: {
-      background: "#3450A1",
-      color: "#DA43F0",
-      height: "10vh",
+      background: {toastTheme},
+      color: {toastColor},
+      height: "18vh",
       width: "35vh",
       fontSize: "1.2rem",
       fontWeight: "bold",
@@ -31,11 +34,11 @@ const AddTask = ({ userId, language, closeModal, getTasks }) => {
 const tareaAgregada = () =>
   toast("Tarea agregada", {
     duration: 3000,
-    position: "top-center",
+    position: "middle-center",
     style: {
-      background: "#3450A1",
-      color: "#DA43F0",
-      height: "10vh",
+      background: {toastTheme},
+      color: {toastColor},
+      height: "18vh",
       width: "35vh",
       fontSize: "1.2rem",
       fontWeight: "bold",
@@ -58,7 +61,7 @@ const tareaAgregada = () =>
       if (response.status === 200) {
 
         language === "english" ? taskAdded() : tareaAgregada();
-        navigate("/");
+        navigate("/tasks");
         closeModal();
         getTasks();
        

@@ -1,9 +1,7 @@
 import React from "react";
 import Sidebar from "./Sidebar";
-import Task from "./Task";
 import '../styles/Home.css'
-import { useEffect } from "react";
-import axios from "axios";
+
 
 
 
@@ -11,39 +9,17 @@ const Home = ({language ,user ,tasks, isLogged, userId, loading, setTasks, setLo
   const welcomeTheme = theme === 'light' ? 'welcomeText-light' : 'welcomeText-dark'
   const textTop = theme === 'light' ? 'text-top-light' : 'text-top-dark'
   const upperSection = theme === 'light' ? 'upper-section-light' : 'upper-section-dark'
-  const getTasks = async () => {
-    const result = await axios.get(
-      `https://todo-danielamoroso31.b4a.run/${userId}/tasks`
-    );
-    console.log(userId)
-    console.log(result.data.result)
-    if (result.data.result === undefined) {
-      setTasks([]);
-      setLoading(false);
-    }
-    else{
 
 
-      setTasks(result.data.result);
-      setLoading(false);
-    }
-
-      
-  };
-
-useEffect(() => {
-  
-  getTasks();
-   // eslint-disable-next-line 
-}, [userId]);
 
  
       return (
         <main className={theme === 'light' ?  "home-container-light" : "home-container-dark"}>
         
 
-{isLogged ?   <> <section  className={welcomeTheme}  > {
-     language === 'english' ? (<div >
+{isLogged ?   <> <section   > {
+     language === 'english' ? (
+     <div className={welcomeTheme}  >
       <div className={textTop}>
         <div className={upperSection}>
         </div>
@@ -70,7 +46,7 @@ useEffect(() => {
     
     :
     
-    (<div >
+    (<div className={welcomeTheme} >
        <div className={textTop}>
         <div className={upperSection}>
 

@@ -106,7 +106,7 @@ return (
             <>
               <li className="li-btns">
                 <Link to="/login" className="btns-light">
-                  {console.log(btnTheme)}
+                
                  {language === 'english' ? <p> Login </p> : <p> Iniciar sesión </p>}
                 </Link>
               </li>
