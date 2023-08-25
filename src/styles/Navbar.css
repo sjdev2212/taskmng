@@ -26,10 +26,16 @@
 
 
 }
-.brand{
+.brand-light{
     font-size: 1.3rem;
     font-weight: bold;
-    color: #8d828c;
+    color: #181718;
+    text-decoration: none;
+}
+.brand-dark{
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #cabbca;
     text-decoration: none;
 }
 .ul-btns {
