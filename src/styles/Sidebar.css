@@ -11,3 +11,17 @@ position: relative;
  
 
 }
+.sidebar-container-dark{
+    height: 40.5vw;
+    width: 20vw;
+    position: relative;
+      top: 0.91vw;
+    
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        transition: all 0.3s ease-in-out;
+        background-color: #282929;;
+        border-radius: 15px;
+        border: 2px solid #b8b6b8;
+     
+    
+    }
