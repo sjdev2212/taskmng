@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import "../styles/AddTask.css";
 
 
 
@@ -14,6 +15,7 @@ const AddTask = ({ userId, language, closeModal, getTasks,theme }) => {
 
   const toastTheme = theme === "light" ? "whitesmoke" : "gray ";
   const toastColor = theme === 'light' ? 'black' : 'whitesmoke'
+  const addTaskBtnTheme = theme === 'light' ? 'add-task-btn-light' : 'add-task-btn-dark'
 
 
   const taskAdded = () =>
@@ -27,6 +29,7 @@ const AddTask = ({ userId, language, closeModal, getTasks,theme }) => {
       width: "35vh",
       fontSize: "1.2rem",
       fontWeight: "bold",
+      border: "solid 2px black",
       borderRadius: "15px",
     },
     icon: "✔️",
@@ -41,6 +44,7 @@ const tareaAgregada = () =>
       height: "18vh",
       width: "35vh",
       fontSize: "1.2rem",
+      border: "solid 2px black",
       fontWeight: "bold",
       borderRadius: "15px",
     },
@@ -74,26 +78,17 @@ const tareaAgregada = () =>
     } catch (error) {
       console.log(error);
     }
-
-  
-
-
-  };
-
-
-
-
-
+};
 
   return (
     <section>
-      <h1>
-        {userId} {language}
-      </h1>
+      <div className="modal-title">
       {language === "english" ? "Add a task" : "Agregar una tarea"}
-      <form onSubmit={handleAddTask}>
-        <div>
-          <label htmlFor="title">
+      </div>
+      <form onSubmit={handleAddTask} className="form-add-task">
+        <div className="modal-input">
+          <label htmlFor="title" className="" >
+            
             {language === "english" ? "Title" : "Titulo"}
           </label>
           <input
@@ -104,7 +99,7 @@ const tareaAgregada = () =>
             required
           />
         </div>
-        <div>
+        <div className="modal-input">
           <label htmlFor="description">
             {language === "english" ? "Description" : "Descripcion"}
           </label>
@@ -116,8 +111,9 @@ const tareaAgregada = () =>
             required
           />
         </div>
-        <button>
+        <button className={addTaskBtnTheme}> 
           {language === "english" ? "Add a task" : "Agregar una tarea"}
+          {console.log(addTaskBtnTheme)}
         </button>
       </form>
     </section>
