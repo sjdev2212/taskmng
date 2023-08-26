@@ -209,12 +209,13 @@ const Task = ({
             <tbody>
                 {tasks.map((task) => (
 
-                    <tr key={task.id}>
+                    <tr key={task.idForTask}>
                         <td>{task.title}</td>
                         <td>{task.description}</td>
                         <td>
-                          <Link to={`/edit/${task.idForTask}`}>
-                            <button className={btnsTheme}>
+                       <Link to={`/edit-task/${task.idForTask}`}>
+
+                            <button className={btnsTheme} >
                               {language === "english" ? "Edit" : "Editar"}
                             </button>
                           </Link>

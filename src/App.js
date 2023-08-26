@@ -7,6 +7,7 @@ import Login from "./components/Login";
 import AddTask from "./components/AddTask";
 import Task from "./components/Task";
 import Home from "./components/Home";
+import EditTask from "./components/EditTask";
 import { Toaster, toast } from "react-hot-toast";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -275,6 +276,14 @@ const controlIdle =  useIdleTimer({
         
         />
         }
+        />
+        <Route
+          path="/edit-task/:taskId"
+          element={<EditTask
+            language={language}
+            userId={userId}
+            theme={theme}
+            />}
         />
         
       </Routes>
