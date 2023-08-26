@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { useIdleTimer } from "react-idle-timer";
 
 
+
 function App() {
   const [isLogged, setIsLogged] = useState(false);
   const [token, setToken] = useState(null);
@@ -275,7 +276,10 @@ const controlIdle =  useIdleTimer({
         />
         }
         />
+        
       </Routes>
+
+
 
       <Toaster />
     </>

@@ -6,7 +6,6 @@
   margin: 10px;
  height: 23vw;
   overflow: scroll;
- 
   flex-direction: column;
 
 
@@ -16,25 +15,15 @@
   display: flex;
   border: 2px solid #555154;
   border-radius: 5px;
-  padding: 10px;
-  margin-top: -0.5vw;
-  max-height: 37vw;
+  margin-top: -0.51vw;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding:7vw 20vw;
+  height: 25vw;
   overflow: scroll;
-  min-height: 37vw;
+ 
   flex-direction: column;
 
-
-}
-
-.table {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 10px;
-  padding: 10px;
-  border: 2px solid #555154;
-  border-radius: 5px;
 
 }
 
@@ -70,7 +59,8 @@
 }
 .add-btn-dark{
   position: fixed;
-  top: 5.5vw;
+  top: 6vw;
+  left: 1vw;
 
 }
 .btn-add-light{
@@ -147,31 +137,79 @@
 
 /* Style the table */
 table {
-  width: 100%;
+  width: 50vw;
+  position: relative;
+  left: 5vw;
   border-collapse: collapse;
   /* Merge adjacent borders */
-  border: 1px solid #aa0f76;
+  border: 1px solid #0f0f0f;
 }
 
 /* Style table headers */
 th {
-  background-color: #3450A1;
+  background-color: #191a1d;
   padding: 10px;
+  color: white;
+  width: 10vw;
 }
 
 /* Style table data cells */
 td {
   padding: 8px;
-  border-bottom: 1px solid #aa20a3;
+  border-bottom: 1px solid #0a090a;
+  width: 10vw;
 }
 
 tr {
-  background-color: #041955;
+  background-color: #424650;
   color: white;
+  width: 10vw;
 
 }
 
 /* Alternating row colors */
 tr:nth-child(even) {
-  background-color: #be9b9b;
+  background-color: #eedfdf;
+  color: black;
 }
+.btns-theme-light{
+  width: 5vw;
+  height: 2vw;
+  background-color: whitesmoke;
+  border: 1px solid #312f2f;
+  color: #312f2f;
+  border-radius: 5px;
+  font-size: 1.2vw;
+  font-weight: bold;
+}
+.btns-theme-light:hover{
+  background-color: gray;
+  color: #f7eaea;
+  border: 2px solid #ece1e1;
+  transition:  1s;
+  border-radius: 10px;
+  transform: scale(0.89);
+  animation: ripple-animation 1s ease-in-out;
+  font-size: 1.1vw;
+}
+.btns-theme-dark{
+  width: 5vw;
+  height: 2vw;
+  background-color: whitesmoke;
+  border: 1px solid #312f2f;
+  color: #312f2f;
+  border-radius: 5px;
+  font-size: 1.2vw;
+  font-weight: bold;
+}
+.btns-theme-dark:hover{
+  background-color: gray;
+  color: #f7eaea;
+  border: 2px solid #ece1e1;
+  transition:  1s;
+  border-radius: 10px;
+  transform: scale(0.89);
+  animation: ripple-animation 1s ease-in-out;
+  font-size: 1.1vw;
+}
+

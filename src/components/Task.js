@@ -35,6 +35,8 @@ const Task = ({
   const addTaskContainerTheme = theme === "light" ? "add-task-container-light" : "add-task-container-dark";
   const addBtnTheme = theme === "light" ? "add-btn-light" : "add-btn-dark";
   const addBtn = theme === "light" ? "btn-add-light" : "btn-add-dark";
+  const btnsTheme = theme === "light" ? "btns-theme-light" : "btns-theme-dark";
+
 
   const modalBorder =
     theme === "light" ? "solid 2px black" : "solid 2px whitesmoke";
@@ -192,45 +194,52 @@ const Task = ({
                 : "Aun no tienes tareas"}
             </div>
           ) : (
-            tasks.map((task) => {
-              return (
-                <div className="">
-                <table>
-                  <thead>
+
+            <table>
+           <thead>
                     <tr>
                       <th>{language === "english" ? "Title" : "Titulo"}</th>
                       <th>
                         {language === "english" ? "Description" : "Descripcion"}
                       </th>
+                      <th>{language === "english" ? "Edit" : "Editar"}</th>
+                      <th>{language === "english" ? "Delete" : "Eliminar"}</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <div key={task.idForTask}>
-                        <td>{task.title} </td>
+            <tbody>
+                {tasks.map((task) => (
+
+                    <tr key={task.id}>
+                        <td>{task.title}</td>
                         <td>{task.description}</td>
-                      </div>
-                    </tr>
-                    <tr>
-                      <td>
-                        <button>
+                        <td>
                           <Link to={`/edit/${task.idForTask}`}>
-                            {language === "english" ? "Edit" : "Editar"}
+                            <button className={btnsTheme}>
+                              {language === "english" ? "Edit" : "Editar"}
+                            </button>
                           </Link>
-                        </button>
-                      </td>
-                      <td>
-                        <button onClick={() => handleDelete(task.idForTask)}>
-                          {language === "english" ? "Delete" : "Borrar"}
-                        </button>
-                      </td>
+                        </td>
+                        <td>
+                          <button
+                            className={btnsTheme}
+                            onClick={() => handleDelete(task.idForTask)}
+                          >
+                            {language === "english" ? "Delete" : "Eliminar"}
+                          </button>
+                        </td>
                     </tr>
-                  </tbody>
-                </table>
-                </div>
-              );
-            })
-          )}
+                    
+                ))}
+
+            </tbody>
+
+
+        </table>
+          )
+
+            
+    
+                }
         </section>
       )}
       <div className={addBtnTheme}>
