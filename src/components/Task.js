@@ -1,15 +1,15 @@
 import React from "react";
 import axios from "axios";
+import AddTask from "./AddTask";
 import { Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import AddTask from "./AddTask";
-import "../styles/Task.css";
 import { useState } from "react";
-import Icon from "@mdi/react";
 import { mdiCloseThick } from "@mdi/js";
 import { useEffect } from "react";
-import {   RotatingLines } from  'react-loader-spinner'
+import { RotatingLines } from  'react-loader-spinner'
+import Icon from "@mdi/react";
+import "../styles/Task.css";
 
 
 
@@ -36,6 +36,31 @@ const Task = ({
   const addBtnTheme = theme === "light" ? "add-btn-light" : "add-btn-dark";
   const addBtn = theme === "light" ? "btn-add-light" : "btn-add-dark";
   const btnsTheme = theme === "light" ? "btns-theme-light" : "btns-theme-dark";
+  
+  const textCompleted = {
+    textDecoration: "line-through",
+    color: "gray",
+  };
+  const textIncomplete = {
+    textDecoration: "none",
+    color: "black",
+  };
+  const disbleBtn = {
+    backgroundColor: "gray",
+    color: "whitesmoke",
+    border: "none",
+    outline: "none",
+    cursor: "not-allowed",
+    disabled: "true",
+  };
+  const enableBtn = {
+    backgroundColor: "whitesmoke",
+    color: "black",
+    border: "none",
+    outline: "none",
+    cursor: "pointer",
+    disabled: "false",
+  };
 
 
   const modalBorder =
@@ -135,6 +160,22 @@ const Task = ({
       })
       .catch((error) => {});
   };
+
+
+
+  const handleComplete =  async (id) => {
+  await  axios.put(`https://todo-danielamoroso31.b4a.run/${userId}/complete-task/${id}`)
+    .then((response) => {
+      if (response.status === 200) {
+     ;
+        navigate("/tasks");
+        getTasks();
+      }
+    })
+    .catch((error) => {});
+  };
+
+ 
   const taskDeleted = () =>
     toast("Task deleted", {
       duration: 3000,
@@ -204,18 +245,19 @@ const Task = ({
                       </th>
                       <th>{language === "english" ? "Edit" : "Editar"}</th>
                       <th>{language === "english" ? "Delete" : "Eliminar"}</th>
+                      <th>{language === "english" ? "Completed" : "Completada"}</th>
                     </tr>
                   </thead>
             <tbody>
                 {tasks.map((task) => (
 
                     <tr key={task.idForTask}>
-                        <td>{task.title}</td>
-                        <td>{task.description}</td>
+                        <td style={task.completed ?  textCompleted : textIncomplete}>{task.title}</td>
+                        <td style={task.completed ?  textCompleted : textIncomplete}>{task.description}</td>
                         <td>
                        <Link to={`/edit-task/${task.idForTask}`}>
 
-                            <button className={btnsTheme} >
+                            <button className={btnsTheme} disabled={task.completed ?  true : false} style={task.completed ?  disbleBtn : enableBtn} >
                               {language === "english" ? "Edit" : "Editar"}
                             </button>
                           </Link>
@@ -228,6 +270,13 @@ const Task = ({
                             {language === "english" ? "Delete" : "Eliminar"}
                           </button>
                         </td>
+                        <td>{task.completed  ? 
+                        "✔️" : "❌"}
+                        <button onClick={( ) => handleComplete(task.idForTask)}>
+                          {language === "english" ? "Completed" : "Completada"}
+                        </button>
+                        
+                      </td>
                     </tr>
                     
                 ))}
