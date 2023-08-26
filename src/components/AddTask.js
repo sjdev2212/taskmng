@@ -87,7 +87,7 @@ const tareaAgregada = () =>
       </div>
       <form onSubmit={handleAddTask} className="form-add-task">
         <div className="modal-input">
-          <label htmlFor="title" className="" >
+          <label htmlFor="title"  >
             
             {language === "english" ? "Title" : "Titulo"}
           </label>
@@ -113,7 +113,6 @@ const tareaAgregada = () =>
         </div>
         <button className={addTaskBtnTheme}> 
           {language === "english" ? "Add a task" : "Agregar una tarea"}
-          {console.log(addTaskBtnTheme)}
         </button>
       </form>
     </section>

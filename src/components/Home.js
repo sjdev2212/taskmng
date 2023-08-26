@@ -59,7 +59,7 @@ const Home = ({
               <div className={welcomeTheme}>
                 <div className={textTop}>
                   <div className={upperSection}></div>
-                  <h1>Bienvenido/a al Organizaor de Tareas {user}!</h1>
+                  <h1>Bienvenido/a al Organizador de Tareas {user}!</h1>
                 </div>
                 <h3>
                   ¡Organiza tu vida con facilidad usando nuestro intuitivo
