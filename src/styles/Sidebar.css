@@ -14,7 +14,7 @@ position: relative;
 }
 .sidebar-container-dark{
     height: 40.5vw;
-    width: 18vw;
+    width: 17.8vw;
     position: relative;
       top: 0.91vw;
     
@@ -24,6 +24,7 @@ position: relative;
         border-radius: 15px;
         border: 2px solid #b8b6b8;
         margin-right: -1vw;
+        margin-left: 0.3vw;
      
     
     }
