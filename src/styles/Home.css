@@ -113,6 +113,7 @@
 
 .welcomeText-light {
     margin-top: 1.7vw;
+    margin-left: 0.7vw;
     border-bottom: 2px solid #222122;
     background-image: url("../img/hometext.jpg");
     background-size: cover;
@@ -128,7 +129,7 @@
 
 .welcomeText-dark {
     margin-top: 2vw;
-    margin-left: 18vw;
+    margin-left: 17.4vw;
     border-bottom: 2px solid #cfc9cf;
     background-image: url("../img/hometext.jpg");
     background-size: cover;
@@ -139,7 +140,7 @@
     width: 80vw;
     border-radius: 15px;
     color: whitesmoke;
-
+    
 }
 
 .text-top-light {
