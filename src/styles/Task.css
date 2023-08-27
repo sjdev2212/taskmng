@@ -213,3 +213,69 @@ tr:nth-child(even) {
   font-size: 1.1vw;
 }
 
+.clear-completed-light {
+  position: relative;
+  top: -13.6vw;
+left: 68.9vw;
+  width: 10vw;
+  height: 3vw;
+
+  font-size: 1.2vw;
+  font-weight: bold;
+
+}
+.clear-completed-dark {
+  position: relative;
+  top: -12.4vw;
+left: 68.8vw;
+  width: 10vw;
+  height: 3vw;
+ 
+
+}
+.btn-clear-completed-light{
+  height: 5vw;
+  width: 8vw;
+  border-radius: 5px;
+  font-size: 1.2vw;
+  font-weight: bold;
+  background-color: #333232;
+  border: 2px solid #312f2f;
+  color: whitesmoke;
+
+}
+.btn-clear-completed-light:hover{
+  background-color: gray;
+  color: #f7eaea;
+  border: 2px solid #ece1e1;
+  transition:  1s;
+  border-radius: 10px;
+  transform: scale(0.89);
+  animation: ripple-animation 1s ease-in-out;
+  font-size: 1.1vw;
+}
+
+.btn-clear-completed-dark{
+  height: 5vw;
+  width: 8vw;
+  border-radius: 5px;
+  font-size: 1.2vw;
+  font-weight: bold;
+  background-color: #dacfcf;
+  border: 2px solid #312f2f;
+  color: #000;
+
+}
+.btn-clear-completed-dark:hover{
+  background-color: gray;
+  color: #f1d9d9;
+  border: 2px solid #3d3b3b;
+  transition:  1s;
+  border-radius: 10px;
+  transform: scale(0.89);
+  animation: ripple-animation 1s ease-in-out;
+  font-size: 1.1vw;
+}
+
+
+
