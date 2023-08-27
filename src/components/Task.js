@@ -36,6 +36,8 @@ const Task = ({
   const addBtnTheme = theme === "light" ? "add-btn-light" : "add-btn-dark";
   const addBtn = theme === "light" ? "btn-add-light" : "btn-add-dark";
   const btnsTheme = theme === "light" ? "btns-theme-light" : "btns-theme-dark";
+  const clearCompletedTheme = theme === "light" ? "clear-completed-light" : "clear-completed-dark";
+  const clearCompletedBtn = theme === "light" ? "btn-clear-completed-light" : "btn-clear-completed-dark";
   
   const textCompleted = {
     textDecoration: "line-through",
@@ -174,6 +176,18 @@ const Task = ({
     })
     .catch((error) => {});
   };
+const handleClearCompleted = async () => {
+  await axios.delete(`https://todo-danielamoroso31.b4a.run/${userId}/clear-completed`)
+  .then((response) => {
+    if (response.status === 200) {
+      navigate("/tasks");
+      getTasks();
+    }
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+}
 
  
   const taskDeleted = () =>
@@ -295,6 +309,12 @@ const Task = ({
       <div className={addBtnTheme}>
         <button className={addBtn} onClick={openModal}>
           {language === "english" ? "Add a task" : "Agregar una tarea"}
+        </button>
+      </div >
+
+      <div className={clearCompletedTheme}>
+        <button onClick={handleClearCompleted} className={clearCompletedBtn}>
+          {language === "english" ? "Clear Completed" : "Limpiar Completados"}
         </button>
       </div>
       <div style={modal ? showModal : hideModal}>
