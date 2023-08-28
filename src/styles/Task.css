@@ -216,7 +216,7 @@ tr:nth-child(even) {
 .clear-completed-light {
   position: fixed;
   top: 5.7vw;
-left: 90vw;
+  left: 90vw;
   width: 10vw;
   height: 3vw;
 
