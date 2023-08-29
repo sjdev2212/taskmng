@@ -1,4 +1,5 @@
 import React from 'react'
+import Proptypes from 'prop-types'
 import {Link} from 'react-router-dom'
 import {BsCalendar3} from 'react-icons/bs'
 import {FaTasks} from 'react-icons/fa'
@@ -17,7 +18,7 @@ const Sidebar = ({language, theme}) => {
                 
                   <Link className='link' to="/tasks" >
                 <li  >
-                  Tasks
+                  {language === 'english' ? 'Tasks' : 'Tareas'}
                  <div className={taskIconTheme}>
                     <FaTasks/>
                     </div>
@@ -26,12 +27,12 @@ const Sidebar = ({language, theme}) => {
 
                   <Link className='link' to="/bills" >
                 <li>
-                  Bills & Payments
+                {language === 'english' ? 'Bills $ Payments' : 'Facturas $ Pagos'}
                    </li>
                   </Link>
                 <Link className='link' to="/calendar" >
                 <li>
-                  Calendar
+                  {language === 'english' ? 'Calendar' : 'Calendario'}
                   <div className={calIconTheme}>
                 <BsCalendar3/>
                   </div>
@@ -45,5 +46,11 @@ const Sidebar = ({language, theme}) => {
     </>
   )
 }
+
+Sidebar.propTypes = {
+  language: Proptypes.string.isRequired,
+  theme: Proptypes.string.isRequired
+}
+
 
 export default Sidebar

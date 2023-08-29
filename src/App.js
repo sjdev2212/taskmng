@@ -1,3 +1,5 @@
+
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import axios from "axios";
@@ -11,7 +13,6 @@ import EditTask from "./components/EditTask";
 import Dater from "./components/Calendar";
 import Bills from "./components/Bills";
 import { Toaster, toast } from "react-hot-toast";
-import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useIdleTimer } from "react-idle-timer";
 
@@ -39,12 +40,12 @@ function App() {
     setIsIdle(true);
     handleLoginOut();
     navigate("/login");
-    console.log(" is idle")
+   
   };
 
   const handleOnActive = () => {
     setIsIdle(false);
-    console.log(" is active")
+   
   };
  // eslint-disable-next-line 
 const controlIdle =  useIdleTimer({
@@ -82,7 +83,7 @@ const controlIdle =  useIdleTimer({
     } else setLanguage("spanish");
   };
 
-  const handleColor = (e) => {
+  const handleColor = () => {
     if (theme === "light") {
       setTheme("dark");
       document.body.style.backgroundColor = "#333333";

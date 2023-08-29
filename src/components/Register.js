@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 import toast from "react-hot-toast";
 import axios from "axios";
 import "../styles/Register.css";
@@ -218,5 +219,10 @@ const registerBtn = theme === 'light' ? 'register-btn-light' : 'register-btn-dar
     </main>
   );
 }
+
+Register.propTypes = {
+  language: PropTypes.string.isRequired,
+  theme: PropTypes.string.isRequired,
+};
 
 export default Register;

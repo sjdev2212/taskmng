@@ -1,16 +1,12 @@
 import React from "react";
 import Sidebar from "./Sidebar";
+import PropTypes from 'prop-types';
 import "../styles/Home.css";
 
 const Home = ({
   language,
   user,
-  tasks,
   isLogged,
-  userId,
-  loading,
-  setTasks,
-  setLoading,
   theme,
 }) => {
   const welcomeTheme =
@@ -38,8 +34,8 @@ const Home = ({
                 </div>
                 <h3>
                   Organize your life with ease using our intuitive task manager.
-                  Whether it's for work, personal projects, or anything in
-                  between, we've got you covered. Say goodbye to forgetting
+                  Whether it&#39;s for work, personal projects, or anything in
+                  between, we&#39;ve got you covered. Say goodbye to forgetting
                   important tasks and hello to productivity!
                 </h3>
                 <p>Key Features:</p>
@@ -117,6 +113,13 @@ const Home = ({
       )}
     </main>
   );
+};
+
+Home.propTypes = {
+  language: PropTypes.string.isRequired,
+  user: PropTypes.string.isRequired,
+  isLogged: PropTypes.bool.isRequired,
+  theme: PropTypes.string.isRequired,
 };
 
 export default Home;

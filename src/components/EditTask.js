@@ -1,5 +1,6 @@
-import React from 'react'
+import React from 'react';
 import { useState } from "react";
+import PropTypes from 'prop-types';
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
@@ -122,5 +123,11 @@ const EditTask = ({ userId, theme, language}) => {
     </main>
   )
 }
+
+EditTask.propTypes = {
+    userId: PropTypes.number.isRequired,
+    theme: PropTypes.string.isRequired,
+    language: PropTypes.string.isRequired,
+};
 
 export default EditTask

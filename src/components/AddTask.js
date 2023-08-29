@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import PropTypes from 'prop-types';
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -50,6 +51,39 @@ const tareaAgregada = () =>
     },
     icon: "✔️",
   });
+  const problem = () =>
+  toast("Problem adding task", {
+    duration: 3000,
+    position: "middle-center",
+    style: {
+      background: {toastTheme},
+      color: {toastColor},
+      height: "18vh",
+      width: "35vh",
+      fontSize: "1.2rem",
+      border: "solid 2px black",
+      fontWeight: "bold",
+      borderRadius: "15px",
+    },
+    icon: "❌",
+  });
+  const problema = () =>
+  toast("Hubo un error agregando la tarea", {
+    duration: 3000,
+    position: "middle-center",
+    style: {
+      background: {toastTheme},
+      color: {toastColor},
+      height: "18vh",
+      width: "35vh",
+      fontSize: "1.2rem",
+      border: "solid 2px black",
+      fontWeight: "bold",
+      borderRadius: "15px",
+    },
+    icon: "❌",
+  });
+
   const handleAddTask  = async (e) => {
     e.preventDefault();
     const data = {
@@ -71,6 +105,7 @@ const tareaAgregada = () =>
        
       }
       if (response.status === 500) {
+        language === "english" ? problem() : problema();
         
       }
 
@@ -117,6 +152,14 @@ const tareaAgregada = () =>
       </form>
     </section>
   );
+};
+
+AddTask.propTypes = {
+  userId: PropTypes.number.isRequired,
+  language: PropTypes.string.isRequired,
+  closeModal: PropTypes.func.isRequired,
+  getTasks: PropTypes.func.isRequired,
+  theme: PropTypes.string.isRequired,
 };
 
 export default AddTask;

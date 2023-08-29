@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import format from "date-fns/format";
 import getDay from "date-fns/getDay";
@@ -10,6 +11,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 const locales = {
   /* "en-US": require("date-fns/locale/en-US"), */
+  //eslint-disable-next-line
 "es-ES": require("date-fns/locale/es")
 };
 const localizer = dateFnsLocalizer({
@@ -41,7 +43,7 @@ const Dater = () => {
                 <input type="text" placeholder="Add Title" style={{ width: "20%", marginRight: "10px" }} value={newEvent.title} onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })} />
                 <DatePicker placeholderText="Start Date" style={{ marginRight: "10px" }} selected={newEvent.start} onChange={(start) => setNewEvent({ ...newEvent, start })} />
                 
-                <button stlye={{ marginTop: "10px" }} onClick={handleAddEvent}>
+                <button style={{ marginTop: "10px" }} onClick={handleAddEvent}>
                     Add Event
                 </button>
             </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import PropTypes from "prop-types";
 import AddTask from "./AddTask";
 import { Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
@@ -16,7 +17,6 @@ import "../styles/Task.css";
 const Task = ({
   language,
   userId,
-  logged,
   tasks,
   loading,
   setTasks,
@@ -160,7 +160,9 @@ const Task = ({
           getTasks();
         }
       })
-      .catch((error) => {});
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
 
@@ -169,12 +171,14 @@ const Task = ({
   await  axios.put(`https://todo-danielamoroso31.b4a.run/${userId}/complete-task/${id}`)
     .then((response) => {
       if (response.status === 200) {
-     ;
+     
         navigate("/tasks");
         getTasks();
       }
     })
-    .catch((error) => {});
+    .catch((error) => {
+      console.log(error);
+    });
   };
 const handleClearCompleted = async () => {
   await axios.delete(`https://todo-danielamoroso31.b4a.run/${userId}/clear-completed`)
@@ -335,6 +339,16 @@ const handleClearCompleted = async () => {
       </div>
     </main>
   );
+};
+
+Task.propTypes = {
+  language: PropTypes.string.isRequired,
+  userId: PropTypes.number.isRequired,
+  tasks: PropTypes.array.isRequired,
+  loading: PropTypes.bool.isRequired,
+  setTasks: PropTypes.func.isRequired,
+  setLoading: PropTypes.func.isRequired,
+  theme: PropTypes.string.isRequired,
 };
 
 export default Task;
