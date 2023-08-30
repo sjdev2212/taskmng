@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import PropTypes from "prop-types";
 import format from "date-fns/format";
 import getDay from "date-fns/getDay";
 import parse from "date-fns/parse";
@@ -24,9 +25,9 @@ const localizer = dateFnsLocalizer({
 
 
 
-const Dater = () => {
+const Dater = ({language}) => {
 
-  const [newEvent, setNewEvent] = useState({ title: "", start: "" });
+  const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" });
     const [allEvents, setAllEvents] = useState("");
 
     function handleAddEvent() {
@@ -37,24 +38,36 @@ const Dater = () => {
   }
   return (
     <>
-      <h1>Calendar</h1>
-            <h2>Add New Event</h2>
+      <h1>{language === 'english' ?  'Calendar' : 'Calendario'}</h1>
+           <h2>
+           {language === 'english' ?  'Add Event' : 'Añadir Evento'}
+           </h2>
             <div>
                 <input type="text" placeholder="Add Title" style={{ width: "20%", marginRight: "10px" }} value={newEvent.title} onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })} />
-                <DatePicker placeholderText="Start Date" style={{ marginRight: "10px" }} selected={newEvent.start} onChange={(start) => setNewEvent({ ...newEvent, start })} />
+                <DatePicker placeholderText="Start Date" style={{ marginRight: "10px",marginTop:"10px" }} selected={newEvent.start} onChange={(start) => setNewEvent({ ...newEvent, start })} />
+                <DatePicker placeholderText="End Date" selected={newEvent.end} onChange={(end) => setNewEvent({ ...newEvent, end })} />
+                <br />
+                <br />
+                <br />
+                <br />
+
                 
                 <button style={{ marginTop: "10px" }} onClick={handleAddEvent}>
-                    Add Event
+                    {language === 'english' ?  'Add Event' : 'Añadir Evento'}
                 </button>
             </div>
 
 
        <div>
-    <Calendar localizer={localizer} events={allEvents} startAccessor="start"  style={{ height: 465, margin: "2vw" }} />
+    <Calendar localizer={localizer} events={allEvents} startAccessor="start" endAccessor={"end"}  style={{ height: 465, margin: "2vw" }} />
         </div>
     </>
   ) 
         
 }
+
+Dater.propTypes = {
+  language: PropTypes.string.isRequired,
+};
 
 export default Dater

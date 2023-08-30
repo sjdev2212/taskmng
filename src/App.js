@@ -290,7 +290,11 @@ const controlIdle =  useIdleTimer({
         />
         <Route 
         path="/calendar"
-        element={<Dater/>}
+        element={<Dater
+          language={language}
+        
+        />}
+       
         />
         <Route
           path="/bills"
