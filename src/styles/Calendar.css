@@ -1,0 +1,23 @@
+.parent {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+    grid-column-gap: 2px;
+    grid-row-gap: 2px;
+    border: 2px solid gray;
+    height: 30vw;
+
+    }
+ .day {
+    border: 2px solid black;
+ }
+
+ .day-header{
+    background-color: blueviolet;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 0.5rem;
+    }
+
