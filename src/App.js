@@ -10,8 +10,8 @@ import AddTask from "./components/AddTask";
 import Task from "./components/Task";
 import Home from "./components/Home";
 import EditTask from "./components/EditTask";
-import Dater from "./components/Calendar";
 import Bills from "./components/Bills";
+import Calendar from "./components/Calendar";
 import { Toaster, toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useIdleTimer } from "react-idle-timer";
@@ -288,17 +288,15 @@ const controlIdle =  useIdleTimer({
             theme={theme}
             />}
         />
-        <Route 
-        path="/calendar"
-        element={<Dater
-          language={language}
+   
         
-        />}
-       
-        />
         <Route
           path="/bills"
           element={<Bills/>}
+        />
+        <Route
+          path="/calendar"
+          element={<Calendar/>}
         />
 
         
