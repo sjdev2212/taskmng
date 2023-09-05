@@ -38,6 +38,7 @@ const Task = ({
   const btnsTheme = theme === "light" ? "btns-theme-light" : "btns-theme-dark";
   const clearCompletedTheme = theme === "light" ? "clear-completed-light" : "clear-completed-dark";
   const clearCompletedBtn = theme === "light" ? "btn-clear-completed-light" : "btn-clear-completed-dark";
+  const handleCompletedBtn = theme === "light" ? "btn-handle-completed-light" : "btn-handle-completed-dark";
   
   const textCompleted = {
     textDecoration: "line-through",
@@ -46,6 +47,7 @@ const Task = ({
   const textIncomplete = {
     textDecoration: "none",
     color: "black",
+    backgroundColor: "whitesmoke",
   };
   const disbleBtn = {
     backgroundColor: "gray",
@@ -288,11 +290,18 @@ const handleClearCompleted = async () => {
                             {language === "english" ? "Delete" : "Eliminar"}
                           </button>
                         </td>
-                        <td>{task.completed  ? 
-                        "✔️" : "❌"}
-                        <button onClick={( ) => handleComplete(task.idForTask)}>
+                        <td style={{
+                        fontWeight: "bold",
+                          fontSize: "1.5rem",
+                      }}>
+                         
+                        <button className={handleCompletedBtn} onClick={( ) => handleComplete(task.idForTask)}>
                           {language === "english" ? "Completed" : "Completada"}
                         </button>
+                        <span style={{
+                        marginLeft: "0.3vw",
+                         }}>{task.completed  ? 
+                       "✔️" : "❌"}</span>
                         
                       </td>
                     </tr>

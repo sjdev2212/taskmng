@@ -296,7 +296,11 @@ const controlIdle =  useIdleTimer({
         />
         <Route
           path="/calendar"
-          element={<Calendar/>}
+          element={<Calendar
+            language={language}
+            theme={theme}
+          
+          />}
         />
 
         
