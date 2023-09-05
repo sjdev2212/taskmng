@@ -1,0 +1,52 @@
+.addbill-cont{
+  display: flex;
+    flex-direction: column;
+    width: 38vw;
+    padding: 1vw;
+    height: 30vw;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #544f4f;
+    position: relative;
+    bottom: 8vw;
+
+}
+.addbill-form{
+    display: flex;
+        flex-direction: column;
+     
+        margin: auto;
+        padding: 1rem;
+    
+        align-items: center;
+        justify-content: center;
+}
+.addbill-form input{
+    width: 20vw;
+    height: 2vw;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.addbill-form button{
+    width: 10vw;
+    height: 2.8vw;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ccc;
+    cursor: pointer;
+}
+.addbill-form button:hover{
+    background-color: #f5f5f5;
+}
+.total {
+  position: relative;
+  bottom:  18vw;     
+    left:  25vw;
+font-size: 1.5vw;
+font-weight: bold;
+}
+

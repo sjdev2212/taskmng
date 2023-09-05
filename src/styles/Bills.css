@@ -1,0 +1,42 @@
+.bills-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+    margin: 1rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    height: 38vw;
+    overflow: auto;
+    background-color: #191919;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,.2);
+    color: #cccc;
+
+}
+
+.show-bills{
+border : 2px solid black;
+
+margin: auto ;  
+width: 45vw;
+}
+.expense{
+    display: flex;
+    border: 1px solid #242222;
+    background-color: #262626;
+    gap: 1rem;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 5px;
+    height: 2vw;
+}
+.bills-section{
+
+  
+    margin: auto ;
+    display:flex;
+    height: 20vw;
+
+   
+
+} 

@@ -4,6 +4,9 @@ import '../styles/Calendar.css';
 
 function Calendar({language, theme}) {
   const [date, setDate] = useState(new Date());
+  const today = date.getDate();
+
+ 
 const calHeaderTheme = theme === 'light' ? 'calendar-header-light' : 'calendar-header-dark';
   const daysInMonth = () => {
     const year = date.getFullYear();
@@ -23,6 +26,8 @@ const calHeaderTheme = theme === 'light' ? 'calendar-header-light' : 'calendar-h
     const startDay = firstDayOfMonth();
     const dayNames = language === 'english'?  ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'];
 
+ 
+
     for (let i = 0; i < dayNames.length; i++) {
       days.push(
         <div key={`day-name-${i}`} className="day-header">
@@ -37,8 +42,12 @@ const calHeaderTheme = theme === 'light' ? 'calendar-header-light' : 'calendar-h
 
     for (let i = 1; i <= daysCount; i++) {
       days.push(
-        <div key={`day-${i}`} className="day">
-          {i}
+        <div  id='day' 
+    
+          key={`day-${i}`}
+           className={today === i ? 'day-today' : 'day'}>
+         
+         {i}
         </div>
       );
     }
@@ -53,8 +62,12 @@ const calHeaderTheme = theme === 'light' ? 'calendar-header-light' : 'calendar-h
   const handleNextMonth = () => {
     setDate(new Date(date.getFullYear(), date.getMonth() + 1, 1));
   };
-console.log(language)
+
   const options = language === 'english' ? 'default': 'es';
+
+
+
+
   return (
     <div className="calendar">
       <div className={calHeaderTheme}>

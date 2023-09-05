@@ -21,7 +21,7 @@
     align-items: center;
     width: 80vw;
     height: 35vw;
-    background-color: #333333;
+   background-color: #262626;
     color: #CCCCCC;
     font-size: 1.5rem;
     font-weight: bold;
@@ -115,15 +115,15 @@
     margin-top: 1.7vw;
     margin-left: 0.7vw;
     border-bottom: 2px solid #222122;
-    background-image: url("../img/hometext.jpg");
+    background-image: url("../img/green.svg");
     background-size: cover;
     height: 40.8vw;
-    opacity: 0.65;
+
     background-color: aliceblue;
     font-size: large;
     width: 80vw;
     border-radius: 15px;
-    color: #000000;
+    color: #e4efe4;
 
 }
 
@@ -131,11 +131,10 @@
     margin-top: 2vw;
     margin-left: 17.4vw;
     border-bottom: 2px solid #cfc9cf;
-    background-image: url("../img/hometext.jpg");
+    background-image: url("../img/hometext.svg");
     background-size: cover;
     height: 40.8vw;
-    opacity: 0.6;
-    background-color: rgb(41, 42, 43);
+
     font-size: large;
     width: 80vw;
     border-radius: 15px;
@@ -184,7 +183,7 @@
     margin: 0 10px;
     font-size: 1.1vw;
     font-weight: bold;
-    color: #000000;
+    color: #e1efdf;
     text-transform: uppercase;
     cursor: pointer;
     transition: all 0.3s ease-in-out;

@@ -5,12 +5,47 @@
     grid-column-gap: 2px;
     grid-row-gap: 2px;
     border: 2px solid gray;
-    height: 30vw;
 
     }
  .day {
     border: 2px solid black;
- }
+    width: 14vw;
+      height: 7vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2vw;
+      font-weight: bold;
+      color: #222122;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+
+      }
+      .day:hover {
+         background-color: #222122;
+         color: #d0d1d3;
+         }
+
+         .day-today {
+            border: 2px solid rgb(218, 0, 0);
+            width: 14vw;
+              height: 7vw;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 1.2vw;
+              font-weight: bold;
+              color: #e0d1e0;
+              background-color: rgb(100, 101, 100);
+              cursor: pointer;
+              transition: all 0.3s ease-in-out;
+        
+              }
+              .day-today:hover {
+                 background-color: #dde8dc;
+                 color: #353835;
+                 }
+        
 
  .day-header{
     background-color: rgb(72, 73, 71);
@@ -19,6 +54,8 @@
     font-size: 1.5rem;
     text-align: center;
     padding: 0.5rem;
+    height: 3vw;
+  
     }
 
     .calendar-header-light{

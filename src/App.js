@@ -30,10 +30,8 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [theme, setTheme] = useState("light");
   const [isIdle, setIsIdle] = useState(false);
+  const [bills, setBills] = useState([]);
   
-
-
-
   const navigate = useNavigate();
 
   const handleOnIdle = () => {
@@ -292,15 +290,24 @@ const controlIdle =  useIdleTimer({
         
         <Route
           path="/bills"
-          element={<Bills/>}
+          element={<Bills
+            language={language}
+            theme={theme}
+            userId={userId}
+            bills={bills}
+            setBills={setBills}
+            loading={loading}
+            setLoading={setLoading}
+            
+          
+          />}
         />
         <Route
           path="/calendar"
           element={<Calendar
             language={language}
             theme={theme}
-          
-          />}
+           />}
         />
 
         

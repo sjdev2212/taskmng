@@ -21,6 +21,7 @@
   padding:7vw 20vw;
   height: 25vw;
   overflow: scroll;
+  background-color: #191919;
  
   flex-direction: column;
 
@@ -144,7 +145,7 @@ table {
 
 /* Style table headers */
 th {
-  background-color: #052502;
+  background-color: #040704;
   padding: 10px;
   color: white;
   width: 10vw;
