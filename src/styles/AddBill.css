@@ -1,14 +1,15 @@
 .addbill-cont{
   display: flex;
     flex-direction: column;
-    width: 38vw;
+    width: 36vw;
     padding: 1vw;
-    height: 30vw;
+    height: 31.7vw;
     align-items: center;
     justify-content: center;
     border: 2px solid #544f4f;
     position: relative;
-    bottom: 8vw;
+    bottom: 7vw;
+    right: 4vw;
 
 }
 .addbill-form{
@@ -44,9 +45,11 @@
 }
 .total {
   position: relative;
-  bottom:  18vw;     
-    left:  25vw;
+
 font-size: 1.5vw;
 font-weight: bold;
+background-color: #0e0d0d;
+color: #e9c3c3;
+;
 }
 

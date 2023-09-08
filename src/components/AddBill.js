@@ -120,13 +120,14 @@ const problema = () =>
 
   return (
     <>
-    <div className="total">
+
+ 
+      <section className="addbill-cont"  >
+      <div className="total">
       <h1>Total
       <br></br><span>${total}</span>
       </h1>
     </div>
-
-      <section className="addbill-cont"  >
       <h1>{language === "english" ? "Add bill" : "Agregar gasto"}</h1>
         <form className="addbill-form" >
           <label htmlFor="name">
@@ -163,7 +164,7 @@ const problema = () =>
           >
             {language === "english" ? "Add bill" : "Agregar gasto"}
           </button>
-          -
+   
         </form>
       </section>
     </>

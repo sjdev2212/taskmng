@@ -1,5 +1,6 @@
 import React from "react";
 import Sidebar from "./Sidebar";
+import Homepage from "./Homepage";
 import PropTypes from 'prop-types';
 import "../styles/Home.css";
 
@@ -8,12 +9,12 @@ const Home = ({
   user,
   isLogged,
   theme,
+  isAuthenticated,
+  handleLoginOut,
+  handleColor,
+
+
 }) => {
-  const welcomeTheme =
-    theme === "light" ? "welcomeText-light" : "welcomeText-dark";
-  const textTop = theme === "light" ? "text-top-light" : "text-top-dark";
-  const upperSection =
-    theme === "light" ? "upper-section-light" : "upper-section-dark";
 
   return (
     <main
@@ -24,12 +25,14 @@ const Home = ({
       {isLogged ? (
         <>
         
+        
           <section>
+            
          
             {language === "english" ? (
-              <div className={welcomeTheme}>
-                <div className={textTop}>
-                  <div className={upperSection}></div>
+              <div >
+                <div >
+                  <div></div>
                   <h1>Welcome to Task Manager {user}!</h1>
                 </div>
                 <h3>
@@ -52,9 +55,9 @@ const Home = ({
                 </p>
               </div>
             ) : (
-              <div className={welcomeTheme}>
-                <div className={textTop}>
-                  <div className={upperSection}></div>
+              <div >
+                <div >
+                  <div ></div>
                   <h1>Bienvenido/a al Organizador de Tareas {user}!</h1>
                 </div>
                 <h3>
@@ -85,7 +88,7 @@ const Home = ({
           </div>
         </>
       ) : (
-        <section
+      /*   <section
           className={
             theme === "light" ? "home-mobile-light" : "home-mobile-dark"
           }
@@ -109,8 +112,20 @@ const Home = ({
               </p>
             </div>
           </div>
-        </section>
-      )}
+        </section> */
+        <div>
+          <Homepage 
+          language={language}
+          theme={theme}
+          isAuthenticated={isAuthenticated}
+          handleLoginOut={handleLoginOut}
+          handleColor={handleColor}
+          
+
+          
+          />
+        </div>
+      )} 
     </main>
   );
 };
@@ -120,6 +135,10 @@ Home.propTypes = {
   user: PropTypes.string.isRequired,
   isLogged: PropTypes.bool.isRequired,
   theme: PropTypes.string.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  handleLoginOut: PropTypes.func.isRequired,
+  handleColor: PropTypes.func.isRequired,
+  
 };
 
 export default Home;

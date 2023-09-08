@@ -1,14 +1,13 @@
 .navbar-light{
-    border: 2px solid gray;
-    border-radius: 15px;
-    background-color: #dddfe4;
-    color: gray;
+    background-color: #1E2636;
+    color: #e2e4eb;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
     height: 2.5vw;
-    margin: 0 0.6vw;
+    margin: 0 5.vw;
+
     
  
 }
@@ -16,7 +15,7 @@
 .brand-light{
     font-size: 1.3rem;
     font-weight: bold;
-    color: #181718;
+    color:#e2e4eb;
     text-decoration: none;
 }
 
@@ -84,7 +83,7 @@ margin-right: 1vw; ;
 .btns-light {
     text-decoration: none ;
 padding: 0 10vw;
-color: #2a272b;
+color:#e2e4eb;
 font-size: 1.5vw;
  
 }
@@ -110,8 +109,8 @@ font-size: 1.5vw;
 .navbar-dark{
     border: 2px solid gray;
     border-radius: 15px;
-    background-color: #dddfe4;
-    color: gray;
+    background-color: #555755;
+    color: rgb(224, 243, 218);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -125,7 +124,7 @@ font-size: 1.5vw;
 .brand-dark{
     font-size: 1.3rem;
     font-weight: bold;
-    color: #181718;
+    color: #f5fdf4;
     text-decoration: none;
 }
 
@@ -138,7 +137,7 @@ justify-content: space-around;
 
 .btn-logout-dark{
     text-decoration: none ;
-    color: #ccb1ca;
+    color: #b3bbb2;
     font-size: 1.2vw;
     font-weight: bold;
     background-color: #505358;
@@ -166,7 +165,7 @@ justify-content: space-around;
     list-style: none;
     padding: 0;
     margin: 0;
-    color: #000;
+    color: #d9e1d7;
     border: 2px solid #DA43F0;
 }
 
@@ -193,7 +192,7 @@ margin-right: 1vw; ;
 .btns-dark {
     text-decoration: none ;
 padding: 0 10vw;
-color: #2a272b;
+color: #ccd6ca;
 font-size: 1.5vw;
  
 }

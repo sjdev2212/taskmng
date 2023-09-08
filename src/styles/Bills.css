@@ -16,9 +16,11 @@
 
 .show-bills{
 border : 2px solid black;
-
 margin: auto ;  
-width: 45vw;
+width: 46vw;
+overflow: auto; 
+height: 34vw;
+
 }
 .expense{
     display: flex;

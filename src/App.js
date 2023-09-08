@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import axios from "axios";
-import Navbar from "./components/Navbar";
+/* import Navbar from "./components/Navbar"; */
 import Register from "./components/Register";
 import Login from "./components/Login";
 import AddTask from "./components/AddTask";
@@ -204,7 +204,7 @@ const controlIdle =  useIdleTimer({
   return (
     <>
   
-      <Navbar
+ {/*      <Navbar
         isLogged={isLogged}
         isAuthenticated={isAuthenticated}
         handleLoginOut={handleLoginOut}
@@ -213,7 +213,7 @@ const controlIdle =  useIdleTimer({
         handleColor={handleColor}
         theme={theme}
      
-      />
+      /> */}
 
       <Routes>
         <Route
@@ -230,6 +230,11 @@ const controlIdle =  useIdleTimer({
               setUserId={setUserId}
               setLoading={setLoading}
               theme={theme}
+              isAuthenticated={isAuthenticated}
+              handleLoginOut={handleLoginOut}
+              handleLanguage={handleLanguage}
+              handleColor={handleColor}
+           
             />
           }
         />
