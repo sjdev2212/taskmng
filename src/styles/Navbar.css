@@ -1,5 +1,5 @@
 .navbar-light{
-    border: 2px solid gray;
+    border: 2px solid rgb(43, 42, 42);
     border-radius: 15px;
     background-color: #dddfe4;
     color: gray;
@@ -8,7 +8,10 @@
     align-items: center;
     padding: 10px;
     height: 2.5vw;
-    margin: 0 0.6vw;
+   margin-left: auto;
+    margin-right: auto;
+    margin-top: 0.2vw;
+  
     
  
 }
@@ -108,16 +111,18 @@ font-size: 1.5vw;
 /*=============dark=================*/
 
 .navbar-dark{
-    border: 2px solid gray;
+    border: 2px solid rgb(180, 177, 177);
     border-radius: 15px;
-    background-color: #dddfe4;
+    background-color: #404040;
     color: gray;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
     height: 2.5vw;
-    margin: 0 0.6vw;
+   margin-left: auto;
+    margin-right: auto;
+    margin-top: 0.2vw;
     
  
 }
@@ -125,7 +130,7 @@ font-size: 1.5vw;
 .brand-dark{
     font-size: 1.3rem;
     font-weight: bold;
-    color: #181718;
+    color: #fffbff;
     text-decoration: none;
 }
 
@@ -179,10 +184,10 @@ justify-content: space-around;
 
 
 .select-dark  { 
-background-color: #ced4c8;
-border: #383438;
+background-color: #404040;
+border: #faf3fa;
 border-radius: 8px;
-color: #4b464b;
+color: whitesmoke;
 font-size: 1.1vw;
 height: 2vw;
 margin-right: 1vw; ;
@@ -193,14 +198,14 @@ margin-right: 1vw; ;
 .btns-dark {
     text-decoration: none ;
 padding: 0 10vw;
-color: #2a272b;
+color:whitesmoke;
 font-size: 1.5vw;
  
 }
 
 .btn-theme-dark{
-    color: #67695c;
-   background-color: #d4d9e9;
+    color: #eaebea;
+   background-color: #404040;
     font-size: 1.5vw;
     cursor: pointer;
     height: 2.3vw;

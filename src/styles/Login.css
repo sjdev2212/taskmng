@@ -13,9 +13,9 @@
     align-items: center;
     width: 60%;
     height: 54vh;
-    border: 2px solid rgb(196, 187, 187);
+    border: 2px solid #7c7b7c;
     border-radius: 15px;
-    background-color: 	#D3D3D3;
+    background-color: 	#e4e5f0;
 }
 .container-login-dark{
     display: flex;
@@ -27,7 +27,7 @@
     border: 2px solid rgb(223, 211, 211);
     border-radius: 15px;
     
-    background-color:  	#423f3f;
+    background-color:  	#353536;
 }
 
 .title-login-light {

@@ -1,95 +1,21 @@
 import React from "react";
-import Sidebar from "./Sidebar";
-import PropTypes from 'prop-types';
+
+import Homepage from "./Homepage";
+import PropTypes from "prop-types";
 import "../styles/Home.css";
 
-const Home = ({
-  language,
-  user,
-  isLogged,
-  theme,
-}) => {
-  const welcomeTheme =
-    theme === "light" ? "welcomeText-light" : "welcomeText-dark";
-  const textTop = theme === "light" ? "text-top-light" : "text-top-dark";
-  const upperSection =
-    theme === "light" ? "upper-section-light" : "upper-section-dark";
+const Home = ({ language, user, isLogged, theme }) => {
+  const homeConTheme =
+    theme === "light" ? "home-container-light" : "home-container-dark";
 
   return (
-    <main
-      className={
-        theme === "light" ? "home-container-light" : "home-container-dark"
-      }
-    >
+    <main>
       {isLogged ? (
         <>
-        
-          <section>
-         
-            {language === "english" ? (
-              <div className={welcomeTheme}>
-                <div className={textTop}>
-                  <div className={upperSection}></div>
-                  <h1>Welcome to Task Manager {user}!</h1>
-                </div>
-                <h3>
-                  Organize your life with ease using our intuitive task manager.
-                  Whether it&#39;s for work, personal projects, or anything in
-                  between, we&#39;ve got you covered. Say goodbye to forgetting
-                  important tasks and hello to productivity!
-                </h3>
-                <p>Key Features:</p>
-                <ul>
-                  <li>- Create tasks and set due dates.</li>
-                  <li> Prioritize tasks to stay focused.</li>
-                  <li>- Categorize tasks for better organization.</li>
-                  <li>- Get reminders so you never miss a deadline.</li>
-                  <li>- Collaborate with others by sharing tasks.</li>
-                </ul>
-                <p>
-                  Get started now and take control of your tasks like never
-                  before. Your productive journey begins here!
-                </p>
-              </div>
-            ) : (
-              <div className={welcomeTheme}>
-                <div className={textTop}>
-                  <div className={upperSection}></div>
-                  <h1>Bienvenido/a al Organizador de Tareas {user}!</h1>
-                </div>
-                <h3>
-                  ¡Organiza tu vida con facilidad usando nuestro intuitivo
-                  gestor de tareas! Ya sea para el trabajo, proyectos personales
-                  o cualquier otra cosa, ¡estamos aquí para ayudarte! Di adiós a
-                  olvidar tareas importantes y di hola a la productividad.
-                </h3>
-                <p>Funciones principales:</p>
-                <ul>
-                  <li>- Crea tareas y establece fechas límite.</li>
-                  <li>-Prioriza tareas para mantener el enfoque.</li>
-                  <li>-Clasifica tareas para una mejor organización.</li>
-                  <li>
-                    -Recibe recordatorios para nunca perder una fecha límite.
-                  </li>
-                  <li>-Colabora con otros compartiendo tareas.</li>
-                </ul>
-                <p>
-                  Comienza ahora y toma el control de tus tareas como nunca
-                  antes. ¡Tu jornada productiva comienza aquí!
-                </p>
-              </div>
-            )}
-          </section>
-          <div>
-            <Sidebar language={language} theme={theme} />
-          </div>
+          <Homepage language={language} user={user} theme={theme} />
         </>
       ) : (
-        <section
-          className={
-            theme === "light" ? "home-mobile-light" : "home-mobile-dark"
-          }
-        >
+        <section className={homeConTheme}>
           <div className="mob-card">
             <div className="home-group">
               <h1>{language === "english" ? "Task Manager" : "Organizador"}</h1>

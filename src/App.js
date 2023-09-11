@@ -18,6 +18,7 @@ import { useIdleTimer } from "react-idle-timer";
 
 
 
+
 function App() {
   const [isLogged, setIsLogged] = useState(false);
   const [token, setToken] = useState(null);
@@ -37,7 +38,7 @@ function App() {
   const handleOnIdle = () => {
     setIsIdle(true);
     handleLoginOut();
-    navigate("/login");
+    navigate("/");
    
   };
 
@@ -309,6 +310,7 @@ const controlIdle =  useIdleTimer({
             theme={theme}
            />}
         />
+ 
 
         
       </Routes>

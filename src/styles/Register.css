@@ -16,7 +16,7 @@
     height: 65vh;
     border: 2px solid #7c7b7c;
     border-radius: 15px;
-    background-color: #b0b1b4;
+    background-color: #e4e5f0;
 }
 .container-register-dark {
     display: flex;
@@ -30,7 +30,7 @@
     background-color: #353536;
 }
 .register-title-light {
-    color: rgb(104, 101, 101);
+    color: rgb(85, 82, 82);
     font-size:3vw;
     font-weight: bold;
     position: relative;
@@ -70,7 +70,7 @@
     align-items: center;
 }
 .register-labels-light {
-    color:#737274;
+    color:#484049;
     font-size: 1.2vw;
     font-weight: bold;
 }
@@ -81,21 +81,21 @@
 }
 
 .register-btn-light {
-    width: 8rem;
-    height: 2.8rem;
+    width: 15vw;
+    height: 4vw;
     border-radius: 15px;
     border: 1px solid rgb(15, 15, 15);
     margin-bottom: 1rem;
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     font-weight: bold;
-    background-color: #d7d4d8;
-    color: rgb(44, 42, 42);
+    background-color: #070707;
+    color: rgb(219, 212, 212);
     cursor: pointer;
 }
 
 .register-btn-light:hover {
-    background-color: #3b3c3f;
-    color: #ede4ee;
+    background-color: #a1a6b4;
+    color: #252325;
     transition: 0.6s;
 }
 .register-btn-dark{

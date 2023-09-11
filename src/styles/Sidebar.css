@@ -1,8 +1,9 @@
 .sidebar-container-light{
-height: 40.5vw;
-width: 18.9vw;
+height: 42vw;
+width: 22vw;
 position: relative;
-top: 0.7vw;
+top:-0.7vw;
+right: -0.8vw;
 box-shadow: 0 0 10px rgba(0,0,0,0.1);
 transition: all 0.3s ease-in-out;
 background-color: #d0d1d3;;
@@ -45,19 +46,28 @@ border: 2px solid #182517;
       transition: all 0.3s ease-in-out;
     }
     .ul-theme-light li:hover {
-      background-color: #186A3B;
+      background-color: #060707;
       color: #d0d1d3;
     }
+    
 
     .cal-icon-light{
       margin : 0.7vw;
       font-size: 1.8vw;
       color: #332e33;
     }
+    .cal-icon-light:hover{
+      color: #eef2f7;
+    }
     .task-icon-light{
       margin : 0.7vw;
       font-size: 1.8vw;
       color: #332e33;
+    }
+    .task-icon-light:hover{
+      margin : 0.7vw;
+      font-size: 1.8vw;
+      color: #ebdbeb;
     }
     .link {
       text-decoration: none;
@@ -92,15 +102,16 @@ border: 2px solid #182517;
     /*----------dark-------------*/ 
 
     .sidebar-container-dark{
-height: 40.5vw;
-width: 18.9vw;
-position: relative;
-top: 0.7vw;
-box-shadow: 0 0 10px rgba(0,0,0,0.1);
-transition: all 0.3s ease-in-out;
-background-color: #d0d1d3;;
-border-radius: 15px;
-border: 2px solid #182517;
+      height: 42vw;
+      width: 22vw;
+      position: relative;
+      top:-0.7vw;
+      right: -0.8vw;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      transition: all 0.3s ease-in-out;
+      background-color: #404040;;
+      border-radius: 15px;
+      border: 2px solid #182517;
  
 
 }
@@ -126,31 +137,34 @@ border: 2px solid #182517;
       width: 15vw;
       height: 5vw;
       border-radius: 5px;
-      background-color: #d0d1d3;
-      border: 2px solid #222122;
+      background-color: #313233;
+      border: 2px solid #e6d7e6;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.2vw;
       font-weight: bold;
-      color: #222122;
+      color: #eee7ee;
       cursor: pointer;
       transition: all 0.3s ease-in-out;
     }
     .ul-theme-dark li:hover {
-      background-color: #186A3B;
-      color: #d0d1d3;
+      background-color: #bdcec4;
+      color: #111213;
     }
 
     .cal-icon-dark{
       margin : 0.7vw;
       font-size: 1.8vw;
-      color: #332e33;
+      color: #e7dbe7;
+    }
+    .cal-icon-dark:hover{
+      color: #111213;
     }
     .task-icon-dark{
       margin : 0.7vw;
       font-size: 1.8vw;
-      color: #332e33;
+      color: #f1e3f1;
     }
     .link {
       text-decoration: none;
@@ -166,7 +180,7 @@ border: 2px solid #182517;
       width: 15vw;
       height: 5vw;
       border-radius: 5px;
-      background-color: #d0d1d3;
+      background-color: #1f2022;
       border: 2px solid #222122;
       display: flex;
       align-items: center;
