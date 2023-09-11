@@ -14,7 +14,6 @@ import { BsCheckCircle } from "react-icons/bs";
 import { ImCross } from "react-icons/im";
 import Icon from "@mdi/react";
 import "../styles/Task.css";
-
 const Task = ({
   language,
   userId,
@@ -25,7 +24,6 @@ const Task = ({
   theme,
 }) => {
   const [modal, setModal] = useState(false);
-  
 
   const navigate = useNavigate();
   const toastTheme = theme === "light" ? "whitesmoke" : "gray ";
@@ -41,7 +39,13 @@ const Task = ({
   const addTaskContTheme =
     theme === "light" ? "add-task-cont-light" : "add-task-cont-dark";
   const noTasker = theme === "light" ? "notask-btn-light" : "notask-btn-dark";
-  const addTaskWithItems = theme === "light" ? "add-btn-items-light" : "add-btn-items-dark";
+/*   const addTaskWithItems =
+    theme === "light" ? "add-btn-items-light" : "add-btn-items-dark"; */
+  const idBtnTheme = theme === "light" ? "btn-add-light" : "btn-add-dark";
+  const clearCompletedTheme = theme === "light" ? "clear-btn-light" : "clear-btn-dark"; 
+  const btnClearCom = theme === "light" ? "btn-clear-com-light" : "btn-clear-com-dark"; 
+  const checkTheme = theme === "light" ? "hover-check-light" : "hover-check-dark";
+  const btnDelCont = theme === "light" ? "btn-cont-delete-light" : "btn-cont-delete-dark";
 
   /*   const textCompleted = {
     textDecoration: "line-through",
@@ -137,7 +141,7 @@ const Task = ({
     top: "0.5vw",
     right: "0.5vw",
     color: "whitesmoke",
-    backgroundColor: "#404040", 
+    backgroundColor: "#404040",
     cursor: "pointer",
     border: "none",
     outline: "none",
@@ -172,38 +176,38 @@ const Task = ({
 
   const handleCompleted = async (id) => {
     await axios
+      .put(`https://todo-danielamoroso31.b4a.run/${userId}/complete-task/${id}`)
+      .then((response) => {
+        if (response.status === 200) {
+          navigate("/tasks");
+          getTasks();
+        }
+      })
+      .catch((error) => {
+        console.error("API Error:", error.message);
+      });
+  };
+  const handleIncomplete = async (id) => {
+    await axios
       .put(
-        `https://todo-danielamoroso31.b4a.run/${userId}/complete-task/${id}`
+        `https://todo-danielamoroso31.b4a.run/${userId}/incomplete-task/${id}`
       )
       .then((response) => {
         if (response.status === 200) {
           navigate("/tasks");
           getTasks();
         }
-      }
-      )
+      })
       .catch((error) => {
-        console.error('API Error:', error.message);
+        console.error("API Error:", error.message);
       });
-
-   
-
-       
-
-
-
-  
-
   };
 
 
 
-
-
-  
   const handleClearCompleted = async () => {
     await axios
-      .delete(`https://todo-danielamoroso31.b4a.run/${userId}/clear-completed`)
+      .delete(`https://todo-danielamoroso31.b4a.run/${userId}/delete-completed-tasks`)
       .then((response) => {
         if (response.status === 200) {
           navigate("/tasks");
@@ -266,67 +270,97 @@ const Task = ({
         <section>
           {tasks.length === 0 ? (
             <div className={noTasksTheme}>
-               
-              {language === "english"
-                ? ( <h3>You do not have any tasks yet</h3>)
-                : ( <h3>No tienes tareas todavía</h3>)}
-                 <div className="btn-notasks">
-                  <button className={noTasker} onClick={openModal}>
-                    {language === "english"
-                      ? "Add a task"
-                      : "Agregar una tarea"}
-                  </button>
-                </div>
+              {language === "english" ? (
+                <h3>You do not have any tasks yet</h3>
+              ) : (
+                <h3>No tienes tareas todavía</h3>
+              )}
+              <div className="btn-notasks">
+                <button className={noTasker} onClick={openModal}>
+                  {language === "english" ? "Add a task" : "Agregar una tarea"}
+                </button>
+              </div>
             </div>
-            
           ) : (
             <>
-                <div>
-                  <button className={addTaskWithItems} onClick={openModal}>
-                    {language === "english"
-                      ? "Add a task"
-                      : "Agregar una tarea"}
-                  </button>
-                </div>
-                <div>
-                  <button onClick={handleClearCompleted}>
-                    {language === "english"
-                      ? "Clear Completed"
-                      : "Limpiar Completados"}
-                  </button>
-                </div>
-            
-            <section className={showTasksTheme}  >
+              <div>
+                <button   id={idBtnTheme}  onClick={openModal}>
+                  {language === "english" ? "Add a task" : "Agregar una tarea"}
+                </button>
+              </div>
+              <div>
+                <button className={clearCompletedTheme} onClick={handleClearCompleted}>
+                  {language === "english"
+                    ? "Clear Completed"
+                    : "Limpiar Completados"}
+                </button>
+              </div>
 
+              <section className={showTasksTheme}>
                 {tasks.map((task) => (
                   <div className={taskItemTheme} key={task.idForTask}>
-                    <span className="task-detail">Name: {task.title}</span>
-                    <span className="task-detail">
-                      Description: {task.description}
-                    </span>
-                    <button onClick={() => handleCompleted(task.idForTask)}  >
-                      Completed:{" "}
+                    <div className="task-detail">
+                      <div style={{
+                        textDecoration: "underline",
+                        fontWeight: "500",
+                        fontSize: "1.2vw",
+                        fontFamily: "Sans-serif",
+                      }}>
+                { language === 'english' ? "Title:" : "Titulo:"}
+                      </div>
+                       <div>
+                       {task.title}
+                       </div>
+                       
+                       </div>
+                    <div className="task-detail">
+                     <div
+                     style={{
+                      textDecoration: "underline",
+                      fontWeight: "500",
+                      fontSize: "1.2vw",
+                      fontFamily: "Sans-serif",
+                    }}
+                     
+                     
+                     >{language === 'english' ?  "Description:" : "Descripcion:"}</div>
+                     <div>
+                       {task.description}
+                       </div>
+                    </div>
+                    <div className="task-detail"> 
+                    <div
+                     style={{
+                      textDecoration: "underline",
+                      fontWeight: "500",
+                      fontSize: "1.2vw",
+                      fontFamily: "Sans-serif",
+                    }}>
+                      {language === 'english' ?  "Completed?" : "Completado?"}
+                    </div>
+
+
+                    <button className={btnClearCom} onClick={task.completed ?  () =>handleIncomplete(task.idForTask) : () => handleCompleted(task.idForTask)}>
+                     
+                      {" "}
                       {task.completed ? (
-                        <BsCheckCircle  
-                     style={{ color: "green", fontSize: "1.4vw" }}/>
+                        <BsCheckCircle
+                        className={checkTheme}
+                        
+                        />
                       ) : (
-                        <ImCross
-                      
-                        style={{ color: "red", fontSize: "1.4vw" }} />
+                        <ImCross className="hover-crossed" />
                       )}
                     </button>
-                    <button
-                      onClick={() => handleDelete(task.idForTask)}
-                     
-                    >
-                      <BsTrash3Fill 
-                       className="btn-delete-task"/>
+                    </div>
+                    <button className={btnDelCont} onClick={() => handleDelete(task.idForTask)}>
+                      <BsTrash3Fill className="btn-delete-task" />
                     </button>
                   </div>
                 ))}
-              
               </section>
-              </> )}
+            </>
+          )}
         </section>
       )}
 

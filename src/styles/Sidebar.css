@@ -148,6 +148,8 @@ border: 2px solid #182517;
       cursor: pointer;
       transition: all 0.3s ease-in-out;
     }
+
+
     .ul-theme-dark li:hover {
       background-color: #bdcec4;
       color: #111213;
@@ -166,14 +168,7 @@ border: 2px solid #182517;
       font-size: 1.8vw;
       color: #f1e3f1;
     }
-    .link {
-      text-decoration: none;
-      color: #000;
-     
-    }
-    .link:hover{
-      color: #f3e2e2;
-    }
+
     .link-theme-dark{
       margin: 0.5vw;
       padding: 0.5vw;

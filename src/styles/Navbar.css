@@ -134,12 +134,6 @@ font-size: 1.5vw;
     text-decoration: none;
 }
 
-.ul-btns {
-list-style: none;
-display: flex;
-justify-content: space-around;
- 
-}
 
 .btn-logout-dark{
     text-decoration: none ;
@@ -161,27 +155,6 @@ justify-content: space-around;
     color:  gray;
     transition: 0.6s;
 }
-
-.menu-section {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 20%; 
-    height: 20vw;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    color: #000;
-    border: 2px solid #DA43F0;
-}
-
-.menu-section-hide {
-    display: none;
-}
-.navbar-mobile {
-    display: none;
-}
-
 
 .select-dark  { 
 background-color: #404040;

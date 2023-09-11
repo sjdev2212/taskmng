@@ -102,6 +102,8 @@ const tareaAgregada = () =>
         navigate("/tasks");
         closeModal();
         getTasks();
+        setTitle("");
+        setDescription("");
        
       }
       if (response.status === 500) {
