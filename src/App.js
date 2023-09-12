@@ -299,7 +299,7 @@ const controlIdle =  useIdleTimer({
             setBills={setBills}
             loading={loading}
             setLoading={setLoading}
-            
+          
           
           />}
         />

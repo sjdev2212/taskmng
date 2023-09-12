@@ -2,91 +2,95 @@ import React from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import "../styles/AddBill.css";
 
-const AddBill = ({ userId, language, getBills, theme,total }) => {
+const AddBill = ({ userId, language, getBills, theme, total, handleTotal }) => {
   const [name, setName] = useState("");
   const [amount, setAmount] = useState(0);
   const [dueDate, setDueDate] = useState("");
+  console.log(theme);
 
   const navigate = useNavigate();
 
-    const toastTheme = theme === "light" ? "whitesmoke" : "gray ";
-    const toastColor = theme === 'light' ? 'black' : 'whitesmoke'
+  const toastTheme = theme === "light" ? "whitesmoke" : "gray ";
+  const toastColor = theme === "light" ? "black" : "whitesmoke";
+  const addBillConTheme =
+    theme === "light" ? "add-bill-con-light" : "add-bill-con-dark";
 
+  useEffect(() => {
+    handleTotal();
+    // eslint-disable-next-line
+  }, [total]);
 
-const billAdded = () =>
+  const billAdded = () =>
     toast("Bill added", {
-        duration: 3000,
-        position: "middle-center",
-        style: {
-            background: { toastTheme },
-            color: { toastColor },
-            height: "18vh",
-            width: "35vh",
-            fontSize: "1.2rem",
-            fontWeight: "bold",
-            border: "solid 2px black",
-            borderRadius: "15px",
-
-        },
-        icon: "✔️",
+      duration: 3000,
+      position: "middle-center",
+      style: {
+        background: { toastTheme },
+        color: { toastColor },
+        height: "18vh",
+        width: "35vh",
+        fontSize: "1.2rem",
+        fontWeight: "bold",
+        border: "solid 2px black",
+        borderRadius: "15px",
+      },
+      icon: "✔️",
     });
-const gastoAgregado = () =>
+  const gastoAgregado = () =>
     toast("Gasto agregado", {
-        duration: 3000,
-        position: "middle-center",
-        style: {
-            background: { toastTheme },
-            color: { toastColor },
-            height: "18vh",
-            width: "35vh",
-            fontSize: "1.2rem",
-            border: "solid 2px black",
-            fontWeight: "bold",
-            borderRadius: "15px",
-        },
-        icon: "✔️",
+      duration: 3000,
+      position: "middle-center",
+      style: {
+        background: { toastTheme },
+        color: { toastColor },
+        height: "18vh",
+        width: "35vh",
+        fontSize: "1.2rem",
+        border: "solid 2px black",
+        fontWeight: "bold",
+        borderRadius: "15px",
+      },
+      icon: "✔️",
     });
-const problem = () =>
+  const problem = () =>
     toast("Problem adding bill", {
-        duration: 3000,
-        position: "middle-center",
-        style: {
-            background: { toastTheme },
-            color: { toastColor },
-            height: "18vh",
-            width: "35vh",
-            fontSize: "1.2rem",
-            border: "solid 2px black",
-            fontWeight: "bold",
-            borderRadius: "15px",
-        },
-        icon: "❌",
+      duration: 3000,
+      position: "middle-center",
+      style: {
+        background: { toastTheme },
+        color: { toastColor },
+        height: "18vh",
+        width: "35vh",
+        fontSize: "1.2rem",
+        border: "solid 2px black",
+        fontWeight: "bold",
+        borderRadius: "15px",
+      },
+      icon: "❌",
     });
 
-const problema = () =>
+  const problema = () =>
     toast("Hubo un error agregando el gasto", {
-        duration: 3000,
-        position: "middle-center",
-        style: {
-            background: { toastTheme },
-            color: { toastColor },
-            height: "18vh",
-            width: "35vh",
-            fontSize: "1.2rem",
-            border: "solid 2px black",
-            fontWeight: "bold",
-            borderRadius: "15px",
-        },
-        icon: "❌",
+      duration: 3000,
+      position: "middle-center",
+      style: {
+        background: { toastTheme },
+        color: { toastColor },
+        height: "18vh",
+        width: "35vh",
+        fontSize: "1.2rem",
+        border: "solid 2px black",
+        fontWeight: "bold",
+        borderRadius: "15px",
+      },
+      icon: "❌",
     });
 
-
-
-  const handleAddBill  = async (e) => {
+  const handleAddBill = async (e) => {
     e.preventDefault();
     const data = {
       name: name,
@@ -100,35 +104,31 @@ const problema = () =>
         data
       );
       if (response.status === 200) {
-
         language === "english" ? billAdded() : gastoAgregado();
         navigate("/bills");
         getBills();
-      
+        handleTotal();
       }
       if (response.status === 500) {
         language === "english" ? problem() : problema();
-        
       }
-
-
     } catch (error) {
       console.log(error);
     }
-};
-
-
+  };
   return (
     <>
-    <div className="total">
-      <h1>Total
-      <br></br><span>${total}</span>
-      </h1>
-    </div>
+      <div className="total">
+        <h1>
+          Total
+          <br></br>
+          <span>${total}</span>
+        </h1>
+      </div>
 
-      <section className="addbill-cont"  >
-      <h1>{language === "english" ? "Add bill" : "Agregar gasto"}</h1>
-        <form className="addbill-form" >
+      <section className={addBillConTheme}>
+        <h1>{language === "english" ? "Add bill" : "Agregar gasto"}</h1>
+        <form className="addbill-form">
           <label htmlFor="name">
             {language === "english" ? "Name" : "Nombre"}
           </label>
@@ -163,7 +163,6 @@ const problema = () =>
           >
             {language === "english" ? "Add bill" : "Agregar gasto"}
           </button>
-          -
         </form>
       </section>
     </>
@@ -176,6 +175,7 @@ AddBill.propTypes = {
   getBills: PropTypes.func.isRequired,
   theme: PropTypes.string.isRequired,
   total: PropTypes.number.isRequired,
+  handleTotal: PropTypes.func.isRequired,
 };
 
 export default AddBill;

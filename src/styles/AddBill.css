@@ -1,16 +1,22 @@
-.addbill-cont{
+.add-bill-con-light{
   display: flex;
     flex-direction: column;
     width: 38vw;
     padding: 1vw;
-    height: 30vw;
+    height: 27vw;
     align-items: center;
     justify-content: center;
-    border: 2px solid #544f4f;
+    border: 2px solid #292828;
     position: relative;
-    bottom: 8vw;
+    bottom:  8vw;
+    right: 5vw;
+    background-color: rgb(253, 247, 236);
+  
+   
 
 }
+
+
 .addbill-form{
     display: flex;
         flex-direction: column;
@@ -50,3 +56,23 @@ font-size: 1.5vw;
 font-weight: bold;
 }
 
+/*==========dark theme==========*/
+.add-bill-con-dark{
+    display: flex;
+      flex-direction: column;
+      width: 38vw;
+      padding: 1vw;
+      height: 27vw;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #292828;
+      position: relative;
+      bottom:  8vw;
+      right: 5vw;
+      color: whitesmoke ;
+      background-color: #404040;
+    
+     
+  
+  }
+  
