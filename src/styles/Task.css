@@ -156,8 +156,8 @@
 
 .clear-btn-light {
   position: relative;
-  top: 11vw;
-  left: 45vw;
+  top: 15vw;
+  left: 80.8vw;
   width: 8vw;
   height: 4vw;
   border: 2px solid #404040;
@@ -208,8 +208,8 @@
 }
 #btn-add-light{
   position: relative;
-  top: 15vw;
-  right: 45vw;
+  top : 19.1vw;
+  right: 8.4vw;
   width: 8vw;
   height: 4vw;
   border: 2px solid #f1eded;
@@ -255,7 +255,7 @@
 }
 
 .task-item-dark {
-  border: 2px solid #404040;
+  border: 2px solid #cecaca;
   background-color: #808080;
   width: 70vw;
   height: 8vw;
@@ -264,6 +264,7 @@
   align-items: center;
   justify-content: space-evenly;
   margin-top: 0.5vw;
+  color: #dfd7d7;
 }
 
 .no-tasks-dark {
@@ -316,9 +317,8 @@
 
 #btn-add-dark{
   position: relative;
-  top: 15vw;
-  right: 45vw;
-  width: 8vw;
+  top : 19.1vw;
+  right: 8.6vw;
   height: 4vw;
   border: 2px solid #f1eded;
   background-color: 3404040;
@@ -326,6 +326,7 @@
   font-weight: bold;
   font-size: 1vw;
   border: 2px solid #404040;
+  width: 8.5vw;
 }
 #btn-add-dark:hover{
   background-color: #404040;
@@ -347,8 +348,8 @@
 
 .clear-btn-dark {
   position: relative;
-  top: 11vw;
-  left: 45vw;
+  top: 15vw;
+  left: 80.8vw;
   width: 8vw;
   height: 4vw;
   border: 2px solid #404040;

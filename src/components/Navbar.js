@@ -25,6 +25,15 @@ const Navbar = ({
 
   const toastTheme = theme === "light" ? "whitesmoke" : "gray";
   const toastColor = theme === "light" ? "black" : "whitesmoke";
+  const dateTheme = theme === "light" ? "date-light" : "date-dark";
+
+  const getCurrentMonthAndDay = () => {
+    const currentDate = new Date();
+    const month = currentDate.toLocaleString('default', { month: 'short' }); // Get short month name
+    const day = currentDate.getDate(); // Get day of the month
+    return `${month} ${day}`;
+  };
+
 
   const loggedOut = () =>
     toast("Until next time", {
@@ -157,6 +166,11 @@ const Navbar = ({
         <ul className="ul-btns">
           {isAuthenticated() ? (
             <>
+            <li className={dateTheme}> <p>
+                {language === "english" ? "Today is" : "Hoy es"}
+           <span> {getCurrentMonthAndDay()}</span>
+              </p>              
+            </li>
               <li>
                 <button
                   onClick={handleLogout}

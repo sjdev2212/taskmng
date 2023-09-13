@@ -4,12 +4,13 @@ import PropTypes from 'prop-types';
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
-import "../styles/EditTask.css";
+import "../styles/EditBill.css";
 
 
-const EditTask = ({ userId, theme, language}) => {
-    const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
+const EditBill = ({ userId, theme, language}) => {
+    const [name, setName] = useState("");
+    const [amount, setAmount] = useState(0);
+    const [dueDate, setDueDate] = useState("");
 
     const toastTheme = theme === "light" ? "whitesmoke" : "gray ";
     const toastColor = theme === "light" ? "black" : "whitesmoke";
@@ -17,7 +18,7 @@ const EditTask = ({ userId, theme, language}) => {
     const editContainer = theme === "light" ? "edit-container-light" : "edit-container-dark";
     const editBtn = theme === "light" ? "edit-btn-light" : "edit-btn-dark";
     const navigate = useNavigate();
-    const { taskId } = useParams();
+    const { billId } = useParams();
     
     const tareaEditada = () =>  
     toast("Tarea editada", {
@@ -37,7 +38,7 @@ const EditTask = ({ userId, theme, language}) => {
     });
 
     const taskEdited = () =>
-    toast("Task edited", {
+    toast("Bill edited", {
         duration: 3000,
         position: "middle-center",
         style: {
@@ -55,24 +56,25 @@ const EditTask = ({ userId, theme, language}) => {
 
     
 
-    const handleEditTask = async (e) => {
+    const handleEditBill = async (e) => {
         e.preventDefault();
         const data = {
-            title: title,
-            description: description,
+            name: name,
+            amount: amount,
+            dueDate: dueDate,
         };
 
         try {
             const result = await axios.put(
-                `https://todo-danielamoroso31.b4a.run/${userId}/edit-task/${taskId}`,
+                `https://todo-danielamoroso31.b4a.run/${userId}/edit-bill/${billId}`,
                 data
             );
             if (result.status === 200) {
           language === 'english' ? taskEdited() : tareaEditada()
-                navigate("/tasks");
+                navigate("/bills");
             }
         } catch (error) {
-            toast("Error editing task", {
+            toast("Error editing bill", {
                 duration: 3000,
                 position: "middle-center",
                 style: {
@@ -90,31 +92,51 @@ const EditTask = ({ userId, theme, language}) => {
         <div className={editTheme}>
 
 
-        <h1>{language === 'english' ?  'Edit B' : 'Editar tarea'}</h1>
+        <h1>{language === 'english' ?  'Edit Bill' : 'Editar Gasto'}</h1>
         </div>
-        <form onSubmit={handleEditTask}>
+        <form onSubmit={handleEditBill}>
             <div className="form-group">
-                <label htmlFor="title">Title</label>
+                <label htmlFor="name">
+                    {language === 'english' ?  'Name' : 'Nombre'}
+                </label>
                 <input
                     type="text" 
                     className="form-control"
-                    id="title"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
+                    id="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                 />
             </div>
             <div className="form-group">
-                <label htmlFor="description">Description</label>
-                <textarea
+                <label htmlFor="amount">
+                    {language === 'english' ?  'Amount' : 'Monto'}
+                </label>
+                <input
+                    type="number"
                     className="form-control"
-                    id="description"
-                    rows="3"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                ></textarea>
+                    id="amount"
+                    value={amount}
+                    onChange={(e) => setAmount(e.target.value)}
+                />
             </div>
+            <div className="form-group">
+                <label htmlFor="dueDate">
+
+                    {language === 'english' ?  'Due Date' : 'Vencimiento'}
+                </label>
+                <input
+                    className="form-control"
+                    id="dueDate"
+                     type='date'
+                    value={dueDate}
+                    onChange={(e) => setDueDate(e.target.value)}
+                ></input>
+            </div>
+         
             <button type="submit" className={editBtn}>
-                Edit Task
+                {
+                    language === 'english' ?  'Edit Bill' : 'Editar Gasto'
+                }
             </button>
         </form>
 
@@ -124,10 +146,10 @@ const EditTask = ({ userId, theme, language}) => {
   )
 }
 
-EditTask.propTypes = {
+EditBill.propTypes = {
     userId: PropTypes.number.isRequired,
     theme: PropTypes.string.isRequired,
     language: PropTypes.string.isRequired,
 };
 
-export default EditTask
+export default EditBill

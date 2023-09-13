@@ -2,13 +2,17 @@ import React from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
+import {Link} from "react-router-dom";
 import AddBill from "./AddBill";
 import paid from "../img/paid.png";
-import paidDark from "../img/paid-dark.svg";
+import paidDark from "../img/paid-dark.jpg";
 import edit from "../img/edit.svg";
+import { RotatingLines } from "react-loader-spinner"; 
 import { BsTrash3Fill } from "react-icons/bs";
 import { GiPayMoney } from "react-icons/gi";
 import "../styles/Bills.css";
+
+
 
 const Bills = ({
   setBills,
@@ -19,8 +23,13 @@ const Bills = ({
   setLoading,
   theme,
 }) => {
-  const [total, setTotal] = useState(0);
 
+  const [totalPaid, setTotalPaid] = useState(0);
+  const [totalUnPaid, setTotalUnPaid] = useState(0);
+  const [empty, setEmpty] = useState(false);
+  const [sortType, setSortType] = useState('default');
+  const date  = new Date();
+/* STYLING VARIABLES */
   const billsCont = theme === "light" ? "bills-cont-light" : "bills-cont-dark";
   const showBillsTheme =
     theme === "light" ? "show-bills-light" : "show-bills-dark";
@@ -31,6 +40,14 @@ const Bills = ({
   const billHeader = theme === "light" ? "bill-header-light" : "bill-header-dark";
   const deletgBillBtn = theme === "light" ? "delete-bill-btn-light" : "delete-bill-btn-dark";
   const payBillTheme = theme === "light" ? "pay-bill-light" : "pay-bill-dark";
+  const spinnerTheme = theme === "light" ? "black" : "whitesmoke";
+  const titleBill = theme === "light" ? "title-bill-light" : "title-bill-dark";
+  const deleteAllTheme = theme === "light" ? "delete-all-light" : "delete-all-dark";
+  const sortedTheme = theme === "light" ? "sorted-light" : "sorted-dark";
+  const titlePosTheme = theme === "light" ? "title-pos-light" : "title-pos-dark";
+
+
+
 
 
   const getBills = async () => {
@@ -41,28 +58,63 @@ const Bills = ({
     if (result.data.result === undefined) {
       setBills([]);
       setLoading(false);
-      handleTotal();
+      setEmpty(true);
     } else {
       setBills(result.data.result);
-      handleTotal();
       setLoading(false);
+      setEmpty(false);
     }
-  };
-  const handleTotal = () => {
-    let totalAmount = 0;
-
-    let paidBills = bills.filter((bill) => bill.paid === true);
-     paidBills.forEach((bill) => {
-      totalAmount += bill.amount;
-    });
-    setTotal(totalAmount);
   };
 
   useEffect(() => {
     getBills();
+
+
+   
    
    // eslint-disable-next-line
-  }, [userId, total]);
+  }, [userId ]);
+
+  useEffect(() => {
+    if (sortType === 'paid') {
+      getPaidBills();
+    }
+    if (sortType === 'unpaid') {
+      getUnPaidBills();
+    }
+    if (sortType === 'bydateasc') {
+      getSortedAsc();
+    }
+    if (sortType === 'bydatedesc') {
+      getSortedDesc();
+    }
+     else {
+      getBills();
+    }
+    // eslint-disable-next-line
+  }, [sortType]);
+
+  useEffect(() => {
+    // Calculate total paid and total unpaid whenever bills change
+    let totalPaidAmount = 0;
+    let totalUnPaidAmount = 0;
+
+    bills.forEach((bill) => {
+      if (bill.paid) {
+        totalPaidAmount += bill.amount;
+      } else {
+        totalUnPaidAmount += bill.amount;
+      }
+    });
+
+    setTotalPaid(totalPaidAmount);
+    setTotalUnPaid(totalUnPaidAmount);
+  }, [bills]);
+
+  const handleSortBills = (e) => {
+    setSortType(e.target.value);
+  };
+
 
   const deleteBill = async (id) => {
     const result = await axios.delete(
@@ -72,6 +124,24 @@ const Bills = ({
       getBills();
     }
   };
+  const handleDeletePaidBills = async () => {
+    const result = await axios.delete(
+      `https://todo-danielamoroso31.b4a.run/${userId}/delete-paid-bills`
+    );
+   try {
+    if (result.status === 200) {
+      getBills();
+    }
+   }
+    catch(error) {
+      console.log(error);
+    }
+
+  };
+
+
+
+
 
 const handlePayBill = async (id) => {
   const result = await axios.put(
@@ -82,28 +152,118 @@ const handlePayBill = async (id) => {
     getBills();
   }
 };
+const getPaidBills = async () => {
+  const result = await axios.get(
+    `https://todo-danielamoroso31.b4a.run/${userId}/paid-bills`
+  );
+  if (result.status === 200) {
+   setBills(result.data.bills);
+    }
+  };
+
+  const getUnPaidBills = async () => {
+    const result = await axios.get(
+      `https://todo-danielamoroso31.b4a.run/${userId}/unpaid-bills`
+    );
+    if (result.status === 200) {
+     setBills(result.data.bills);
+      }
+    };
+  const getSortedAsc = async () => {
+    const result = await axios.get(
+      `https://todo-danielamoroso31.b4a.run/${userId}/bills-by-date-ascending`
+    );
+    if (result.status === 200) {
+      setBills(result.data.bills);
+    }
+  };
+
+
+  const getSortedDesc = async () => {
+    const result = await axios.get(
+      `https://todo-danielamoroso31.b4a.run/${userId}/bills-by-date-descending`
+    );
+    if (result.status === 200) {
+      setBills(result.data.bills);
+    }
+  };
+
+
+  
 
 
 
+  
+  
 
   return (
     <>
       <main className={billsCont}>
         <div>
-          <h1>{language === "english" ? "Bills" : "Cuentas"}</h1>
+          <div className={titlePosTheme}>
+          <h1 className={titleBill}>{language === "english" ? "Bills" : "Cuentas"}</h1>
+          </div>
+          <div style={
+            empty ? {display: "none"} : {display: "flex"}
+          } className="handle-paid">
+            <div className={sortedTheme}>
+            <select   onChange={handleSortBills}  >
+            <option >{
+                language === "english" ? "Sort by:" : "Ordenar por:"
+              }</option>
+              <option  value="paid">{
+                language === "english" ? "Paid" : "Pagado"
+              }</option>
+              <option value="unpaid">{
+                language === "english" ? "Unpaid" : "Sin pagar"
+              }</option>
+              <option value="bydateasc">
+                {
+                  language === "english" ? "By Date Ascending" : "Por fecha ascendente"
+                }
+              </option>
+              <option value="bydatedesc">{
+                language === "english" ? "By Date Descending" : "Por fecha descendente"
+              }</option>
+           </select>
+           </div>
+                      <button className={deleteAllTheme} style={
+                        empty ? {display: "none"} : {display: "flex"}
+                      } onClick={ handleDeletePaidBills}>{language === 'english' ? 'Clear paid bills' : 
+                      'Borrar cuentas pagadas'
+                      
+                      }</button>
+                    </div>
+    
           <section className={showBillsTheme}>
             <div>
-              {loading ? (
-                <div className="loader"></div>
+              {loading ? ( 
+                
+<div className="spinner">
+          <RotatingLines
+            strokeColor="grey"
+            strokeWidth="5"
+            animationDuration="0.75"
+            width="60"
+            visible={true}
+            color={spinnerTheme}
+          />
+        </div>
+        
+                
               ) : bills.length === 0 ? (
+             
                 <div className={noBillsTheme}>
+                
                   {language === "english"
                     ? "No bills yet"
                     : "Aun no hay gastos"}
                 </div>
-              ) : (
+              ) : (  
                 bills.map((bill) => (
+                  
                   <div className={expenseTheme} key={bill.id}>
+                   
                     <div className="bills-details">
                       <div className={billHeader}>
                         {language === "english" ? "Name:" : "Nombre:"}
@@ -125,7 +285,10 @@ const handlePayBill = async (id) => {
                       >{
                         language === "english" ? "Due date:" : "Vencimiento:"
                       }</div>
-                      <div>{bill.dueDate}</div>
+                      <div style={{
+                    color: new Date(bill.dueDate) < date ? theme === "light" ? "red" : "#e61e46" : "black",
+
+                       } } >{bill.dueDate}</div>
                     </div>
                     <div className="bills-details">
                       <div 
@@ -136,8 +299,9 @@ const handlePayBill = async (id) => {
                       <div>{bill.paid ?  
                       <img style={{
                         backgroundColor: "white",
-                        width: "32px",
+                        width: "34px",
                         height: "29px",
+                        borderRadius: "50%",
                       }} src={ theme === 'dark' ?  paidDark : paid} alt="paid" className="paid-icon" />
                       : "No"}</div>
                     </div>
@@ -154,24 +318,33 @@ const handlePayBill = async (id) => {
 
                     </div>
                     <div>
+                      <Link to={`/edit-bill/${bill.idForBill}`}>
                       <button
                         className="edit-bill-btn"
                         onClick={() => console.log("edit")}
                       >
-                        {
-                          language === "english" ? "Edit " : "Editar"
-                        }
+                      
                         <img src={edit} alt="edit" style={{
                           width: "20px",
                           height: "20px",
+                          margin: "11px 0 0 0",
+                          padding: "0 ",
+                          border: "none",
+                          backgroundColor: "transparent",
+                          outline: "none",
+                         
+
                         }} />
                       </button>
-
+                      </Link>
                     </div>
                   </div>
                 ))
-              )}
+                
+              )} 
             </div>
+          
+                
           </section>
         </div>
         <section className={billsSecTheme}>
@@ -180,9 +353,10 @@ const handlePayBill = async (id) => {
             language={language}
             setLoading={setLoading}
             getBills={getBills}
-            total={total}
+        totalPaid={totalPaid}
+        totalUnPaid={totalUnPaid}
             theme={theme}
-            handleTotal={handleTotal}
+           
           />
         </section>
       </main>

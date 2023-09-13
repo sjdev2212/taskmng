@@ -1,10 +1,15 @@
 .bills-cont-light {
-   display: flex;
+    display: flex;
     flex-direction: row;
-    background-color: whitesmoke;
+    background-color: rgb(248, 246, 246);
     border-radius: 5px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, .2);
     color: #404040;
+    max-width: 99vw;
+    margin: 0 1vw;
+  height: 55vw;
+
+
 
 }
 
@@ -14,22 +19,20 @@
     overflow: auto;
     border-radius: 5px;
     margin-left: 3vw;
-    min-width:38vw ;
-   
+   width: 45vw
 }
 
-.expense-light{
+.expense-light {
     border: 2px solid #404040;
     display: flex;
-       justify-content: space-around;
+    justify-content: space-around;
     height: 5vw;
-  
     border-radius: 5px;
     margin: 1vw;
 
-  
+
 }
- 
+
 
 
 .bills-sec-light {
@@ -37,22 +40,24 @@
     margin-left: 5vw;
     display: flex;
     height: 16vw;
-    
+    max-width: 25vw;
+
 }
-@keyframes rotate{
+
+@keyframes rotate {
     0% {
         transform: translateY(-100%);
         transform: scale(2);
         opacity: 0;
-      }
-    
-      100% {
+    }
+
+    100% {
         transform: translateY(0);
         opacity: 1;
-      }
+    }
 }
 
-.no-bills-light{
+.no-bills-light {
     margin-top: 16vw;
     margin-left: 5vw;
     display: flex;
@@ -60,31 +65,32 @@
     font-size: 2vw;
     font-weight: bold;
     color: #404040;
-    animation: rotate 1s linear ;
+    animation: rotate 1s linear;
     position: relative;
     top: -1vw;
     left: 8vw;
-   }
-   .bill-header-light{
+}
+
+.bill-header-light {
     text-decoration: underline;
     font-family: 'Times New Roman', Times, serif;
     font-size: 1.18vw;
     font-weight: bold;
-   }
+}
 
 
-.bills-details{
+.bills-details {
     display: flex;
     flex-direction: column;
     width: 7vw;
     font-size: 1.1vw;
     font-weight: bold;
     margin: 0.5vw;
-  
+
 }
-.delete-bill-btn-light{
+
+.delete-bill-btn-light {
     font-size: 1.5vw;
-    
     background-color: #fdfdfd;
     color: #404040;
     cursor: pointer;
@@ -93,17 +99,17 @@
     transition: transform 0.2s;
     margin-right: 2vw;
     margin-top: 0.7vw;
-  
+
 
 }
-.delete-bill-btn-light:hover{
-   
+
+.delete-bill-btn-light:hover {
     color: #404040;
     transform: scale(1.5);
 }
-.pay-bill-light{
+
+.pay-bill-light {
     font-size: 2.5vw;
-  
     color: #404040;
     cursor: pointer;
     border: none;
@@ -111,123 +117,254 @@
     transition: transform 0.2s;
     margin-right: 2vw;
     margin-top: 0.7vw;
-  
+
 
 }
-.pay-bill-light:hover{
-   
+
+.pay-bill-light:hover {
     color: #404040;
     transform: scale(1.5);
 }
+
+.title-bill-light{
+    font-size: 1.7vw;
+    font-weight: bold;
+    color: #404040;
+}
+.handle-paid{
+    width: 45vw;
+    position: relative;
+    left: 3vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+   
+
+
+}
+.title-pos-light{
+    width: 45vw;
+    position: relative;
+    left: 3vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+
+}
+.delete-all-light{
+    color:whitesmoke;
+    background-color: #404040;
+    border: none;
+    outline: none;
+    border-radius: 12px;
+    font-size: 1vw;
+    font-weight: bold;
+    padding: 0.5vw;
+    cursor: pointer;
+    margin-bottom: 0.2vw;
+  
+    height: 3.2vw;
+    width: 10vw;
+
+
+}
+.delete-all-light:hover{
+    background-color: #f0e5e5;
+    color: #201e1e;
+    border: 1px solid #404040
+}
+
+.sorted-light{
+ 
+    height:1.8vw;
+    position: relative;
+    top: 1.4vw;
+}
+.sorted-light select{
+    width: 10vw;
+    height: 2vw;
+    border: 1px solid #404040;
+    border-radius: 5px;
+    outline: none;
+    font-size: 1.2vw;
+    font-weight: bold;
+    color: #404040;
+ 
+   
+}
+
+
 /*/---------------------------darkmode---------------------------*/
 .bills-cont-dark {
     display: flex;
-     flex-direction: row;
-     background-color: #404040;
-     border-radius: 5px;
-     box-shadow: 0 0 10px 0 rgba(0, 0, 0, .2);
-     color: #e9e2e2;
- 
- }
- 
- .show-bills-dark {
-     border: 2px solid #e6e0e0;
-     height: 33vw;
-     overflow: auto;
-     border-radius: 5px;
-     margin-left: 3vw;
-     min-width:38vw ;
-    
- }
- 
- .expense-dark{
-     border: 2px solid #f5ebeb;
-     display: flex;
-        justify-content: space-around;
-     height: 5vw;
+    flex-direction: row;
+    background-color: #404040;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, .2);
+    color: #e9e2e2;
+
+}
+
+.show-bills-dark {
+    border: 2px solid #d6cfcf;
+    height: 33vw;
+    overflow: auto;
+    border-radius: 5px;
+    margin-left: 3vw;
+   width: 45vw
    
-     border-radius: 5px;
-     margin: 1vw;
- 
-   
- }
-  
- 
- 
- .bills-sec-dark {
-     margin-top: 16vw;
-     margin-left: 5vw;
-     display: flex;
-     height: 16vw;
-     
- }
- @keyframes rotate{
-     0% {
-         transform: translateY(-100%);
-         transform: scale(2);
-         opacity: 0;
-       }
-     
-       100% {
-         transform: translateY(0);
-         opacity: 1;
-       }
- }
- 
- .no-bills-dark{
-     margin-top: 16vw;
-     margin-left: 5vw;
-     display: flex;
-     height: 16vw;
-     font-size: 2vw;
-     font-weight: bold;
-     color: #ecdddd;
-     animation: rotate 1s linear ;
-     position: relative;
-     top: -1vw;
-     left: 8vw;
-    }
-    .bill-header-dark{
-     text-decoration: underline;
-     font-family: 'Times New Roman', Times, serif;
-     font-size: 1.18vw;
-     font-weight: bold;
+
+}
+
+.expense-dark {
+    border: 2px solid #f5ebeb;
+    display: flex;
+    justify-content: space-around;
+    height: 5vw;
+    border-radius: 5px;
+    margin: 1vw;
+
+
+}
+
+.bills-sec-dark {
+    margin-top: 16vw;
+    margin-left: 5vw;
+    display: flex;
+    height: 16vw;
+    max-width: 25vw;
+
+}
+
+@keyframes rotate {
+    0% {
+        transform: translateY(-100%);
+        transform: scale(2);
+        opacity: 0;
     }
 
-    .delete-bill-btn-dark{
-        font-size: 1.5vw;
-        
-        background-color: #404040;
-        color: #e0d2d2;
-        cursor: pointer;
-        border: none;
-        outline: none;
-        transition: transform 0.2s;
-        margin-right: 2vw;
-        margin-top: 0.7vw;
-      
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.no-bills-dark {
+    margin-top: 16vw;
+    margin-left: 5vw;
+    display: flex;
+    height: 16vw;
+    font-size: 2vw;
+    font-weight: bold;
+    color: #ecdddd;
+    animation: rotate 1s linear;
+    position: relative;
+    top: -1vw;
+    left: 8vw;
+}
+
+.bill-header-dark {
+    text-decoration: underline;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.18vw;
+    font-weight: bold;
+}
+
+.delete-bill-btn-dark {
+    font-size: 1.5vw;
+    background-color: #404040;
+    color: #e0d2d2;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: transform 0.2s;
+    margin-right: 2vw;
+    margin-top: 0.7vw;
+}
+
+.delete-bill-btn-dark:hover {
+
+    color: #eee4e4;
+    transform: scale(1.5);
+}
+
+.pay-bill-dark {
+    font-size: 2.5vw;
+    color: #fae1e1;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: transform 0.2s;
+    margin-right: 2vw;
+    margin-top: 0.7vw;
+}
+
+.pay-bill-dark:hover {
+    color: #f7e6e6;
+    transform: scale(1.5);
+}
+.title-bill-dark{
+    font-size: 1.7vw;
+    font-weight: bold;
+
+    color: #e9dada;
+}
+.delete-all-dark{
+    color:#404040;
+    background-color: #f0ecec;
+    border: none;
+    outline: none;
+    border-radius: 12px;
+    font-size: 1vw;
+    font-weight: bold;
+    padding: 0.5vw;
+    cursor: pointer;
+    margin-bottom: 0.2vw;
+    height: 3.2vw;
+    width: 10vw;
+    margin-left: 4vw;
+    display: flex;
+    justify-content: center;
+
+
+}
+.delete-all-dark:hover{
+    background-color: #1b1a1a;
+    color: #f8e6e6;
     
-    }
-    .delete-bill-btn-dark:hover{
-       
-        color: #eee4e4;
-        transform: scale(1.5);
-    }
-    .pay-bill-dark{
-        font-size: 2.5vw;
-      
-        color: #fae1e1;
-        cursor: pointer;
-        border: none;
-        outline: none;
-        transition: transform 0.2s;
-        margin-right: 2vw;
-        margin-top: 0.7vw;
-      
-    
-    }
-    .pay-bill-dark:hover{
-       
-        color: #f7e6e6;
-        transform: scale(1.5);
-    }
+}
+
+
+.sorted-dark{
+ 
+    height:1.8vw;
+    position: relative;
+    top: 1.4vw;
+}
+.sorted-dark select{
+    width: 10vw;
+    height: 2vw;
+ 
+    border: 1px solid #404040;
+    border-radius: 5px;
+   border: 1px solid whitesmoke;
+    font-size: 1.2vw;
+    font-weight: bold;
+    color: #f1eeee;
+    background-color: #404040;
+ 
+   
+}
+.title-pos-dark{
+    width: 45vw;
+    position: relative;
+    left: 3vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+
+}

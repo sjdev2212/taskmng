@@ -1,10 +1,4 @@
-body{
-  font-family: 'Roboto', sans-serif;
-   
-    margin: 0;
-    padding: 0;
-    text-align: center;
- 
-
-    
+html, body {
+  max-height: 100vh; /* 100% of viewport height */
+  overflow: auto; /* Add scrollbars if content exceeds max-height */
 }

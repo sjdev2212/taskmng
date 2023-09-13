@@ -2,15 +2,14 @@ import React from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import PropTypes from "prop-types";
 import "../styles/AddBill.css";
 
-const AddBill = ({ userId, language, getBills, theme, total, handleTotal }) => {
+const AddBill = ({ userId, language, getBills, theme, totalPaid, totalUnPaid }) => {
   const [name, setName] = useState("");
   const [amount, setAmount] = useState(0);
   const [dueDate, setDueDate] = useState("");
-  console.log(theme);
 
   const navigate = useNavigate();
 
@@ -18,11 +17,15 @@ const AddBill = ({ userId, language, getBills, theme, total, handleTotal }) => {
   const toastColor = theme === "light" ? "black" : "whitesmoke";
   const addBillConTheme =
     theme === "light" ? "add-bill-con-light" : "add-bill-con-dark";
+  const addTaskBtn = theme === "light" ? "add-task-btn-light" : "add-task-btn-dark";
 
-  useEffect(() => {
-    handleTotal();
-    // eslint-disable-next-line
-  }, [total]);
+
+    const styledTitle = {
+      color: "#e61e46",
+      fontSize: "1vw",
+    };
+
+
 
   const billAdded = () =>
     toast("Bill added", {
@@ -90,6 +93,42 @@ const AddBill = ({ userId, language, getBills, theme, total, handleTotal }) => {
       icon: "❌",
     });
 
+    const fillAllFields = () =>
+    toast("Please fill all fields", {
+      duration: 2000,
+      position: "middle-center",
+      style: {
+        background: { toastTheme },
+        color: { toastColor },
+        height: "18vh",
+        width: "35vh",
+        fontSize: "1.2rem",
+        border: "solid 2px black",
+        fontWeight: "bold",
+        borderRadius: "15px",
+      },
+      icon: "❌",
+    });
+
+    const llenarTodosLosCampos = () =>
+    toast("Por favor llena todos los campos", {
+      duration: 2000,
+      position: "middle-center",
+      style: {
+        background: { toastTheme },
+        color: { toastColor },
+        height: "18vh",
+        width: "35vh",
+        fontSize: "1.2rem",
+        border: "solid 2px black",
+        fontWeight: "bold",
+        borderRadius: "15px",
+      },
+      icon: "❌",
+    });
+
+
+
   const handleAddBill = async (e) => {
     e.preventDefault();
     const data = {
@@ -97,34 +136,52 @@ const AddBill = ({ userId, language, getBills, theme, total, handleTotal }) => {
       amount: amount,
       dueDate: dueDate,
     };
-
+    /*validate data*/
+    if (name === "" || amount === 0 || dueDate === "") {
+      language === "english" ? fillAllFields() : llenarTodosLosCampos();
+      return;
+    }
     try {
       const response = await axios.post(
         `https://todo-danielamoroso31.b4a.run/${userId}/create-bill`,
         data
       );
-      if (response.status === 200) {
+      if (response.status === 201) {
         language === "english" ? billAdded() : gastoAgregado();
         navigate("/bills");
         getBills();
-        handleTotal();
-      }
-      if (response.status === 500) {
-        language === "english" ? problem() : problema();
+        setName("");
+        setAmount(0);
+        setDueDate("");
       }
     } catch (error) {
-      console.log(error);
+      language === "english" ? problem() : problema();
     }
   };
+
+
+
   return (
     <>
       <div className="total">
-        <h1>
-          Total
-          <br></br>
-          <span>${total}</span>
-        </h1>
+      
+        
+       
+          <span>{
+            language === "english" ? " Paid: " : "Pagado: "
+            }  ${totalPaid}</span>
+        
       </div>
+      <div className="total-unpaid">
+        <span style={
+          theme === "light" ? {color:"crimson"} : styledTitle
+        }>
+          {language === "english" ? "Unpaid: " : "Sin pagar: "}
+          ${totalUnPaid}
+        </span>
+      </div>
+
+     
 
       <section className={addBillConTheme}>
         <h1>{language === "english" ? "Add bill" : "Agregar gasto"}</h1>
@@ -158,8 +215,15 @@ const AddBill = ({ userId, language, getBills, theme, total, handleTotal }) => {
           />
           <button
             type="submit"
+            className={addTaskBtn}
             onClick={handleAddBill}
-            className={theme === "dark" ? "dark" : "light"}
+          /*  style={{
+
+              backgroundColor: theme === "light" ? "#404040" : "whitesmoke",
+              color: theme === "light" ? "white" : "#404040",
+               fontWeight: "bold",
+               border: "solid 2px black",
+               borderRadius: "15px",      }} */
           >
             {language === "english" ? "Add bill" : "Agregar gasto"}
           </button>
@@ -174,8 +238,9 @@ AddBill.propTypes = {
   closeModal: PropTypes.func.isRequired,
   getBills: PropTypes.func.isRequired,
   theme: PropTypes.string.isRequired,
-  total: PropTypes.number.isRequired,
-  handleTotal: PropTypes.func.isRequired,
+  totalPaid: PropTypes.number.isRequired,
+  totalUnPaid: PropTypes.number.isRequired,
+
 };
 
 export default AddBill;

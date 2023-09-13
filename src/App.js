@@ -10,6 +10,7 @@ import AddTask from "./components/AddTask";
 import Task from "./components/Task";
 import Home from "./components/Home";
 import EditTask from "./components/EditTask";
+import EditBill from "./components/EditBill";
 import Bills from "./components/Bills";
 import Calendar from "./components/Calendar";
 import { Toaster, toast } from "react-hot-toast";
@@ -289,6 +290,7 @@ const controlIdle =  useIdleTimer({
         />
    
         
+
         <Route
           path="/bills"
           element={<Bills
@@ -310,6 +312,15 @@ const controlIdle =  useIdleTimer({
             theme={theme}
            />}
         />
+         <Route
+          path="/edit-bill/:billId"
+          element={<EditBill
+            language={language}
+            userId={userId}
+            theme={theme}
+            />}
+        />
+   
  
 
         
