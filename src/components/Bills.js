@@ -209,7 +209,7 @@ const getPaidBills = async () => {
             <div className={sortedTheme}>
             <select   onChange={handleSortBills}  >
             <option >{
-                language === "english" ? "Sort by:" : "Ordenar por:"
+                language === "english" ? "Unsorted:" : "Sin Orden:"
               }</option>
               <option  value="paid">{
                 language === "english" ? "Paid" : "Pagado"

@@ -164,9 +164,11 @@
     padding: 0.5vw;
     cursor: pointer;
     margin-bottom: 0.2vw;
-  
     height: 3.2vw;
     width: 10vw;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 
 
 }
@@ -327,6 +329,7 @@
     margin-left: 4vw;
     display: flex;
     justify-content: center;
+    align-items: center;
 
 
 }

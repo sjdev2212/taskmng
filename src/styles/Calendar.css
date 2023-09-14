@@ -1,81 +1,47 @@
-.parent {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(7, 1fr);
-    grid-column-gap: 2px;
-    grid-row-gap: 2px;
-    border: 2px solid gray;
-
-    }
- .day {
-    border: 2px solid black;
-    width: 14vw;
-      height: 7vw;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2vw;
-      font-weight: bold;
-      color: #222122;
-      cursor: pointer;
-      transition: all 0.3s ease-in-out;
-
-      }
-      .day:hover {
-         background-color: #222122;
-         color: #d0d1d3;
-         }
-
-         .day-today {
-            border: 2px solid rgb(218, 0, 0);
-            width: 14vw;
-              height: 7vw;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              font-size: 1.2vw;
-              font-weight: bold;
-              color: #e0d1e0;
-              background-color: rgb(100, 101, 100);
-              cursor: pointer;
-              transition: all 0.3s ease-in-out;
-        
-              }
-              .day-today:hover {
-                 background-color: #dde8dc;
-                 color: #353835;
-                 }
-        
-
- .day-header{
-    background-color: rgb(72, 73, 71);
-    color: white;
-    font-weight: bold;
-    font-size: 1.5rem;
-    text-align: center;
-    padding: 0.5rem;
-    height: 3vw;
-  
-    }
-
-    .calendar-header-light{
-         display: flex;
-         justify-content: space-between;
-         align-items: center;
-         padding: 0.5rem;
-         background-color: rgb(237, 237, 238);
-         color: rgb(36, 40, 36);
-         font-weight: bold;
-         font-size: 1.5rem;
-
-    }
-    .calendar-header-dark{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0.5rem;
-        background-color: rgb(50, 54, 50);
-        color: rgb(237, 237, 238);
-        font-weight: bold;
-        font-size: 1.5rem;
-    }
+.calendar-container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+ }
+/* Calendar container */
+.react-calendar {
+   width: 80vw;
+ height: 45vw;
+   font-family: Arial, sans-serif; /* Customize the font */
+   background-color: #fff; /* Set the background color */
+   border: 1px solid #ccc; /* Add a border */
+   border-radius: 5px; /* Round the corners */
+ }
+ 
+ /* Header containing navigation buttons and current date */
+ .react-calendar__navigation {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 10px;
+   background-color: #dfc6c6;
+ }
+ 
+ /* Navigation buttons (previous and next month) */
+ .react-calendar__navigation__arrow {
+   cursor: pointer;
+ }
+ 
+ /* Calendar grid */
+ .react-calendar__month-view__days {
+   display: grid;
+   grid-template-columns: repeat(7, 1fr); /* Customize the number of columns */
+ }
+ 
+ /* Calendar day cell */
+ .react-calendar__month-view__days__day {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 80px; /* Set the desired height */
+   cursor: pointer;
+ }
+ 
+ /* Add more styles as needed */
+ 

@@ -146,7 +146,7 @@ const AddBill = ({ userId, language, getBills, theme, totalPaid, totalUnPaid }) 
         `https://todo-danielamoroso31.b4a.run/${userId}/create-bill`,
         data
       );
-      if (response.status === 201) {
+      if (response.status === 200) {
         language === "english" ? billAdded() : gastoAgregado();
         navigate("/bills");
         getBills();
