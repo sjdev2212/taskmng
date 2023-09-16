@@ -1,47 +1,109 @@
 .calendar-container {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   height: 100vh;
- }
+display: flex;
+}
+
 /* Calendar container */
 .react-calendar {
-   width: 80vw;
- height: 45vw;
-   font-family: Arial, sans-serif; /* Customize the font */
-   background-color: #fff; /* Set the background color */
-   border: 1px solid #ccc; /* Add a border */
-   border-radius: 5px; /* Round the corners */
- }
- 
- /* Header containing navigation buttons and current date */
- .react-calendar__navigation {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   padding: 10px;
-   background-color: #dfc6c6;
- }
- 
- /* Navigation buttons (previous and next month) */
- .react-calendar__navigation__arrow {
-   cursor: pointer;
- }
- 
- /* Calendar grid */
- .react-calendar__month-view__days {
-   display: grid;
-   grid-template-columns: repeat(7, 1fr); /* Customize the number of columns */
- }
- 
- /* Calendar day cell */
- .react-calendar__month-view__days__day {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   height: 80px; /* Set the desired height */
-   cursor: pointer;
- }
- 
- /* Add more styles as needed */
- 
+  width: 60vw;
+  height: 40vw;
+  font-family: Arial, sans-serif;
+  /* Customize the font */
+  background-color: #fff;
+  /* Set the background color */
+  border: 1px solid #ccc;
+  /* Add a border */
+  border-radius: 5px;
+  /* Round the corners */
+}
+
+/* Header containing navigation buttons and current date */
+.react-calendar__navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #404040;
+  color: whitesmoke;
+}
+
+.react-calendar__navigation button {
+  border: none;
+  background: none;
+  font-size: 1.5em;
+  color: white;
+  cursor: pointer;
+}
+
+/* Navigation buttons (previous and next month) */
+.react-calendar__navigation__arrow {
+  cursor: pointer;
+
+}
+
+/* Calendar grid */
+.react-calendar__month-view__days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  font-size: 1.2em;
+  font-weight: bold;
+
+
+}
+
+/* Calendar day cell */
+.react-calendar__month-view__days__day {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  /* Set the desired height */
+  cursor: pointer;
+}
+
+/* Add more styles as needed */
+.appointment-marker {
+  background-color: rgb(15, 1, 1);
+  color: white;
+  width: 3vw;
+  height: 3vw;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.no-appointments{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  /* Set the desired height */
+  cursor: pointer;
+  font-size: 1.5vw;
+  font-weight: bold;
+
+
+}
+.cont-right{
+  height : 40vw;
+  width: 40vw;
+  margin: 0 0.4vw;
+  border: 2px solid #404040;
+  border-radius: 5px;
+}
+
+.app-render{
+  height: 38vw;
+  overflow: auto;
+  width: 40vw;
+}
+.appointment{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5vw;
+  border-bottom: 1px solid #404040;
+  font-size: 1.2vw;
+  font-weight: bold;
+}

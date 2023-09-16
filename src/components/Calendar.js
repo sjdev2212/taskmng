@@ -1,20 +1,297 @@
-import React, { useState } from 'react';
-import Calendar from 'react-calendar';
-
+import React, { useState, useEffect } from "react";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
+/* import { isSameDay } from "date-fns"; */
+import PropTypes from "prop-types";
 import "../styles/Calendar.css";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { RotatingLines } from "react-loader-spinner"; 
+import { toast } from "react-hot-toast";
 
-function MyCalendar() {
+function MyCalendar({ userId,language,theme }) {
   const [date, setDate] = useState(new Date());
+  const [appointments, setAppointments] = useState([]);
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [description, setDescription] = useState("");
+  const [category, setCategory] = useState("");
+  // eslint-disable-next-line
+  const [overDue, setOverDue] = useState(false);
+  const [loading, setLoading] = useState(true);
+  // eslint-disable-next-line
+  const [isOverDue, setIsOverDue] = useState(false);
 
+/*styles*/
+const appointmentTheme = theme === "light" ? "appointment-light" : "appointment-dark";
+const expired = {
+  color: "red",
+  fontWeight: "bold",
+  fontSize: "1.2rem",
+  textDecoration: "crossed",
+};
+const notExpired = {
+  color: "green",
+  fontWeight: "bold",
+  fontSize: "1.2rem",
+  textDecoration: "none",
+};
+
+  const navigate = useNavigate();
   const handleDateChange = (newDate) => {
     setDate(newDate);
   };
 
-  return (
-    <div className='calendar-container'>
-      <Calendar onChange={handleDateChange} value={date} />
-    </div>
-  );
-}
+  const appointmentAdded = () =>
+    toast("Appointment added", {
+      duration: 3000,
+      position: "middle-center",
+      style: {
+        background: "whitesmoke",
+        color: "black",
+        height: "18vh",
+        width: "35vh",
+        fontSize: "1.2rem",
+        fontWeight: "bold",
+        border: "solid 2px black",
+        borderRadius: "15px",
+      },
+      icon: "✔️",
+    });
+
+
+
+  const handleDayClick = (value) => {
+  
+    setSelectedDate(value);
+  };
+
+
+/*   const addAppointment = () => {
+    if (selectedDate && description.trim() !== "") {
+      setAppointments([...appointments, { date: selectedDate, text: description }]);
+    
+
+      setSelectedDate(null);
+      setDescription("");
+    }
+  }; */
+  const saveAppointments = (e) => {
+    e.preventDefault();
+    
+    const data = {
+        date: date,
+        description: description,
+        category: category,
+        overDue: overDue,
+      };
+      console.log(data);
+      axios.post(`https://todo-danielamoroso31.b4a.run/${userId}/save-date`, data)
+      .then(res => {
+     if (res.status === 200) {
+      appointmentAdded();
+      getAppointment();
+      setDescription("");
+      setCategory("");
+  }
+      })
+      .catch(err => {
+        console.log(err);
+      }
+      )
+
+    
+   
+  };
+/*   const markAppointments = ({ date }) => {
+    const hasAppointments = appointments.some((appointment) =>
+      isSameDay(appointment.date, date)
+    );
+
+    return hasAppointments ? (
+      <span className="appointment-marker">{description || ""}</span>
+    ) : null;
+  }; */
+  useEffect(() => {
+    getAppointment();
+    
+    //eslint-disable-next-line  
+  }, [userId ]);
+  
+
+
+
+
+  const getAppointment = async () => {
+    try {
+      const response = await axios.get(
+        `https://todo-danielamoroso31.b4a.run/${userId}/dates-saved`
+      );
+      if (response.status === 200) {
+        const appointmentsData = response.data.result;
+  
+  
+        setAppointments(appointmentsData);
+        setLoading(false);
+     
+    
+
+
+        
+      }
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
+
+  const deleteAppointment = async (id) => {
+    try {
+      const response = await axios.delete(
+        `https://todo-danielamoroso31.b4a.run/${userId}/delete-date/${id}`
+      );
+      if (response.status === 200) {
+        navigate("/calendar");
+       getAppointment();
+       
+
+      }
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+return (
+    <div>
+      <div id="date" className="calendar-container">
+        <Calendar
+        className="date"
+        onChange={handleDateChange}
+        value={date}
+    /*     tileContent={markAppointments} */
+        onClickDay={handleDayClick}
+       />
+
+        <div className="cont-right">
+          <div>
+          <form  onSubmit={saveAppointments}>
+            <input
+              type="text"
+              id="description"
+              placeholder="Add appointment text..."
+              value={description}
+              data={selectedDate}
+              onChange={(e) => setDescription(e.target.value)}
+              className="input-text"
+            />
+            <select 
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            className="input-category"
+            >
+              <option value="meeting">Meeting</option>
+              <option value="birthday">Birthday</option>
+              <option value="reminder">Reminder</option>
+              <option value="other">Other</option>
+              <option value="doctor">Doctor</option>
+            </select>
+            <button 
+            type="submit"
+            className="btn-add"
+            >Add </button>
+          </form>
+          </div>
+          <section className="app-render">
+
+{loading ? (
+        <div className="loading">
+          <RotatingLines
+           color="#404040"
+           strokeColor="grey"
+           strokeWidth="5"
+           animationDuration="0.75"
+           width="60"
+           visible={true}
+           position="center"
+                          
+                          
+                          
+                          />
+        </div>
+      ) : (
+        <div >
+          {
+
+            appointments.length === 0 ? (
+              <div className="no-appointments"> 
+              <h1>No appointments</h1>
+              </div>
+            ) : (
+              <div className={appointmentTheme}>
+                {appointments.map((appointment) => (
+                  <div className="appointment" key={appointment._id}>
+                  
+                      <div className="appointment-date">
+                        <p>{
+                          language === "english" ? 
+                            "Date: " : "Fecha: "
+                          
+                          }</p>
+                        <p style={
+                         isOverDue ? expired : notExpired
+
+                        }>{appointment.date.slice(0, 10 )}</p>
+                      </div>
+                      <div className="appointment-text">
+                        <p>{theme ===  'english' ? 
+                            "Description: " : "Descripción: "}
+                      </p>
+                        <p>{appointment.description}</p>
+                      </div>
+                      <div className="appointment-category">
+                        <p>{language === "english" ?
+                          "Category: " : "Categoría: "}   
+                        </p>                  
+                        <p>{appointment.category}</p>
+                      </div>
+                     
+                      <div className="appointment-actions">
+                      <button
+
+                        onClick={() => deleteAppointment(appointment.idForDate)}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+        </div>
+      )
+
+          }
+
+</section>
+
+
+
+
+        </div>
+
+
+
+      </div>
+
+
+
+</div>
+)}
+
+MyCalendar.propTypes = {
+  userId: PropTypes.number.isRequired,
+  language: PropTypes.string.isRequired,
+  theme: PropTypes.string.isRequired,
+};
 
 export default MyCalendar;
