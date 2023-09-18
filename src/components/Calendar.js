@@ -16,10 +16,9 @@ function MyCalendar({ userId,language,theme }) {
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   // eslint-disable-next-line
-  const [overDue, setOverDue] = useState(false);
+
   const [loading, setLoading] = useState(true);
   // eslint-disable-next-line
-  const [isOverDue, setIsOverDue] = useState(false);
 
 /*styles*/
 const appointmentTheme = theme === "light" ? "appointment-light" : "appointment-dark";
@@ -35,6 +34,11 @@ const notExpired = {
   fontSize: "1.2rem",
   textDecoration: "none",
 };
+const deleteAppointmentTheme = theme === "light" ? "btn-delete-light" : "btn-delete-dark";
+const appRenderTheme = theme === "light" ? "app-render-light" : "app-render-dark";
+const noAppTheme = theme === "light" ? "no-app-light" : "no-app-dark";
+const singleAppTheme = theme === "light" ? "single-app-light" : "single-app-dark";
+const addAppBtn = theme === "light" ? "add-app-btn-light" : "add-app-btn-dark";
 
   const navigate = useNavigate();
   const handleDateChange = (newDate) => {
@@ -82,7 +86,7 @@ const notExpired = {
         date: date,
         description: description,
         category: category,
-        overDue: overDue,
+       
       };
       console.log(data);
       axios.post(`https://todo-danielamoroso31.b4a.run/${userId}/save-date`, data)
@@ -128,16 +132,9 @@ const notExpired = {
       );
       if (response.status === 200) {
         const appointmentsData = response.data.result;
-  
-  
         setAppointments(appointmentsData);
         setLoading(false);
-     
-    
-
-
-        
-      }
+     }
     } catch (error) {
       console.log(error);
       setLoading(false);
@@ -197,11 +194,11 @@ return (
             </select>
             <button 
             type="submit"
-            className="btn-add"
+            className={addAppBtn}
             >Add </button>
           </form>
           </div>
-          <section className="app-render">
+          <section className={appRenderTheme}>
 
 {loading ? (
         <div className="loading">
@@ -223,13 +220,13 @@ return (
           {
 
             appointments.length === 0 ? (
-              <div className="no-appointments"> 
+              <div className={noAppTheme}> 
               <h1>No appointments</h1>
               </div>
             ) : (
               <div className={appointmentTheme}>
                 {appointments.map((appointment) => (
-                  <div className="appointment" key={appointment._id}>
+                  <div className={singleAppTheme} key={appointment._id}>
                   
                       <div className="appointment-date">
                         <p>{
@@ -237,10 +234,15 @@ return (
                             "Date: " : "Fecha: "
                           
                           }</p>
-                        <p style={
-                         isOverDue ? expired : notExpired
-
-                        }>{appointment.date.slice(0, 10 )}</p>
+                        <p >{
+                        new Date(appointment.date.slice(0, 10 )) < new Date() ?
+                        <span style={expired}>{appointment.date.slice(0, 10)}</span> :
+                        <span style={notExpired}>{appointment.date.slice(0, 10)}</span>
+                        
+                        
+                        
+                        
+                        }</p>
                       </div>
                       <div className="appointment-text">
                         <p>{theme ===  'english' ? 
@@ -256,7 +258,7 @@ return (
                       </div>
                      
                       <div className="appointment-actions">
-                      <button
+                      <button className={deleteAppointmentTheme}
 
                         onClick={() => deleteAppointment(appointment.idForDate)}
                       >

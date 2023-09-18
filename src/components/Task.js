@@ -46,6 +46,7 @@ const Task = ({
   const btnClearCom = theme === "light" ? "btn-clear-com-light" : "btn-clear-com-dark"; 
   const checkTheme = theme === "light" ? "hover-check-light" : "hover-check-dark";
   const btnDelCont = theme === "light" ? "btn-cont-delete-light" : "btn-cont-delete-dark";
+  const titleItem = theme === "light" ? "title-item-light" : "title-item-dark";
 
   /*   const textCompleted = {
     textDecoration: "line-through",
@@ -308,7 +309,7 @@ const Task = ({
                       }}>
                 { language === 'english' ? "Title:" : "Titulo:"}
                       </div>
-                       <div>
+                       <div className={titleItem}>
                        {task.title}
                        </div>
                        
@@ -324,7 +325,7 @@ const Task = ({
                      
                      
                      >{language === 'english' ?  "Description:" : "Descripcion:"}</div>
-                     <div>
+                     <div className="desc-item"> 
                        {task.description}
                        </div>
                     </div>
