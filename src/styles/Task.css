@@ -34,7 +34,7 @@
   justify-content: space-evenly;
   overflow: auto;
   margin-top: 0.5vw;
-  
+
 }
 
 .task-detail {
@@ -72,7 +72,7 @@
   transform: scale(1.45)
 }
 
-.btn-cont-delete-light{
+.btn-cont-delete-light {
 
   background-color: whitesmoke;
   border: none;
@@ -206,9 +206,10 @@
 .hover-crossed:hover {
   transform: scale(1.45);
 }
-#btn-add-light{
+
+#btn-add-light {
   position: relative;
-  top : 19.1vw;
+  top: 19.1vw;
   right: 8.4vw;
   width: 8vw;
   height: 4vw;
@@ -219,7 +220,8 @@
   font-size: 1vw;
   border: 2px solid #404040;
 }
-#btn-add-light:hover{
+
+#btn-add-light:hover {
   background-color: #404040;
   color: whitesmoke;
   transition: all 0.3s ease-in-out;
@@ -252,6 +254,26 @@
   overflow: auto;
   margin-bottom: 6vw;
 
+}
+
+.title-item-light {
+  background-color: rgb(230, 226, 227);
+  height: 3vw;
+  width: 12vw;
+  overflow: auto;
+}
+
+.title-item-dark1 {
+  background-color: rgb(36, 37, 39);
+  height: 3vw;
+  width: 12vw;
+  overflow: auto;
+}
+
+.desc-item {
+  height: 3vw;
+  width: 18vw;
+  overflow: auto;
 }
 
 .task-item-dark {
@@ -315,9 +337,9 @@
 }
 
 
-#btn-add-dark{
+#btn-add-dark {
   position: relative;
-  top : 19.1vw;
+  top: 19.1vw;
   right: 8.6vw;
   height: 4vw;
   border: 2px solid #f1eded;
@@ -328,11 +350,13 @@
   border: 2px solid #404040;
   width: 8.5vw;
 }
-#btn-add-dark:hover{
+
+#btn-add-dark:hover {
   background-color: #404040;
   color: whitesmoke;
   transition: all 0.3s ease-in-out;
 }
+
 .btn-clear-com-dark {
   border: none;
   display: flex;
@@ -363,19 +387,21 @@
   color: #f3e2e2;
   transition: all 0.3s ease-in-out;
 }
+
 .hover-check-dark {
   color: green;
   font-size: 1.6vw;
   margin-left: 0.5vw;
   transition: transform 0.2s;
-  
+
 }
 
 .hover-check-dark:hover {
 
   transform: scale(1.45);
 }
-.btn-cont-delete-dark{
+
+.btn-cont-delete-dark {
 
   background-color: transparent;
   border: none;

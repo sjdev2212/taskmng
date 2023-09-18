@@ -73,7 +73,7 @@ display: flex;
 
 }
 
-.no-appointments{
+.no-app-light{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -82,8 +82,17 @@ display: flex;
   cursor: pointer;
   font-size: 1.5vw;
   font-weight: bold;
-
-
+}
+.no-app-dark{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  /* Set the desired height */
+  cursor: pointer;
+  font-size: 1.5vw;
+  font-weight: bold;
+  color: white;
 }
 .cont-right{
   height : 40vw;
@@ -93,17 +102,121 @@ display: flex;
   border-radius: 5px;
 }
 
-.app-render{
+.app-app-render-light{
   height: 38vw;
   overflow: auto;
   width: 40vw;
+  background-color: whitesmoke;
 }
-.appointment{
+
+.app-app-render-dark{
+  height: 38vw;
+  overflow: auto;
+  width: 40vw;
+  background-color: #404040;
+}
+.single-app-light{
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0.5vw;
-  border-bottom: 1px solid #404040;
+  border: 1px solid #404040;
   font-size: 1.2vw;
   font-weight: bold;
+}
+.single-app-dark{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5vw;
+  border: 1px solid #f3f1f1;
+  font-size: 1.2vw;
+  font-weight: bold;
+  color: white;
+}
+
+.btn-delete-light{
+  background-color: #404040;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5vw;
+  cursor: pointer;
+  font-size: 1vw;
+  font-weight: bold;
+}
+.btn-delete-light:hover{
+  background-color: #808080;
+}
+
+.btn-delete-dark{
+  background-color: #e9e2e2;
+  color: rgb(15, 15, 15);
+  border: none;
+  border-radius: 5px;
+  padding: 0.5vw;
+  cursor: pointer;
+  font-size: 1vw;
+  font-weight: bold;
+}
+.btn-delete-dark:hover{
+  background-color: #222121;
+  color: white;
+}
+.input-text{
+  width: 23vw;
+  height: 2vw;
+  border: 2px solid #aaa8a8;
+  border-radius: 5px;
+  padding: 0.5vw;
+  font-size: 1.2vw;
+  font-weight: bold;
+}
+
+.input-category{
+  width: 7vw;
+  height: 3.2vw;
+  border: 2px solid #aaa8a8;
+  border-radius: 5px;
+  padding: 0.5vw;
+  font-size: 1.2vw;
+  font-weight: bold;
+}
+.add-app-btn-light{
+  background-color: #404040;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5vw;
+  cursor: pointer;
+  font-size: 1vw;
+  font-weight: bold;
+  width: 6.6vw;
+  height: 3vw;
+  padding-bottom: 0.4vw;
+  margin-left : 0.2vw;
+}
+.add-app-btn-light:hover{
+  background-color: #e9dcdc;
+  color: rgb(15, 15, 15);
+  border: 1px solid #404040;
+}
+.add-app-btn-dark{
+  background-color: #ebe4e4;
+  color: #404040;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5vw;
+  cursor: pointer;
+  font-size: 1vw;
+  font-weight: bold;
+  width: 6.6vw;
+  height: 3vw;
+  padding-bottom: 0.4vw;
+  margin-left : 0.2vw;
+}
+.add-app-btn-dark:hover{
+  background-color: #404040;
+  color: rgb(241, 238, 238);
+  border: 1px solid #ebe0e0;
 }
