@@ -2,7 +2,6 @@ import React from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
 import AddTask from "./AddTask";
-/* import { Link } from "react-router-dom"; */
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -14,6 +13,7 @@ import { BsCheckCircle } from "react-icons/bs";
 import { ImCross } from "react-icons/im";
 import Icon from "@mdi/react";
 import "../styles/Task.css";
+
 const Task = ({
   language,
   userId,
@@ -24,6 +24,7 @@ const Task = ({
   theme,
 }) => {
   const [modal, setModal] = useState(false);
+
 
   const navigate = useNavigate();
   const toastTheme = theme === "light" ? "whitesmoke" : "gray ";
@@ -39,41 +40,19 @@ const Task = ({
   const addTaskContTheme =
     theme === "light" ? "add-task-cont-light" : "add-task-cont-dark";
   const noTasker = theme === "light" ? "notask-btn-light" : "notask-btn-dark";
-/*   const addTaskWithItems =
+  /*   const addTaskWithItems =
     theme === "light" ? "add-btn-items-light" : "add-btn-items-dark"; */
   const idBtnTheme = theme === "light" ? "btn-add-light" : "btn-add-dark";
-  const clearCompletedTheme = theme === "light" ? "clear-btn-light" : "clear-btn-dark"; 
-  const btnClearCom = theme === "light" ? "btn-clear-com-light" : "btn-clear-com-dark"; 
-  const checkTheme = theme === "light" ? "hover-check-light" : "hover-check-dark";
-  const btnDelCont = theme === "light" ? "btn-cont-delete-light" : "btn-cont-delete-dark";
+  const clearCompletedTheme =
+    theme === "light" ? "clear-btn-light" : "clear-btn-dark";
+  const btnClearCom =
+    theme === "light" ? "btn-clear-com-light" : "btn-clear-com-dark";
+  const checkTheme =
+    theme === "light" ? "hover-check-light" : "hover-check-dark";
+  const btnDelCont =
+    theme === "light" ? "btn-cont-delete-light" : "btn-cont-delete-dark";
   const titleItem = theme === "light" ? "title-item-light" : "title-item-dark";
 
-  /*   const textCompleted = {
-    textDecoration: "line-through",
-    color: "gray",
-  };
-  const textIncomplete = {
-    textDecoration: "none",
-    color: "black",
-    backgroundColor: "whitesmoke",
-  }; */
-  /*   const disbleBtn = {
-    backgroundColor: "gray",
-    color: "whitesmoke",
-    border: "none",
-    outline: "none",
-    cursor: "not-allowed",
-    disabled: "true",
-  }; */
-  /*   const enableBtn = {
-    backgroundColor: "whitesmoke",
-    color: "black",
-    border: "none",
-    outline: "none",
-    cursor: "pointer",
-    disabled: "false",
-  };
- */
 
   const modalBorder =
     theme === "light" ? "solid 2px black" : "solid 2px whitesmoke";
@@ -93,6 +72,7 @@ const Task = ({
     } else {
       setTasks(result.data.result);
       setLoading(false);
+  
     }
   };
 
@@ -204,11 +184,11 @@ const Task = ({
       });
   };
 
-
-
   const handleClearCompleted = async () => {
     await axios
-      .delete(`https://todo-danielamoroso31.b4a.run/${userId}/delete-completed-tasks`)
+      .delete(
+        `https://todo-danielamoroso31.b4a.run/${userId}/delete-completed-tasks`
+      )
       .then((response) => {
         if (response.status === 200) {
           navigate("/tasks");
@@ -285,76 +265,88 @@ const Task = ({
           ) : (
             <>
               <div>
-                <button   id={idBtnTheme}  onClick={openModal}>
+             
+
+                <button id={idBtnTheme} onClick={openModal}>
                   {language === "english" ? "Add a task" : "Agregar una tarea"}
                 </button>
               </div>
               <div>
-                <button className={clearCompletedTheme} onClick={handleClearCompleted}>
+                <button
+                  className={clearCompletedTheme}
+                  onClick={handleClearCompleted}
+                >
                   {language === "english"
                     ? "Clear Completed"
                     : "Limpiar Completados"}
                 </button>
               </div>
-
+           
               <section className={showTasksTheme}>
                 {tasks.map((task) => (
                   <div className={taskItemTheme} key={task.idForTask}>
                     <div className="task-detail">
-                      <div style={{
-                        textDecoration: "underline",
-                        fontWeight: "500",
-                        fontSize: "1.2vw",
-                        fontFamily: "Sans-serif",
-                      }}>
-                { language === 'english' ? "Title:" : "Titulo:"}
+                      <div
+                        style={{
+                          textDecoration: "underline",
+                          fontWeight: "500",
+                          fontSize: "1.2vw",
+                          fontFamily: "Sans-serif",
+                          width: "12vw",
+                        }}
+                      >
+                        {language === "english" ? "Title:" : "Titulo:"}
                       </div>
-                       <div className={titleItem}>
-                       {task.title}
-                       </div>
-                       
-                       </div>
+                      <div className={titleItem}>{task.title}</div>
+                    </div>
                     <div className="task-detail">
-                     <div
-                     style={{
-                      textDecoration: "underline",
-                      fontWeight: "500",
-                      fontSize: "1.2vw",
-                      fontFamily: "Sans-serif",
-                    }}
-                     
-                     
-                     >{language === 'english' ?  "Description:" : "Descripcion:"}</div>
-                     <div className="desc-item"> 
-                       {task.description}
-                       </div>
+                      <div
+                        style={{
+                          textDecoration: "underline",
+                          fontWeight: "500",
+                          fontSize: "1.2vw",
+                          fontFamily: "Sans-serif",
+                          width: "18vw",
+                        }}
+                      >
+                        {language === "english"
+                          ? "Description:"
+                          : "Descripcion:"}
+                      </div>
+                      <div className="desc-item">{task.description}</div>
                     </div>
-                    <div className="task-detail"> 
-                    <div
-                     style={{
-                      textDecoration: "underline",
-                      fontWeight: "500",
-                      fontSize: "1.2vw",
-                      fontFamily: "Sans-serif",
-                    }}>
-                      {language === 'english' ?  "Completed?" : "Completado?"}
-                    </div>
+                    <div className="task-detail">
+                      <div
+                        style={{
+                          textDecoration: "underline",
+                          fontWeight: "500",
+                          fontSize: "1.2vw",
+                          fontFamily: "Sans-serif",
+                        }}
+                      >
+                        {language === "english" ? "Completed?" : "Completado?"}
+                      </div>
 
-
-                    <button className={btnClearCom} onClick={task.completed ?  () =>handleIncomplete(task.idForTask) : () => handleCompleted(task.idForTask)}>
-                     
-                      {" "}
-                      {task.completed ? (
-                        <BsCheckCircle
-                        className={checkTheme}
-                        
-                        />
-                      ) : (
-                        <ImCross className="hover-crossed" />
-                      )}
-                    </button>
+                      <button
+                        className={btnClearCom}
+                        onClick={
+                          task.completed
+                            ? () => handleIncomplete(task.idForTask)
+                            : () => handleCompleted(task.idForTask)
+                        }
+                      >
+                        {" "}
+                        {task.completed ? (
+                          <BsCheckCircle className={checkTheme} />
+                        ) : (
+                          <ImCross className="hover-crossed" />
+                        )}
+                      </button>
                     </div>
-                    <button className={btnDelCont} onClick={() => handleDelete(task.idForTask)}>
+                    <button
+                      className={btnDelCont}
+                      onClick={() => handleDelete(task.idForTask)}
+                    >
                       <BsTrash3Fill className="btn-delete-task" />
                     </button>
                   </div>

@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { RotatingLines } from "react-loader-spinner"; 
 import { toast } from "react-hot-toast";
 
+
 function MyCalendar({ userId,language,theme }) {
   const [date, setDate] = useState(new Date());
   const [appointments, setAppointments] = useState([]);
@@ -127,19 +128,24 @@ const addAppBtn = theme === "light" ? "add-app-btn-light" : "add-app-btn-dark";
 
   const getAppointment = async () => {
     try {
-      const response = await axios.get(
+   const result = await axios.get(
         `https://todo-danielamoroso31.b4a.run/${userId}/dates-saved`
       );
-      if (response.status === 200) {
-        const appointmentsData = response.data.result;
-        setAppointments(appointmentsData);
+      if (result.data.result === undefined) {
+        setAppointments([]);
         setLoading(false);
-     }
-    } catch (error) {
+      } else {
+        setAppointments(result.data.result);
+        setLoading(false);
+      }
+    }
+    catch (error) {
       console.log(error);
-      setLoading(false);
     }
   };
+
+
+
 
   const deleteAppointment = async (id) => {
     try {
@@ -147,8 +153,9 @@ const addAppBtn = theme === "light" ? "add-app-btn-light" : "add-app-btn-dark";
         `https://todo-danielamoroso31.b4a.run/${userId}/delete-date/${id}`
       );
       if (response.status === 200) {
+
+        getAppointment();
         navigate("/calendar");
-       getAppointment();
        
 
       }
@@ -221,7 +228,11 @@ return (
 
             appointments.length === 0 ? (
               <div className={noAppTheme}> 
-              <h1>No appointments</h1>
+              <h1>{
+                language === "english" ?
+                "No appointments yet" : "No hay fechas aún"
+
+                }</h1>
               </div>
             ) : (
               <div className={appointmentTheme}>
