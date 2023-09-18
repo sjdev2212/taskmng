@@ -148,9 +148,11 @@ const tareaAgregada = () =>
             required
           />
         </div>
+        <div className="add-task-btn-cont">
         <button className={addTaskBtnTheme}> 
           {language === "english" ? "Add a task" : "Agregar una tarea"}
         </button>
+        </div>
       </form>
     </section>
   );
