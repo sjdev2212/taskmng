@@ -20,9 +20,11 @@ To get a local copy up and running follow these simple example steps.
 
 To use this project you first need to have installed the following:
 
-+ Node.js
++ Node.js v18.13.0
 
 ### Setup
+
+Clone this repository
 
 https://github.com/sjdev2212/taskmng.git
 
@@ -42,7 +44,7 @@ To check the test use the following command:
 
 npm test
 
-## Authors
+## Author
 
 
 👤 **Anibal Amoroso**
