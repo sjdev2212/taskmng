@@ -1,26 +1,25 @@
-
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import {Routes, Route, useNavigate } from "react-router-dom";
 import axios from "axios";
-import Navbar from "./components/Navbar";
-import Register from "./components/Register";
-import Login from "./components/Login";
-import AddTask from "./components/AddTask";
-import Task from "./components/Task";
-import Home from "./components/Home";
-import EditTask from "./components/EditTask";
-import EditBill from "./components/EditBill";
-import Bills from "./components/Bills";
-import Calendar from "./components/Calendar";
+import Navbar from "./components/Navbar.js";
+import Register from "./components/Register.js";
+import Login from "./components/Login.js";
+import AddTask from "./components/AddTask.js";
+import Task from "./components/Task.js";
+import Home from "./components/Home.js";
+import EditTask from "./components/EditTask.js";
+import EditBill from "./components/EditBill.js";
+import Bills from "./components/Bills.js";
+import Calendar from "./components/Calendar.js";
 import { Toaster, toast } from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
 import { useIdleTimer } from "react-idle-timer";
 
 
 
 
 function App() {
+ 
   const [isLogged, setIsLogged] = useState(false);
   const [token, setToken] = useState(null);
   const [language, setLanguage] = useState("");
@@ -34,7 +33,7 @@ function App() {
   const [isIdle, setIsIdle] = useState(false);
   const [bills, setBills] = useState([]);
   
-  const navigate = useNavigate();
+ const navigate = useNavigate();
 
   const handleOnIdle = () => {
     setIsIdle(true);
@@ -204,9 +203,11 @@ const controlIdle =  useIdleTimer({
 
 
   return (
+  
     <>
   
       <Navbar
+      data-testid="navbar"
         isLogged={isLogged}
         isAuthenticated={isAuthenticated}
         handleLoginOut={handleLoginOut}
@@ -216,8 +217,8 @@ const controlIdle =  useIdleTimer({
         theme={theme}
      
       />
-
       <Routes>
+
         <Route
           path="/"
           element={
