@@ -211,7 +211,7 @@ const registerBtn = theme === 'light' ? 'register-btn-light' : 'register-btn-dar
               title="Password must be at least 6 characters long."
             />
           </div>
-          <button className={registerBtn} type="submit">
+          <button data-testid="reg-btn" className={registerBtn} type="submit">
             {language === "english" ? "Register" : "Registrarse"}
           </button>
         </form>
