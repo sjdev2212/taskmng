@@ -12,6 +12,7 @@
     "axios": "^1.4.0",
     "date-fns": "^2.30.0",
     "ensure-date-fns-supports-locale": "^1.0.0",
+    "jest": "^27.5.1",
     "moment": "^2.29.4",
     "mongodb": "^5.6.0",
     "mongoose": "^7.3.1",
@@ -29,6 +30,13 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
+ 
+  "jest": {
+    "moduleNameMapper": {
+      "axios": "axios/dist/node/axios.cjs"
+    }
+    
+    },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
