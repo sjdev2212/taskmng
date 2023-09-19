@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
-import AddTask from "./AddTask";
+import AddTask from "./AddTask.js";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -252,9 +252,12 @@ const Task = ({
           {tasks.length === 0 ? (
             <div className={noTasksTheme}>
               {language === "english" ? (
-                <h3>You do not have any tasks yet</h3>
+                <h3 
+                data-testid='testi'
+                >You do not have any tasks yet</h3>
               ) : (
-                <h3>No tienes tareas todavía</h3>
+                <h3 
+                data-testid='testi' >No tienes tareas todavía</h3>
               )}
               <div className="btn-notasks">
                 <button className={noTasker} onClick={openModal}>
@@ -282,9 +285,12 @@ const Task = ({
                 </button>
               </div>
            
-              <section className={showTasksTheme}>
+              <section  
+              className={showTasksTheme}>
                 {tasks.map((task) => (
-                  <div className={taskItemTheme} key={task.idForTask}>
+                  <div 
+                  data-testid='testo'
+                   className={taskItemTheme} key={task.idForTask}>
                     <div className="task-detail">
                       <div
                         style={{
