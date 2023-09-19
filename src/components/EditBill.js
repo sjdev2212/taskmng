@@ -133,7 +133,8 @@ const EditBill = ({ userId, theme, language}) => {
                 ></input>
             </div>
          
-            <button type="submit" className={editBtn}>
+            <button data-testid='Edit' 
+            type="submit" className={editBtn}>
                 {
                     language === 'english' ?  'Edit Bill' : 'Editar Gasto'
                 }

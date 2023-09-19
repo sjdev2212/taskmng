@@ -131,6 +131,7 @@ const tareaAgregada = () =>
           <input
             type="text"
             id="title"
+            data-testid='title'
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             required
@@ -143,13 +144,15 @@ const tareaAgregada = () =>
           <input
             type="text"
             id="description"
+            data-testid='description'
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
           />
         </div>
         <div className="add-task-btn-cont">
-        <button className={addTaskBtnTheme}> 
+        <button data-testid='Add'
+         className={addTaskBtnTheme}> 
           {language === "english" ? "Add a task" : "Agregar una tarea"}
         </button>
         </div>

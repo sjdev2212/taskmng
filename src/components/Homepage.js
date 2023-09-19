@@ -1,5 +1,5 @@
 import React from 'react'
- import Sidebar from "./Sidebar" ;
+import Sidebar from "./Sidebar.js" ;
 import "../styles/Homepage.css";
 import PropTypes from 'prop-types';
 
@@ -40,7 +40,8 @@ const Homepage = ({language,user,theme}) => {
              </p>
            </div>
          ) : (
-           <div className={welcomeTheme}>
+           <div data-testid="homepage"
+            className={welcomeTheme}>
           
            
                <h1>Bienvenido/a al Organizador de Tareas {user}!</h1>

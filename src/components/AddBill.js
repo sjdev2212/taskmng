@@ -184,7 +184,7 @@ const AddBill = ({ userId, language, getBills, theme, totalPaid, totalUnPaid }) 
      
 
       <section className={addBillConTheme}>
-        <h1>{language === "english" ? "Add bill" : "Agregar gasto"}</h1>
+        <h1 data-testid="gasto">{language === "english" ? "Add bill" : "Agregar gasto"}</h1>
         <form className="addbill-form">
           <label htmlFor="name">
             {language === "english" ? "Name" : "Nombre"}
@@ -235,7 +235,6 @@ const AddBill = ({ userId, language, getBills, theme, totalPaid, totalUnPaid }) 
 AddBill.propTypes = {
   userId: PropTypes.number.isRequired,
   language: PropTypes.string.isRequired,
-  closeModal: PropTypes.func.isRequired,
   getBills: PropTypes.func.isRequired,
   theme: PropTypes.string.isRequired,
   totalPaid: PropTypes.number.isRequired,

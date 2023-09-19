@@ -3,7 +3,7 @@ import axios from "axios";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import {Link} from "react-router-dom";
-import AddBill from "./AddBill";
+import AddBill from "./AddBill.js";
 import paid from "../img/paid.png";
 import paidDark from "../img/paid-dark.jpg";
 import edit from "../img/edit.svg";
@@ -227,7 +227,7 @@ const getPaidBills = async () => {
               }</option>
            </select>
            </div>
-                      <button className={deleteAllTheme} style={
+                      <button data-testId='del-all' className={deleteAllTheme} style={
                         empty ? {display: "none"} : {display: "flex"}
                       } onClick={ handleDeletePaidBills}>{language === 'english' ? 'Clear paid bills' : 
                       'Borrar cuentas pagadas'
@@ -262,10 +262,12 @@ const getPaidBills = async () => {
               ) : (  
                 bills.map((bill) => (
                   
-                  <div className={expenseTheme} key={bill.id}>
+                  <div 
+                   className={expenseTheme} key={bill.idForBill}>
                    
-                    <div className="bills-details">
-                      <div className={billHeader}>
+                    <div  data-testId='bills' 
+                    className="bills-details" >
+                      <div   className={billHeader}>
                         {language === "english" ? "Name:" : "Nombre:"}
                         </div>
                       <div>

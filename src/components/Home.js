@@ -1,6 +1,5 @@
 import React from "react";
-
-import Homepage from "./Homepage";
+import Homepage from "./Homepage.js";
 import PropTypes from "prop-types";
 import "../styles/Home.css";
 

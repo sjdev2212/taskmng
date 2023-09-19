@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-/* import { isSameDay } from "date-fns"; */
 import PropTypes from "prop-types";
 import "../styles/Calendar.css";
 import axios from "axios";
@@ -89,7 +88,6 @@ const addAppBtn = theme === "light" ? "add-app-btn-light" : "add-app-btn-dark";
         category: category,
        
       };
-      console.log(data);
       axios.post(`https://todo-danielamoroso31.b4a.run/${userId}/save-date`, data)
       .then(res => {
      if (res.status === 200) {
@@ -140,7 +138,7 @@ const addAppBtn = theme === "light" ? "add-app-btn-light" : "add-app-btn-dark";
       }
     }
     catch (error) {
-      console.log(error);
+    console.log(error)
     }
   };
 
@@ -174,6 +172,8 @@ return (
         value={date}
     /*     tileContent={markAppointments} */
         onClickDay={handleDayClick}
+        data-testid="calendar"
+        
        />
 
         <div className="cont-right">
@@ -182,6 +182,7 @@ return (
             <input
               type="text"
               id="description"
+              data-testid="input"
               placeholder="Add appointment text..."
               value={description}
               data={selectedDate}
@@ -189,6 +190,7 @@ return (
               className="input-text"
             />
             <select 
+             data-testid="select"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
             className="input-category"
@@ -202,6 +204,7 @@ return (
             <button 
             type="submit"
             className={addAppBtn}
+            data-testid="Add"
             >Add </button>
           </form>
           </div>
@@ -269,7 +272,7 @@ return (
                       </div>
                      
                       <div className="appointment-actions">
-                      <button className={deleteAppointmentTheme}
+                      <button data-testid="Delete" className={deleteAppointmentTheme}
 
                         onClick={() => deleteAppointment(appointment.idForDate)}
                       >
@@ -286,18 +289,8 @@ return (
           }
 
 </section>
-
-
-
-
-        </div>
-
-
-
-      </div>
-
-
-
+ </div>
+</div>
 </div>
 )}
 
