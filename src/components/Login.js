@@ -18,7 +18,7 @@ const Login = ({ language, handleSubmit, setEmail, setpassword, theme }) => {
   const btnTheme = theme === "light" ? "login-btn-light" : "login-btn-dark";
 
   return (
-    <main className="main-login">
+    <main data-testid='login' className="main-login">
       <section className={themeClass}>
         {language === "english" ? (
           <h1 className={titleTheme}> Login</h1>
@@ -54,7 +54,8 @@ const Login = ({ language, handleSubmit, setEmail, setpassword, theme }) => {
               title="Please enter a valid password"
             />
           </div>
-          <button type="submit" onClick={handleSubmit} className={btnTheme}>
+          <button data-testid='log-btn' 
+          type="submit" onClick={handleSubmit} className={btnTheme}>
             {language === "spanish" ? "Iniciar Sesion" : "Login"}
           </button>
         </form>
