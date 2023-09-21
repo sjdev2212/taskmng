@@ -51,7 +51,7 @@ const Navbar = ({
       icon: "👏",
     });
   const deslogueado = () =>
-    toast("Popoxima", {
+    toast("Hasta la proxima", {
       duration: 3000,
       position: "top-center",
       style: {
