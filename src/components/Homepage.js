@@ -27,12 +27,12 @@ const Homepage = ({language,user,theme}) => {
                important tasks and hello to productivity!
              </h3>
              <p>Key Features:</p>
-             <ul>
-               <li>- Create tasks and set due dates.</li>
-               <li> Prioritize tasks to stay focused.</li>
-               <li>- Categorize tasks for better organization.</li>
-               <li>- Get reminders so you never miss a deadline.</li>
-               <li>- Collaborate with others by sharing tasks.</li>
+             <ul className='ul'>
+               <li>Create tasks and set due dates.</li>
+               <li>Prioritize tasks to stay focused.</li>
+               <li>Categorize tasks for better organization.</li>
+               <li>Get reminders so you never miss a deadline.</li>
+               <li>Collaborate with others by sharing tasks.</li>
              </ul>
              <p>
                Get started now and take control of your tasks like never
@@ -53,14 +53,13 @@ const Homepage = ({language,user,theme}) => {
                olvidar tareas importantes y di hola a la productividad.
              </h3>
              <p>Funciones principales:</p>
-             <ul>
-               <li>- Crea tareas y establece fechas límite.</li>
-               <li>-Prioriza tareas para mantener el enfoque.</li>
-               <li>-Clasifica tareas para una mejor organización.</li>
-               <li>
-                 -Recibe recordatorios para nunca perder una fecha límite.
+             <ul className='ul'>
+               <li>Crea tareas y establece fechas límite.</li>
+               <li>Prioriza tareas para mantener el enfoque.</li>
+               <li>Clasifica tareas para una mejor organización.</li>
+               <li>Recibe recordatorios para nunca perder una fecha límite.
                </li>
-               <li>-Colabora con otros compartiendo tareas.</li>
+               <li>Colabora con otros compartiendo tareas.</li>
              </ul>
              <p>
                Comienza ahora y toma el control de tus tareas como nunca
